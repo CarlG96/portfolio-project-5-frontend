@@ -1,3 +1,20 @@
+# Taskosaurus 
+
+Taskosaurus is a 
+
+## Colors
+
+For the Taskosaurus App I decided to use a monochromatic color scheme because these color schemes often look clean and professional. Variations of a bluish-green were the decided on colors because blue is often used for tech websites (think Facebook or Twitter) and green is pleasing to the eye. Here are the hex values of the colors that I used:
+
+- #277A54 - For darker shades such as borders
+- #9BFBCE - For lighter shades 
+- #50FAAB - For medium shades and background colors
+- #FFFFFF - White color to make the other colors stand out/ text
+- #000000 - balck color to make the other colors stand out/ text due to contrast with the white color.
+
+## Wireframes
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
