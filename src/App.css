@@ -1,30 +1,5 @@
-* {
+.App {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-.App {
-  text-align: center;
-}
-
-h1 {
-  font-family: 'Hanalei Fill', sans-serif;
-  background-color: #277A54;
-  color: white;
-}
-
-h2 {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #9BFBCE;
-}
-
-p {
-  font-family: 'Lato' , sans-serif;
-  background-color: #50FAAB;
-}
-
-.orange {
-  background-color: #FB7F00;
-  color: black;
 }
