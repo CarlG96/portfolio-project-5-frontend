@@ -1,4 +1,5 @@
 import './App.css';
+import logo from './assets/taskosaurus-logo.png';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <h2>Taskosaurus</h2>
       <p>Lorem Ipsum adbhbhdbhbchjabcbcabac</p>
       <p className='orange'>Lorem Ipsum adbhbhdbhbchjabcbcabac</p>
+      <img src={ logo } alt='Taskosaurus logo' />
     </div>
   );
 }
