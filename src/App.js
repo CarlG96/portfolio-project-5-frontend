@@ -7,6 +7,7 @@ function App() {
       <h1>Taskosaurus</h1>
       <h2>Taskosaurus</h2>
       <p>Lorem Ipsum adbhbhdbhbchjabcbcabac</p>
+      <p className='orange'>Lorem Ipsum adbhbhdbhbchjabcbcabac</p>
     </div>
   );
 }
