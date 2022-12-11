@@ -15,6 +15,13 @@ For the Taskosaurus App I decided to use a monochromatic color scheme because th
 ## Wireframes
 
 
+## Typography
+Montserrat, Lato and Hanalei Fill were imported from Google Fonts to be used in this project.
+
+Montserrat - Chosen for generic headers and larger text and for its legibility.
+Lato - Chose to contrast with Montserrat for the smaller paragraph-style texts. Also has good legibility.
+Hanalei Fill - Chosen for the Taskosaurus Logo. Used because it stands out and looks prehistoric like the Taskosaurus name.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
