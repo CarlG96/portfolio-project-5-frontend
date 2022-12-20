@@ -12,13 +12,13 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link><i className="fas fa-home"></i>Home</Nav.Link>
-            <Nav.Link><i class="fa-sharp fa-solid fa-list-check" />Current Tasks</Nav.Link>
-            <Nav.Link><i class="fa-sharp fa-solid fa-vault" />Archived Tasks</Nav.Link>
+            <Nav.Link><i className="fa-sharp fa-solid fa-list-check" />Current Tasks</Nav.Link>
+            <Nav.Link><i className="fa-sharp fa-solid fa-vault" />Archived Tasks</Nav.Link>
             <Nav.Link><i className="fas fa-solid fa-pen" />Create Task</Nav.Link>
             <Nav.Link><i className="fas fa-sign-in" />Sign In</Nav.Link>
             <Nav.Link><i className="fas fa-user-plus" />Sign Up</Nav.Link>
-            <Nav.Link><i class="fa-sharp fa-solid fa-arrow-right-from-bracket" />Logout</Nav.Link>
-            <Nav.Link><i class="fa-solid fa-address-card" />Profile</Nav.Link>
+            <Nav.Link><i className="fa-sharp fa-solid fa-arrow-right-from-bracket" />Logout</Nav.Link>
+            <Nav.Link><i className="fa-solid fa-address-card" />Profile</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
