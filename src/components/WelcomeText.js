@@ -1,8 +1,11 @@
 import React from 'react'
 
+
+
 const WelcomeText = () => {
   return (
-    <div>WelcomeText</div>
+        <h1>Welcome to Taskosaurus!</h1>
+    
   )
 }
 

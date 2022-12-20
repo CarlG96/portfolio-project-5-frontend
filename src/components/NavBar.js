@@ -5,7 +5,7 @@ import styles from '../styles/NavBar.module.css';
 
 const NavBar = () => {
   return (
-    <Navbar className={`${styles.NavBar}`} expand="md" fixed="top">
+    <Navbar className={`${styles.NavBar}`} expand="md">
       <Container fluid>
         <Navbar.Brand href="#home"a><img src={logo} alt="logo" height="100" width="100"/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
