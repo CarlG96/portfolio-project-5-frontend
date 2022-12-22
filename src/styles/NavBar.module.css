@@ -4,5 +4,15 @@
 }
 
 .NavLink {
-    color: #9BFBCE;
+    color: #000000;
+    padding: 5px;
 }
+
+.NavLink:hover {
+    color: #000000;
+}
+
+.Active {
+    background-color: #50FAAB;
+}
+
