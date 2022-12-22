@@ -3,6 +3,7 @@ import styles from "./App.css";
 import NavBar from "./components/NavBar";
 import WelcomeText from "./components/WelcomeText";
 import {Route, Switch} from 'react-router-dom';
+import "./api/axiosDefaults";
 
 function App() {
   return (
