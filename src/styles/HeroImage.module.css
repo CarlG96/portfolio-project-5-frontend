@@ -3,18 +3,19 @@
     height: 60vh;
     margin: 0;
     padding: 0;
-    background-color: #9BFBCE;
+    padding-top: 30px;
 }
 
 .Image {
     width: 90%;
     height: 55vh;
-    border-radius: 40%;
+    border-top-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+    border-top-right-radius: 15%;
+    border-bottom-left-radius: 80%;
     margin: 0 auto;
-    padding-top: 200px;
-    padding-bottom: 50px;
     background-image: url(../assets/hero-image.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: 0px;
 }
 

@@ -3,6 +3,19 @@
     height: 60vh;
     margin: 0;
     padding: 0;
-    background: rgb(155,251,206);
-background: linear-gradient(90deg, rgba(155,251,206,1) 26%, rgba(80,250,171,1) 48%, rgba(17,204,117,1) 89%);
+    padding-top: 30px;
+    color: #175f3f;
+}
+
+.Header {
+    font-family: 'Montserrat', 'sans-serif';
+    text-align: center;
+}
+
+.Paragraph {
+    padding-top: 1rem;
+    padding-left: 8rem;
+    font-size: 1.3rem;
+    font-family: 'Lato', 'sans-serif';
+    text-align: left;
 }

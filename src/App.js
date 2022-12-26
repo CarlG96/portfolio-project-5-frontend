@@ -18,11 +18,11 @@ function App() {
             <Switch>
               <Route exact path="/" render={() => (
                 <>
-                <Row>
-                    <Col lg ={6} className={styles.Col}>
+                <Row fluid>
+                    <Col xl ={6} lg={12} className={styles.Col}>
                       <HeroImage />
                     </Col>
-                    <Col lg ={6} className={styles.Col}>
+                    <Col xl ={6} lg={12} className={styles.Col}>
                       <WelcomeText />
                     </Col>
                 </Row>
