@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from "../assets/taskosaurus-logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
+import { CurrentUserContext } from "../App";
 
 const NavBar = () => {
+  const currentUser = useContext(CurrentUserContext);
+  // const loggedOutIcons = 
+  // const loggedInIcons = 
+
   return (
     <Navbar className={`${styles.NavBar}`} expand="md">
       <Container fluid>
