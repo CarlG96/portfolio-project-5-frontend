@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import SignUpForm from "./pages/auth/SignUpForm";
@@ -16,7 +16,18 @@ function App() {
           <NavBar />
           <Container fluid className={styles.Container}>
             <Switch>
-              <Route exact path="/" render={() => <HeroImage />} />
+              <Route exact path="/" render={() => (
+                <>
+                <Row>
+                    <Col lg ={6} className={styles.Col}>
+                      <HeroImage />
+                    </Col>
+                    <Col lg ={6} className={styles.Col}>
+                      <WelcomeText />
+                    </Col>
+                </Row>
+                </>
+              )} />
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route
