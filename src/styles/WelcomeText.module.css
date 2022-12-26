@@ -1,5 +1,5 @@
 .WelcomeText {
-    width: 100%;
+    width: 90%;
     height: 60vh;
     margin: 0;
     padding: 0;
@@ -10,11 +10,14 @@
 .Header {
     font-family: 'Montserrat', 'sans-serif';
     text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .Paragraph {
-    padding-top: 1rem;
-    padding-left: 8rem;
+    padding-top: 2rem;
+    padding-left: 10rem;
+    padding-right: 8rem;
     font-size: 1.3rem;
     font-family: 'Lato', 'sans-serif';
     text-align: left;

@@ -1,21 +1,42 @@
 .HeroImage {
     width: 100%;
-    height: 60vh;
+    height: 80vh;
     margin: 0;
     padding: 0;
-    padding-top: 30px;
+    padding-top: 5vh;
 }
 
 .Image {
     width: 90%;
-    height: 55vh;
+    height: 60vh;
     border-top-left-radius: 15%;
     border-bottom-right-radius: 15%;
     border-top-right-radius: 15%;
     border-bottom-left-radius: 80%;
     margin: 0 auto;
-    background-image: url(../assets/hero-image.jpg);
+    background-image: url(../assets/hero-image-medium.jpg);
     background-size: cover;
-    background-position: 0px;
+    background-position: center;
 }
 
+@media (max-width: 1200px){
+    .HeroImage {
+        height: 50vh;
+    }
+    .Image {
+        background-image: url(../assets/hero-image-medium.jpg);
+        background-position: unset;
+        height: 45vh;
+    }
+}
+
+@media (max-width: 576px){
+    .HeroImage {
+        height: 35vh;
+    }
+    .Image {
+        background-image: url(../assets/hero-image-small.jpg);
+        background-position: unset;
+        height: 30vh;
+    }
+}

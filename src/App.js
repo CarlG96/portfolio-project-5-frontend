@@ -18,7 +18,7 @@ function App() {
             <Switch>
               <Route exact path="/" render={() => (
                 <>
-                <Row fluid>
+                <Row className={styles.Row}>
                     <Col xl ={6} lg={12} className={styles.Col}>
                       <HeroImage />
                     </Col>

@@ -25,6 +25,7 @@ Lato - Chose to contrast with Montserrat for the smaller paragraph-style texts. 
 ## Credits
 FreeLogoDesign for the logo
 https://favicon.io/
+pexels
 
 # Getting Started with Create React App
 
