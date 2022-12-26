@@ -1,9 +1,8 @@
 .Button {
-    font-size: 0.8rem;
+    font-size: 1rem;
     align-self: center;
     border-radius: 100px;
     border-color: transparent;
-    padding: 4px 10px;
     margin-left: 2px;
     margin-right: 2px;
     min-width: 75px;
@@ -35,15 +34,13 @@
   .Blue,
   .BlueOutline:hover,
   .Bright:hover {
-    background-color: #9BFBCE;
-    color: #ffffff;
+    background-color: #50FAAB;
   }
   
   .BlueOutline,
   .Blue:hover {
     /* border: 1px solid #2142b2; */
     background-color: #ffffff;
-    color: #9BFBCE;
   }
   
   .Black,
@@ -51,7 +48,6 @@
     /* background-color: #242a3d;
     color: white; */
     background-color: #9BFBCE;
-    color: aliceblue;
   }
   
   .Black:hover,
@@ -60,7 +56,7 @@
     color: #242a3d;
     border-color: #242a3d; */
     background-color: #9BFBCE;
-    color: #242a3d;
+    color: #000000;
   }
   
   .Bright {
