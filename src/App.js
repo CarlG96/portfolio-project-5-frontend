@@ -6,16 +6,17 @@ import WelcomeText from "./components/WelcomeText";
 import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignInForm from "./pages/auth/SignInForm";
+import HeroImage from "./components/HeroImage";
+
 
 
 function App() {
-
   return (
         <div className="App">
           <NavBar />
-          <Container>
+          <Container fluid className={styles.Container}>
             <Switch>
-              <Route exact path="/" render={() => <h1>Home Page</h1>} />
+              <Route exact path="/" render={() => <HeroImage />} />
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route
