@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from "../assets/taskosaurus-logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-import { CurrentUserContext } from "../App";
+
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = useCurrentUser();
   const loggedOutIcons = <>
 <NavLink to="/signin" className={styles.NavLink} activeClassName={styles.Active}>
               <i className="fas fa-sign-in" />
