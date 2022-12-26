@@ -9,6 +9,14 @@ import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
+/*
+* Component for the NavBar, takes no parameters 
+* but does have logic defining what it displays based on whether
+* the user is currently logged in or not. Also has logic to improve 
+* the UX of the burger menu on smaller devices by retracting the burger menu 
+* once a link has been selected or the user clicks off the burger menu.
+*/
+
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();

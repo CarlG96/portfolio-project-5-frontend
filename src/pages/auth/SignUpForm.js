@@ -14,6 +14,12 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 
+/*
+* Signup form component for use on the signup page. Takes no props
+* but handles the logic required to prevent ordinary form submission in order to not refresh the page.
+* Also handles errors and general layout of the form.
+*/
+
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
     username: "",

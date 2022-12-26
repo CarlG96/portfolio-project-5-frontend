@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState }from 'react'
 
+/*
+* Hook used in the NavBar component in order to control
+* the logic when it has been reduced to a burger menu in order
+* to improve UX on smaller device sizes. 
+*/
+
 const useClickOutsideToggle = () => {
   const [expanded, setExpanded] = useState(false);
   const ref = useRef(null);

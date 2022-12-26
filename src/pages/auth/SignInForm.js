@@ -16,6 +16,12 @@ import appStyles from "../../App.module.css";
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
+/*
+* Sign in form component for use on the sign in page. Takes no props
+* but handles the logic required to prevent ordinary form submission in order to not refresh the page.
+* Also handles errors and general layout of the form.
+*/
+
 function SignInForm() {
    const setCurrentUser = useSetCurrentUser();
 

@@ -1,6 +1,26 @@
 # Taskosaurus 
 
-Taskosaurus is a 
+Taskosaurus is a website where a user can sign in and track tasks in order to help them with everyday life. The premise of Taskosaurus is that it acts as a todo app with full CRUD functionality for tasks and clearly displays to the user the time-relevant status of their tasks by color-coding them, with colors ranging from green to orange to display how close a task is to going out of date. Users can also see what they have done in the past through the 'Archived Tasks' section and can search for different tasks based on a number of factors.
+
+Users can also add notes to their tasks which allows them to further break down the tasks they have created in to manageable chunks for themselves.
+
+<!--Responsive image here-->
+
+<!--Deployed link here-->
+
+<!--Link to API deployment here-->
+
+<!--Link to API GitHub repo here-->
+
+## Features
+
+## Future Features
+
+## Testing
+
+<!--Link to MANUAL_TESTING.md>
+
+
 
 ## Colors
 

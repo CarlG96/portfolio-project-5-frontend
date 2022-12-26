@@ -9,6 +9,14 @@ export const SetCurrentUserContext = createContext();
 export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
+/*
+ * Component for providing context about the user for the whole of
+ * Taskosaurus.
+ * @params (object) children: Used to define what will have context.
+ * As such this is wrapped around the App component in index.js to
+ * affect the whole site.
+*/
+
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 

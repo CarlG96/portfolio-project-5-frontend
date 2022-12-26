@@ -4,7 +4,12 @@ import styles from '../styles/WelcomeText.module.css';
 import { Link } from 'react-router-dom';
 import btnStyles from '../styles/Button.module.css';
 
-
+/*
+* Component used in conjunction with the HeroImage component to create the
+* landing page. One-time-use component added to its own file for ease of 
+* readability elsewhere and to allow ease of applying CSS rules to the
+* component.
+*/
 
 const WelcomeText = () => {
   return (
