@@ -4,10 +4,22 @@ import logo from "../assets/taskosaurus-logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
 
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
+import axios from "axios";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
+
+  const handleSignOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch(err) {
+      console.log(err);
+    }
+  }
   const loggedOutIcons = <>
 <NavLink to="/signin" className={styles.NavLink} activeClassName={styles.Active}>
               <i className="fas fa-sign-in" />
@@ -29,13 +41,13 @@ const NavBar = () => {
   <i className="fas fa-solid fa-pen" />
   Create Task
 </NavLink>
-<NavLink to="/profile" className={styles.NavLink} activeClassName={styles.Active}>
-  <i className="fa-solid fa-address-card" />
-  Profile
-</NavLink>
-<NavLink to="/logout" className={styles.NavLink} activeClassName={styles.Active}>
+<NavLink exact to="/" className={styles.NavLink} onClick={handleSignOut}>
   <i className="fa-sharp fa-solid fa-arrow-right-from-bracket" />
   Logout
+</NavLink>
+<NavLink to={`/profiles/${currentUser?.profile_id}`} className={styles.NavLink} activeClassName={styles.Active}>
+<Avatar src={currentUser?.profile_image} text="Profile" height={30}/>
+  
 </NavLink></>
 
   return (
