@@ -1,65 +1,85 @@
 .Button {
-    font-size: 1rem;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    margin-left: 2px;
-    margin-right: 2px;
-    min-width: 75px;
-  }
-  
-  .Button:hover {
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;
-  }
-  
-  .Button:hover:active {
-    background-color: #9BFBCE; 
-  }
-  
-  .Button:active {
-    background-color: #9BFBCE; 
-  }
-  
-  .Button:focus {
-    background-color: #9BFBCE;
-  }
-  
-  .Wide {
-    padding: 10px 50px;
-    width: 100%;
-  }
-  
-  .Blue,
-  .BlueOutline:hover,
-  .Bright:hover {
-    background-color: #50FAAB;
-  }
-  
-  .BlueOutline,
-  .Blue:hover {
-    /* border: 1px solid #2142b2; */
-    background-color: #ffffff;
-  }
-  
-  .Black,
-  .BlackOutline:hover {
-    /* background-color: #242a3d;
-    color: white; */
-    background-color: #9BFBCE;
-  }
-  
-  .Black:hover,
-  .BlackOutline {
-    /* background-color: #dadadf;
-    color: #242a3d;
-    border-color: #242a3d; */
-    background-color: #9BFBCE;
-    color: #000000;
-  }
-  
-  .Bright {
-    background-color: #9BFBCE;
-    color: #000000;
-  }
+  font-size: 1rem;
+  border-radius: 100px;
+  border-color: transparent;
+  min-width: 75px;
+  max-width: 20vw;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  color: #000000;
+  font-family: 'Lato', 'sans-serif';
+  text-decoration: none;
+}
+
+.Button:hover {
+  opacity: 0.8;
+  border-width: 2px;
+  border-color: #277a54;
+  cursor: pointer;
+  color: #000000;
+}
+
+.Button:hover:active {
+  background-color: #9bfbce;
+  color: #000000;
+}
+
+.Button:active {
+  background-color: #9bfbce;
+  color: #000000;
+}
+
+.Button:focus {
+  background-color: #9bfbce;
+  color: #000000;
+}
+
+.Wide {
+  padding: 1.5rem 3rem;
+  width: 100%;
+}
+
+.Blue,
+.BlueOutline:hover,
+.Bright:hover {
+  background-color: #50faab;
+  color: #000000;
+}
+
+.BlueOutline,
+.Blue:hover {
+  background-color: #000000;
+  color: #000000;
+}
+
+.Black,
+.BlackOutline:hover {
+  background-color: #9bfbce;
+  color: #000000;
+}
+
+.Black:hover,
+.BlackOutline {
+  background-color: #9bfbce;
+  color: #000000;
+}
+
+.Bright {
+  background-color: #9bfbce;
+  color: #000000;
+}
+
+.Button Link{
+  color: #000000;
+}
+
+.Link {
+  color: #000000;
+  text-decoration: none;
+}
+
+.Link:hover {
+  color: #000000;
+  text-decoration: none;
+}

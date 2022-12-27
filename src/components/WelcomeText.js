@@ -22,7 +22,7 @@ const WelcomeText = () => {
         Completing a task sends it to the <em>Archived Tasks</em> section, so you never forget what you've done!
       </p>
       <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}>
-        <Link to="/signin">Click here to sign up!</Link>
+        <Link className={btnStyles.Link} to="/signin">Click here to sign up!</Link>
       </Button>
     </div>
         
