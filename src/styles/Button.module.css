@@ -3,10 +3,10 @@
   border-radius: 100px;
   border-color: transparent;
   min-width: 75px;
-  max-width: 20vw;
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  margin-top: 3rem;
   color: #000000;
   font-family: 'Lato', 'sans-serif';
   text-decoration: none;
@@ -37,31 +37,10 @@
 
 .Wide {
   padding: 1.5rem 3rem;
-  width: 100%;
 }
 
-.Blue,
-.BlueOutline:hover,
 .Bright:hover {
   background-color: #50faab;
-  color: #000000;
-}
-
-.BlueOutline,
-.Blue:hover {
-  background-color: #000000;
-  color: #000000;
-}
-
-.Black,
-.BlackOutline:hover {
-  background-color: #9bfbce;
-  color: #000000;
-}
-
-.Black:hover,
-.BlackOutline {
-  background-color: #9bfbce;
   color: #000000;
 }
 
@@ -82,4 +61,11 @@
 .Link:hover {
   color: #000000;
   text-decoration: none;
+}
+
+@media (max-width: 1600px) {
+  .Button {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
 }

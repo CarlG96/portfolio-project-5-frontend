@@ -17,13 +17,13 @@ import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 /*
-* Sign in form component for use on the sign in page. Takes no props
-* but handles the logic required to prevent ordinary form submission in order to not refresh the page.
-* Also handles errors and general layout of the form.
-*/
+ * Sign in form component for use on the sign in page. Takes no props
+ * but handles the logic required to prevent ordinary form submission in order to not refresh the page.
+ * Also handles errors and general layout of the form.
+ */
 
 function SignInForm() {
-   const setCurrentUser = useSetCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -54,12 +54,12 @@ function SignInForm() {
   return (
     <Row className={styles.Row}>
       <Col className="my-auto">
-        <Container className={`${appStyles.Content} p-4 `}>
-          <h1 className={styles.Header}>sign in</h1>
+        <Container className={`p-4`}>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
+                className={styles.Input}
                 type="text"
                 name="username"
                 value={username}
@@ -76,6 +76,7 @@ function SignInForm() {
             <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
+                className={styles.Input}
                 type="password"
                 name="password"
                 value={password}

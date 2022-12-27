@@ -4,21 +4,14 @@ import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import {
-  Form,
-  Button,
-  Col,
-  Row,
-  Container,
-  Alert,
-} from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
 /*
-* Signup form component for use on the signup page. Takes no props
-* but handles the logic required to prevent ordinary form submission in order to not refresh the page.
-* Also handles errors and general layout of the form.
-*/
+ * Signup form component for use on the signup page. Takes no props
+ * but handles the logic required to prevent ordinary form submission in order to not refresh the page.
+ * Also handles errors and general layout of the form.
+ */
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -50,13 +43,13 @@ const SignUpForm = () => {
   return (
     <Row className={styles.Row}>
       <Col className="my-auto">
-        <Container className={` p-4 `}>
-          <h1 className={styles.Header}>sign up</h1>
+        <Container className={`p-4`}>
 
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
+                className={styles.Input}
                 type="text"
                 placeholder="Enter username"
                 name="username"
@@ -73,6 +66,7 @@ const SignUpForm = () => {
             <Form.Group controlId="password1">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
+                className={styles.Input}
                 type="password"
                 placeholder="Password"
                 name="password1"
@@ -88,6 +82,7 @@ const SignUpForm = () => {
             <Form.Group controlId="password2">
               <Form.Label class="d-none">Confirm password</Form.Label>
               <Form.Control
+                className={styles.Input}
                 type="password"
                 placeholder="Confirm password"
                 name="password2"

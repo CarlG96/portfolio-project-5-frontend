@@ -2,24 +2,12 @@
     height: calc(100vh - 50vh);
   }
   .Input {
+    font-family: 'Lato', 'sans-serif';
     background: #ffffff;
-    border: 1px solid #f0f1f9;
+    border: 1px solid #000000;
     box-sizing: border-box;
-    border-radius: 2px;
-    color: #7177a1;
+    color: #9BFBCE;
     text-align: center;
-    padding: 10px;
-  }
-  
-  .Header {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: center;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #2142b2;
   }
   
   .Link {
@@ -27,20 +15,14 @@
     text-align: center;
     display: block;
     margin: auto;
+    color: #175f3f;
+  }
+
+  .Link:hover {
+    color: #175f3f;
   }
   
   .Link span {
-    color: #ff9254;
+    color: #FB7F00;
   }
   
-  .Container {
-    padding: 30px 10px;
-  }
-  
-  .SignInCol {
-    height: 320px;
-  }
-  
-  .SignUpCol {
-    height: 375px;
-  }

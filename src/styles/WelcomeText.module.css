@@ -1,7 +1,7 @@
 .WelcomeText {
     width: 90%;
     height: 60vh;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     padding-top: 30px;
     color: #175f3f;
@@ -16,8 +16,7 @@
 
 .Paragraph {
     padding-top: 2rem;
-    padding-left: 10rem;
-    padding-right: 8rem;
+    padding-left: 1rem;
     font-size: 1.3rem;
     font-family: 'Lato', 'sans-serif';
     text-align: left;
@@ -25,30 +24,12 @@
 
 @media (max-width: 1600px){
     .Paragraph {
-        padding-left: 5rem;
+        padding-left: 0rem;
         padding-right: 0rem;
         text-align: center;
     }
 
     .Header {
-        padding-left: 2rem;
-    }
-}
-
-@media (max-width: 600px){
-    .Paragraph {
-        padding-left: 2rem;
-        padding-right: 0rem;
-        text-align: center;
-    }
-
-    .Header {
-        padding-left: 2rem;
-    }
-}
-
-@media (max-width: 350px){
-    .Header {
-        padding-left: 1rem;
+        padding-left: 0rem;
     }
 }
