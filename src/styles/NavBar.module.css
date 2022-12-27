@@ -16,3 +16,15 @@
     background-color: #50FAAB;
 }
 
+@media (max-width: 800px) {
+    .NavLink {
+        font-size: smaller;
+    }
+}
+
+@media (max-width: 760px) {
+    .NavLink {
+        font-size: unset;
+    }
+}
+
