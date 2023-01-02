@@ -7,7 +7,7 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignInForm from "./pages/auth/SignInForm";
 import HeroImage from "./components/HeroImage";
-import PostCreateForm from "./pages/tasks/PostCreateForm";
+import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 
 
 
@@ -41,7 +41,7 @@ function App() {
                 path="/archivedtasks"
                 render={() => <h1>Sign In</h1>}
               />
-              <Route exact path="/createtask" render={() => <PostCreateForm />} />
+              <Route exact path="/createtask" render={() => <TaskCreateForm />} />
               <Route exact path="/profile" render={() => <h1>Sign In</h1>} />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
