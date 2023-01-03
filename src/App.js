@@ -8,6 +8,7 @@ import "./api/axiosDefaults";
 import SignInForm from "./pages/auth/SignInForm";
 import HeroImage from "./components/HeroImage";
 import TaskCreateForm from "./pages/tasks/TaskCreateForm";
+import TaskPage from "./pages/tasks/TaskPage";
 
 
 
@@ -42,6 +43,7 @@ function App() {
                 render={() => <h1>Sign In</h1>}
               />
               <Route exact path="/createtask" render={() => <TaskCreateForm />} />
+              <Route exact path="/tasks/:id" render = {() => <TaskPage />} />
               <Route exact path="/profile" render={() => <h1>Sign In</h1>} />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
