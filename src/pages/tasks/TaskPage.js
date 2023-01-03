@@ -5,9 +5,9 @@ import { axiosReq } from '../../api/axiosDefaults';
 const TaskPage = () => {
 
   const { id } = useParams();
-  const { task, setTask } = useState({
+  const [ task, setTask ] = useState({
     results: []
-  })
+  });
 
   useEffect(() => {
     const handleMount = async () => {
@@ -22,9 +22,8 @@ const TaskPage = () => {
       }
     };
 
-
     handleMount();
-  }, []);
+  }, [id]);
 
 
   return (
