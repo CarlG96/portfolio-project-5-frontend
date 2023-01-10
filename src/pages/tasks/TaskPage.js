@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { axiosReq } from '../../api/axiosDefaults';
+import DetailedTask from '../../components/DetailedTask';
 
 const TaskPage = () => {
 
@@ -27,7 +28,7 @@ const TaskPage = () => {
 
 
   return (
-    <div>TaskPage</div>
+    <div><DetailedTask {...task.results[0]} setTask={setTask}/></div>
   )
 }
 
