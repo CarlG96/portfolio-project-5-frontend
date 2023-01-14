@@ -80,6 +80,30 @@ const NavBar = () => {
         <i className="fas fa-solid fa-pen" />
         Create Task
       </NavLink>
+      <NavLink
+        to="/currentevents"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fa-sharp fa-solid fa-list-check" />
+        Current Events
+      </NavLink>
+      <NavLink
+        to="/archivedevents"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fa-sharp fa-solid fa-list-check" />
+        Archived Events
+      </NavLink>
+      <NavLink
+        to="/createevent"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fas fa-solid fa-pen" />
+        Create Event
+      </NavLink>
       <NavLink exact to="/" className={styles.NavLink} onClick={handleSignOut}>
         <i className="fa-sharp fa-solid fa-arrow-right-from-bracket" />
         Logout
