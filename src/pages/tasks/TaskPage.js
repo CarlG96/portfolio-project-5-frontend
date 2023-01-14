@@ -28,7 +28,7 @@ const TaskPage = () => {
 
 
   return (
-    <div><DetailedTask {...task.results[0]} setTask={setTask}/></div>
+    <div><DetailedTask {...task.results[0]} setTask={setTask} taskPage /></div>
   )
 }
 

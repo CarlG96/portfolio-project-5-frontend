@@ -13,6 +13,7 @@ const DetailedEvent = (props) => {
         is_owner,
         is_overdue,
         id,
+        eventPage,
     } = props;
 
     const currentUser = useCurrentUser();
@@ -28,6 +29,8 @@ const DetailedEvent = (props) => {
   <p>{need_travel}</p>
   <p>{money_required}</p>
   <p>{title}</p>
+  // the .. needs to replace with edit and delete capability.
+  {is_owner && eventPage && "..."}
   </div>;
 }
 

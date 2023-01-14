@@ -14,6 +14,7 @@ const DetailedTask = (props) => {
     priority,
     state,
     title,
+    taskPage,
   } = props;
 
   const currentUser = useCurrentUser();
@@ -28,6 +29,8 @@ const DetailedTask = (props) => {
   <p>{priority}</p>
   <p>{state}</p>
   <p>{title}</p>
+  // the .. needs to replace with edit and delete capability.
+  {is_owner && taskPage && "..."}
   </div>;
 };
 

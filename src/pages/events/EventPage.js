@@ -29,7 +29,7 @@ const EventPage = () => {
 
     
     return (
-        <div><DetailedEvent {...event.results[0]} setEvent={setEvent} /></div>
+        <div><DetailedEvent {...event.results[0]} setEvent={setEvent} eventPage /></div>
     )
 }
 
