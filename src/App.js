@@ -11,10 +11,14 @@ import TaskCreateForm from "./pages/tasks/TaskCreateForm";
 import TaskPage from "./pages/tasks/TaskPage";
 import EventCreateForm from "./pages/events/EventCreateForm";
 import EventPage from "./pages/events/EventPage";
+import TasksPage from "./pages/tasks/TasksPage";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 
 
 function App() {
+
+  const currentUser = useCurrentUser();
   return (
         <div className="App">
           <NavBar />
@@ -37,7 +41,7 @@ function App() {
               <Route
                 exact
                 path="/currenttasks"
-                render={() => <h1>Sign In</h1>}
+                render={() => <TasksPage message="No tasks created yet!"/>}
               />
               <Route
                 exact
