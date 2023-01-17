@@ -13,6 +13,7 @@ import EventCreateForm from "./pages/events/EventCreateForm";
 import EventPage from "./pages/events/EventPage";
 import TasksPage from "./pages/tasks/TasksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import EventsPage from "./pages/events/EventsPage";
 
 
 
@@ -41,7 +42,7 @@ function App() {
               <Route
                 exact
                 path="/currenttasks"
-                render={() => <TasksPage message="No tasks created yet!"/>}
+                render={() => <TasksPage />}
               />
               <Route
                 exact
@@ -53,6 +54,7 @@ function App() {
               <Route exact path="/events/:id" render = {() => <EventPage />} />
               <Route exact path="/tasks/:id" render = {() => <TaskPage />} />
               <Route exact path="/profile" render={() => <h1>Sign In</h1>} />
+              <Route exact path="/currentevents" render={() => <EventsPage />} />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
           </Container>
