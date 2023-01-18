@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import DetailedEvent from '../../components/DetailedEvent';
+import ListViewItem from '../../components/ListViewItem';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 
@@ -33,7 +34,7 @@ const EventsPage = () => {
             hasLoaded ? (
                 events.results.length ? (
                     events.results.map((event) => {
-                        return <DetailedEvent key={event.id} {...event} setEvents={setEvents}/> //Turn into non-detailed event
+                        return <ListViewItem {...event} key={event.id}/>
                     })
                 ) :
                 <p>No results found!</p>
