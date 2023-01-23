@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Container, Row } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
+import Asset from '../../components/Asset';
 import DetailedEvent from '../../components/DetailedEvent';
 import ListViewItem from '../../components/ListViewItem';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
@@ -29,7 +31,8 @@ const EventsPage = () => {
     }, [pathName]);
 
     return (
-        <>
+        <Container fluid className="text-center">
+            <Row className="mt-3">
         {
             hasLoaded ? (
                 events.results.length ? (
@@ -37,12 +40,14 @@ const EventsPage = () => {
                         return <ListViewItem {...event} key={event.id}/>
                     })
                 ) :
-                <p>No results found!</p>
+                <Asset spinner />
             ) : (
-                <p>Not loaded yet!</p>
+                <Asset spinner />
             )
         }
-        </>
+        </Row>
+        </Container>
+        
     )
 }
 

@@ -33,7 +33,7 @@ const TasksPage = () => {
 
   return (
     <Container fluid className="text-center">
-      <Row className="mt-3 ml-3">
+      <Row className="mt-3">
       {hasLoaded ? (
         tasks.results.length ? (
           tasks.results.map((task) => <ListViewItem {...task} key={task.id} />)

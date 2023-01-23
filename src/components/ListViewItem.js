@@ -27,7 +27,8 @@ const ListViewItem = (props) => {
 
   return (
     
-    <Col xs={12} md={6} lg={4} className={`${styles.ListViewItem} mt-2 pb-3`}>
+    <Col md={6} xl={4}  className={` mt-2 pb-3 mb-3`}>
+      <div className={`${styles.ListViewItem}`}>
       <h3 className={`text-center mt-3`}>{props.title}</h3>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
@@ -35,6 +36,7 @@ const ListViewItem = (props) => {
       >
         {viewTerms}
       </Button>
+      </div>
     </Col>
     
   );
