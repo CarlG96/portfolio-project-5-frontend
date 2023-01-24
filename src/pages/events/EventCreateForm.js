@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Alert, Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
+import btnStyles from "../../styles/Button.module.css";
 
 const EventCreateForm = () => {
     const [errors, setErrors] = useState({});
@@ -43,7 +44,7 @@ const EventCreateForm = () => {
 
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} className="text-center mt-3">
       <Form.Group controlId="title">
         <Form.Label className="d-none">Title</Form.Label>
         <Form.Control
@@ -52,6 +53,7 @@ const EventCreateForm = () => {
           placeholder="Title"
           value={title}
           onChange={handleChange}
+          className="text-center"
         ></Form.Control>
       </Form.Group>
       {errors?.title?.map((message, idx) => (
@@ -60,12 +62,13 @@ const EventCreateForm = () => {
         </Alert>
       ))}
       <Form.Group controlId="date_of_event">
-        <Form.Label className="d-none">Date of event</Form.Label>
+        <Form.Label>Date of event</Form.Label>
         <Form.Control
           type="datetime-local"
           name="date_of_event"
           value={date_of_event}
           onChange={handleChange}
+          className="text-center"
         ></Form.Control>
       </Form.Group>
       {errors?.date_of_event?.map((message, idx) => (
@@ -73,21 +76,14 @@ const EventCreateForm = () => {
           {message}
         </Alert>
       ))}
-      <Form.Group controlId="need_travel">
-        <Form.Check type="checkbox" label="Need to travel there?" />
-      </Form.Group>
-      {errors?.need_travel?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
       <Form.Group controlId="money_required">
-        <Form.Label className="d-none">Amount of money required</Form.Label>
+        <Form.Label>Amount of money required</Form.Label>
         <Form.Control
           type="number"
           name="money_required"
           value={money_required}
           onChange={handleChange}
+          className="text-center"
         />
       </Form.Group>
       {errors?.money_required?.map((message, idx) => (
@@ -95,7 +91,15 @@ const EventCreateForm = () => {
           {message}
         </Alert>
       ))}
-      <Button type="submit">Create Event</Button>
+      <Form.Group controlId="need_travel">
+        <Form.Check type="checkbox" label="Need to travel there?" className="text-center"/>
+      </Form.Group>
+      {errors?.need_travel?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+      <Button type="submit" className={`${btnStyles.Button} ${btnStyles.Bright}`}>Create Event</Button>
     </Form>
     )
 }
