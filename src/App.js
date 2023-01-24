@@ -44,11 +44,6 @@ function App() {
                 path="/currenttasks"
                 render={() => <TasksPage />}
               />
-              <Route
-                exact
-                path="/archivedtasks"
-                render={() => <h1>Sign In</h1>}
-              />
               <Route exact path="/createtask" render={() => <TaskCreateForm />} />
               <Route exact path="/createevent" render={() => <EventCreateForm />} />
               <Route exact path="/events/:id" render = {() => <EventPage />} />

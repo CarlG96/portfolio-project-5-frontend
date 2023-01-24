@@ -64,14 +64,14 @@ const NavBar = () => {
         <i className="fa-sharp fa-solid fa-list-check" />
         Current Tasks
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to="/archivedtasks"
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
         <i className="fa-sharp fa-solid fa-vault" />
         Archived Tasks
-      </NavLink>
+      </NavLink> */}
       <NavLink
         to="/createtask"
         className={styles.NavLink}
@@ -87,14 +87,6 @@ const NavBar = () => {
       >
         <i className="fa-sharp fa-solid fa-list-check" />
         Current Events
-      </NavLink>
-      <NavLink
-        to="/archivedevents"
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-      >
-        <i className="fa-sharp fa-solid fa-list-check" />
-        Archived Events
       </NavLink>
       <NavLink
         to="/createevent"
