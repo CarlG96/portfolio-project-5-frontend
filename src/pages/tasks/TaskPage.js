@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import { axiosReq } from '../../api/axiosDefaults';
-import DetailedTask from '../../components/DetailedTask';
+import DetailedTask from './DetailedTask';
 
 const TaskPage = () => {
 

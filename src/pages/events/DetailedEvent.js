@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const DetailedEvent = (props) => {
     const {

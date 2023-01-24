@@ -3,7 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import Asset from '../../components/Asset';
-import DetailedEvent from '../../components/DetailedEvent';
+import DetailedEvent from './DetailedEvent';
 import ListViewItem from '../../components/ListViewItem';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
