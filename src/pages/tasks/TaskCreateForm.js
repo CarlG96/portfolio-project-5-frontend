@@ -47,11 +47,11 @@ const TaskCreateForm = () => {
     <Container>
         <Form onSubmit={handleSubmit} className="text-center mt-3">
           <Form.Group controlId="title">
-            <Form.Label className="d-none">Title</Form.Label>
+            <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
               name="title"
-              placeholder="Title"
+              placeholder="Title here"
               value={title}
               onChange={handleChange}
               className="text-center"
@@ -63,13 +63,13 @@ const TaskCreateForm = () => {
             </Alert>
           ))}
           <Form.Group controlId="description">
-            <Form.Label className="d-none">Description</Form.Label>
+            <Form.Label>Description</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
               name="description"
               value={description}
-              placeholder="Description"
+              placeholder="Description here"
               onChange={handleChange}
               className="text-center"
             />

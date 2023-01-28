@@ -46,11 +46,11 @@ const EventCreateForm = () => {
     <Container>
       <Form onSubmit={handleSubmit} className="text-center mt-3">
         <Form.Group controlId="title">
-          <Form.Label className="d-none">Title</Form.Label>
+          <Form.Label>Title</Form.Label>
           <Form.Control
             type="text"
             name="title"
-            placeholder="Title"
+            placeholder="Title here"
             value={title}
             onChange={handleChange}
             className="text-center"
