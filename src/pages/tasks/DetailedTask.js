@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { Alert, Container, Form } from "react-bootstrap";
+import { Alert, Button, Container, Form } from "react-bootstrap";
 import { mockComponent } from "react-dom/test-utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import btnStyles from "../../styles/Button.module.css";
 
 const DetailedTask = (props) => {
   const [errors, setErrors] = useState({});
@@ -21,6 +22,27 @@ const DetailedTask = (props) => {
     taskPage,
   } = props;
 
+  const [taskData, setTaskData] = useState({
+    date_created: date_created,
+    date_updated: date_updated,
+    description: description,
+    due_date: due_date,
+    id: id,
+    is_overdue: is_overdue,
+    is_owner: is_owner,
+    owner: owner,
+    priority: priority,
+    state: state,
+    title: title
+  });
+
+  const handleChange = (event) => {
+    setTaskData({
+      ...taskData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const handleSubmit = async (event) => {};
 
   const currentUser = useCurrentUser();
@@ -33,8 +55,8 @@ const DetailedTask = (props) => {
             type="text"
             name="title"
             placeholder="Title"
-            value={title}
-            // onChange={handleChange}
+            defaultValue={title}
+            onChange={handleChange}
             className="text-center"
           ></Form.Control>
         </Form.Group>
@@ -49,9 +71,9 @@ const DetailedTask = (props) => {
             as="textarea"
             rows={3}
             name="description"
-            value={description}
+            defaultValue={description}
             placeholder="Description here"
-            // onChange={handleChange}
+            onChange={handleChange}
             className="text-center"
           />
         </Form.Group>
@@ -65,9 +87,9 @@ const DetailedTask = (props) => {
           <Form.Control
             as="select"
             name="priority"
-            // onChange={handleChange}
+            onChange={handleChange}
             className="text-center"
-            value={priority}
+            defaultValue={priority}
           >
             <option value="Must do">Must do</option>
             <option value="Might do">Might do</option>
@@ -85,15 +107,15 @@ const DetailedTask = (props) => {
           <Form.Control
             type="text"
             className="text-center"
-            value={moment(due_date).format("DD/mm/yyyy hh:mm")}
+            defaultValue={moment(due_date).format("DD/mm/yyyy hh:mm")}
             disabled
           ></Form.Control>
           <p className="mt-3">Change Date?</p>
           <Form.Control
             type="datetime-local"
             name="due_date"
-            value={due_date}
-            // onChange={handleChange}
+            defaultValue={due_date}
+            onChange={handleChange}
             className="text-center"
           ></Form.Control>
         </Form.Group>
@@ -102,6 +124,30 @@ const DetailedTask = (props) => {
             {message}
           </Alert>
         ))}
+        <Form.Group controlId="state">
+          <Form.Label>State</Form.Label>
+          <Form.Control
+          as="select"
+          name="state"
+          defaultValue={state}
+          onChange={handleChange}
+          className="text-center"
+          >
+            <option value="Current">Current</option>
+            <option value="Archived">Archived</option>
+          </Form.Control>
+        </Form.Group>
+        {errors?.state?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Button
+            type="submit"
+            className={`${btnStyles.Button} ${btnStyles.Bright}`}
+          >
+            Edit Task?
+          </Button>
       </Form>
     </Container>
   );
