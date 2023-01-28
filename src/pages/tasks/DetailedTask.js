@@ -35,6 +35,7 @@ const DetailedTask = (props) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/tasks/${id}`);
+        console.log(data);
         const { title, description, due_date, priority, state } = data;
 
         setTaskData({
@@ -47,12 +48,12 @@ const DetailedTask = (props) => {
 
     handleMount();
   }, [history])
+
   const handleChange = (event) => {
     setTaskData({
       ...taskData,
       [event.target.name]: event.target.value,
     });
-    console.log(taskData);
   };
 
   const handleEdit = () => {
@@ -133,10 +134,11 @@ const DetailedTask = (props) => {
           <Form.Control
             as="select"
             name="priority"
+            value={priority}
             disabled={isDisabled}
             onChange={handleChange}
             className="text-center"
-            defaultValue={priority}
+            
           >
             <option value="Must do">Must do</option>
             <option value="Might do">Might do</option>
@@ -181,7 +183,7 @@ const DetailedTask = (props) => {
           <Form.Control
             as="select"
             name="state"
-            defaultValue={state}
+            value={state}
             disabled={isDisabled}
             onChange={handleChange}
             className="text-center"
