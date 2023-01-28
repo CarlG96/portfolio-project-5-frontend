@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import { mockComponent } from "react-dom/test-utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const DetailedTask = (props) => {
   const [errors, setErrors] = useState({});
@@ -13,41 +13,46 @@ const DetailedTask = (props) => {
   const [changeDate, setChangeDate] = useState(false);
   const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
   const {
-    date_created,
-    date_updated,
-    description,
-    due_date,
-    id,
-    is_overdue,
     is_owner,
-    owner,
-    priority,
-    state,
-    title,
     taskPage,
   } = props;
 
+  const { id } = useParams();
+ 
   const history = useHistory();
 
   const [taskData, setTaskData] = useState({
-    date_created: date_created,
-    date_updated: date_updated,
-    description: description,
-    due_date: due_date,
-    id: id,
-    is_overdue: is_overdue,
-    is_owner: is_owner,
-    owner: owner,
-    priority: priority,
-    state: state,
-    title: title,
+    description: "",
+    due_date: "",
+    priority: "",
+    state: "",
+    title: "",
   });
 
+  const { description, due_date, priority, state, title } = taskData;
+ 
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/tasks/${id}`);
+        const { title, description, due_date, priority, state } = data;
+
+        setTaskData({
+          title, description, due_date, priority, state
+        })
+      } catch(err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history])
   const handleChange = (event) => {
     setTaskData({
       ...taskData,
       [event.target.name]: event.target.value,
     });
+    console.log(taskData);
   };
 
   const handleEdit = () => {
@@ -56,7 +61,8 @@ const DetailedTask = (props) => {
 
   const handleChangeDate = () => {
     setChangeDate(true);
-  }
+    setRemoveChangeDateButton(true);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -64,11 +70,15 @@ const DetailedTask = (props) => {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("priority", priority);
-    formData.append("due_date", due_date);
+    formData.append("due_date", moment(due_date).format("YYYY-MM-DDThh:mm"));
     formData.append("state", state);
 
     try {
-      const { data } = await axiosReq.put(`/tasks/${id}`, formData);
+      await axiosReq.put(`/tasks/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       history.push(`/tasks/${id}`);
     } catch (err) {
       console.log(err);
@@ -141,22 +151,25 @@ const DetailedTask = (props) => {
         <Form.Group controlId="due_date">
           <Form.Label>Due date</Form.Label>
 
-          {changeDate? (
+          {changeDate ? (
             <Form.Control
-            type="datetime-local"
-            name="due_date"
-            defaultValue={due_date}
-            disabled={isDisabled}
-            onChange={handleChange}
-            className="text-center"
-          ></Form.Control>
-          ): (<Form.Control
-            type="text"
-            className="text-center"
-            name="due_date"
-            defaultValue={moment(due_date).format("DD/mm/yyyy hh:mm")}
-            disabled
-          ></Form.Control>)} 
+              type="datetime-local"
+              name="due_date"
+              defaultValue={due_date}
+              disabled={isDisabled}
+              onChange={handleChange}
+              className="text-center"
+            ></Form.Control>
+          ) : (
+            <Form.Control
+              type="text"
+              className="text-center"
+              name="due_date"
+              onChange={handleChange}
+              defaultValue={due_date}
+              disabled
+            ></Form.Control>
+          )}
         </Form.Group>
         {errors?.due_date?.map((message, idx) => (
           <Alert variant="warning" key={idx}>
@@ -200,13 +213,15 @@ const DetailedTask = (props) => {
         >
           Edit Task?
         </Button>
-      ) : (
+      ) : !isDisabled && !removeChangeDateButton ? (
         <Button
           onClick={handleChangeDate}
           className={`${btnStyles.Button} ${btnStyles.Bright}`}
         >
           Change Date?
         </Button>
+      ) : (
+        <></>
       )}
     </Container>
   );

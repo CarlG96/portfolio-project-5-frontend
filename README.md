@@ -73,5 +73,7 @@ moment package
 ## Bugs
 
 ### Date bug
+The date for the forms in the DetailedTask and DetailedEvent detail views were not showing the values when pulling from the backend. To combat this I added a conditional to initially show the date in a text field and then if the user wanted to update during an edit they would have to click the Change Date? button after the Edit? buttons in either the DetailedTask or DetailedEvent components. 
 
 ### value/defaultValue on form bug
+The handleChange() function would not update the forms in the DetailedTask and DetailedEvent components due to the fact they were being given value properties instead of defaultValue properties. This was a holdover from taking code from the CreateForm components and was easily fixed by changing value props to defaultValue props.
