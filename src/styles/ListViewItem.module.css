@@ -4,7 +4,8 @@
   background-color: #50faab;
   border-radius: 3rem;
   border-width: 3rem;
-  border-color: #ffffff;
+  border-style: dashed;
+  border-color: #175f3f;
   min-height: 20vh;
   padding: 1rem;
   
@@ -12,6 +13,7 @@
 
 .ListViewItem > h3 {
   min-height: 25vh;
+  text-decoration:underline;
 }
 
 

@@ -1,16 +1,35 @@
 # Taskosaurus 
 
-Taskosaurus is a website where a user can sign in and track tasks in order to help them with everyday life. The premise of Taskosaurus is that it acts as a todo app with full CRUD functionality for tasks and clearly displays to the user the time-relevant status of their tasks by color-coding them, with colors ranging from green to orange to display how close a task is to going out of date. Users can also see what they have done in the past through the 'Archived Tasks' section and can search for different tasks based on a number of factors.
+Taskosaurus is a website where the user can sign up and log in with their own profile. From here they are able to create two key items: Tasks and Events. Tasks are things that the user needs to do by a certain date in a work context and Events are things that happen on a certain date and are usually either leisurely or act as milestones in someone's life like a birthday party).
 
-Users can also add notes to their tasks which allows them to further break down the tasks they have created in to manageable chunks for themselves.
+Users can then view their Tasks or Events in the respective list views and can filter based on the Current/ Archived split for the Tasks and whether it is upcoming or in the past for the Events. The Tasks list view will also highlight if the task is overdue and not complete by changing the background color of it in the list view to alert the user.
 
-<!--Responsive image here-->
+Users can also view details about a specific Task or Event by clicking on a link from the list view and will then be taken to a detail view. From here they will be able to view details of that specific Task or Event and will be able to edit it or delete the item from their Profile entirely.
 
-<!--Deployed link here-->
+The user is also able to edit their profile and change their profile picture which is displayed on the navigation bar.
 
-<!--Link to API deployment here-->
+Taskosaurus has a separate backend API and frontend and this README deals with the frontend React application of the site.
 
-<!--Link to API GitHub repo here-->
+## Demo
+
+<!--><-->
+
+## Backend Links
+
+[GitHub Repo for the Backend API](https://github.com/CarlG96/taskosaurus-backend-api)
+[Live Deployment of API](https://taskosaurus-backend.herokuapp.com/)
+
+## User Stories and Kanban Board
+
+The Taskosaurus project was created using a GitHub Projects Kanban Board to simulate an agile workflow. The Kanban board for the project which includes both backend and frontend tasks can be found here:
+
+[Taskosaurus Kanban Board](https://github.com/users/CarlG96/projects/6)
+
+### Sprint Method
+
+The Taskosaurus project was developed in a series of sprints which were each seven days long, starting at Sprint 0. Each User Story on the Kanban Board except those not completed have been assigned a specific Milestone in order to show which sprint they were completed on. Not all sprints were of equal value because of outside factors but User Stories were split into 'Must Have', 'Should Have' and 'Could Have' labels which designated what I thought they should be categorised as at the start of a sprint as I added items to the 'In Progress' section of the board. 
+
+The 'SP:*' labels were used to designate how long I assumed each task would take based on a number of 'story points'. These were assigned at the start of each Sprint.
 
 ## Features
 
@@ -18,25 +37,20 @@ Users can also add notes to their tasks which allows them to further break down 
 
 ## Testing
 
-<!--Link to MANUAL_TESTING.md>
+I targetted the Taskosaurus React frontend with both manual and automated testing in order to make sure that things were working as expected.
 
+### Manual Testing
 
+The markdown file describing the manual tests can be found in the [MANUAL_TESTS.md](MANUAL_TESTS.md) file. It describes the steps I went through to manually ensure that the React frontend worked correctly.
 
 ## Colors
 
-For the Taskosaurus App I decided to use a monochromatic color scheme because these color schemes often look clean and professional. Variations of a bluish-green were the decided on colors because blue is often used for tech websites (think Facebook or Twitter) and green is pleasing to the eye. An orange color was also used to indicate when a task was overdue but incomplete and orange was chosen because of its good contrast with the other colors. Here are the hex values of the colors that I used:
+For the Taskosaurus App I decided to use a mostly monochromatic color scheme of white and green because these color schemes often look clean and professional. Variations of a bluish-green were the decided on colors because blue is often used for tech websites (think Facebook or Twitter) and green is pleasing to the eye. An orange color was also used to indicate when a task was overdue but incomplete and orange was chosen because of its good contrast with the other colors. Here are the hex values of the colors that I used:
 
 - #175F3F - For darker shades such as borders
 - #9BFBCE - For lighter shades 
 - #50FAAB - For medium shades and background colors
-- #FB7F00 - For the orange warning colors.
-- #FFFFFF - White color to make the other colors stand out/ text
-- #000000 - black color to make the other colors stand out/ text due to contrast with the white color.
-
-## Wireframes
- - For darker shades such as borders
-- #9BFBCE - For lighter shades 
-- #50FAAB - For medium shades and background colors
+- #277a54 - For more medium shades and background colors
 - #FB7F00 - For the orange warning colors.
 - #FFFFFF - White color to make the other colors stand out/ text
 - #000000 - black color to make the other colors stand out/ text due to contrast with the white color.
