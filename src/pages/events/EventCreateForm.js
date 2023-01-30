@@ -95,6 +95,8 @@ const EventCreateForm = () => {
           <Form.Check
             type="checkbox"
             label="Need to travel there?"
+            name="need_travel"
+            onChange={handleChange}
             className="text-center"
           />
         </Form.Group>

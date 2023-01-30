@@ -1,37 +1,221 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import moment from 'moment';
+import { Alert, Button, Container, Form } from "react-bootstrap";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import btnStyles from "../../styles/Button.module.css";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 const DetailedEvent = (props) => {
-    const {
-        title,
-        date_created,
-        date_updated,
-        date_of_event,
-        need_travel,
-        money_required,
-        owner,
-        is_owner,
-        is_overdue,
-        id,
-        eventPage,
-    } = props;
+  const [errors, setErrors] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [changeDate, setChangeDate] = useState(false);
+  const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
+  const [checked, setChecked] = useState(false);
 
-    const currentUser = useCurrentUser();
+  const {
+    is_owner,
+    eventPage,
+  } = props;
+
+  const { id } = useParams();
+
+  const history = useHistory();
+
+  const [eventData, setEventData]  = useState({
+    title: "",
+    date_of_event: "",
+    need_travel: false,
+    money_required: 0,
+  })
+
+  const { title, date_of_event, need_travel, money_required } = eventData;
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/events/${id}`);
+        const { title, date_of_event, need_travel, money_required } = data;
+
+        setEventData({
+          title, date_of_event, need_travel, money_required
+        })
+        setChecked(need_travel);
+      } catch(err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history]);
+
+  const handleChange = (event) => {
+    setEventData({
+      ...eventData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleEdit = () => {
+    setIsDisabled(false);
+  };
+
+  const handleChangeDate = () => {
+    setChangeDate(true);
+    setRemoveChangeDateButton(true);
+  };
+
+  const handleCheck = () => {
+    setChecked(!checked);
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("date_of_event", moment(date_of_event).format("YYYY-MM-DDThh:mm"));
+    formData.append("need_travel", checked);
+    formData.append("money_required", money_required);
+
+    try {
+      await axiosReq.put(`/events/${id}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      history.push(`/events/${id}`);
+    } catch(err) {
+      console.log(err);
+      if(err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }  
+  };
 
 
-    return <div><p>Date created:{date_created}</p>
-  <p>Date updated:{date_updated}</p>
-  <p>Date of event:{date_of_event}</p>
-  <p>id:{id}</p>
-  <p>{is_overdue}</p>
-  <p>{is_owner}</p>
-  <p>{owner}</p>
-  <p>{need_travel}</p>
-  <p>{money_required}</p>
-  <p>{title}</p>
-  // the .. needs to replace with edit and delete capability.
-  {is_owner && eventPage && "..."}
-  </div>;
+const currentUser = useCurrentUser();
+
+  return (
+    <Container>
+      <Form 
+      onSubmit={handleSubmit} 
+      className="text-center mt-3">
+        <Form.Group controlId="title">
+          <Form.Label>Title</Form.Label>
+          <Form.Control
+            type="text"
+            name="title"
+            placeholder="Title here"
+            defaultValue={title}
+            disabled={isDisabled}
+            onChange={handleChange}
+            className="text-center"
+          ></Form.Control>
+        </Form.Group>
+        {errors?.title?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Form.Group controlId="date_of_event">
+          <Form.Label>Date of event</Form.Label>
+
+          {changeDate ? (
+          <Form.Control
+            type="datetime-local"
+            name="date_of_event"
+            defaultValue={date_of_event}
+            disabled={isDisabled}
+            onChange={handleChange}
+            className="text-center"
+          ></Form.Control>
+        ) : (
+          <Form.Control
+          type="text"
+          className="text-center"
+          name="date_of_event"
+          onChange={handleChange}
+          defaultValue={date_of_event}
+          disabled>
+
+          </Form.Control>
+        )}
+        </Form.Group>
+        {errors?.date_of_event?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Form.Group controlId="money_required">
+          <Form.Label>Amount of money required</Form.Label>
+          <Form.Control
+            type="number"
+            name="money_required"
+            value={money_required}
+            disabled={isDisabled}
+            onChange={handleChange}
+            className="text-center"
+          />
+        </Form.Group>
+        {errors?.money_required?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Form.Group controlId="need_travel">
+          <Form.Check
+            type="checkbox"
+            checked={checked}
+            disabled={isDisabled}
+            onClick = {handleCheck}
+            label="Need to travel there?"
+            className="text-center"
+          />
+        </Form.Group>
+        {errors?.need_travel?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        {isDisabled ? (
+          <></>
+        ) : (
+          <Button
+          type="submit"
+          className={`${btnStyles.Button} ${btnStyles.Bright}`}
+          >
+            Save
+          </Button>
+        )}
+      </Form>
+      {isDisabled ? (
+        <Button
+        onClick={handleEdit}
+        className={`${btnStyles.Button} ${btnStyles.Bright}`}>
+          Edit Event?
+        </Button>
+      ) : !isDisabled && !removeChangeDateButton ? (
+        <Button
+          onClick={handleChangeDate}
+          className={`${btnStyles.Button} ${btnStyles.Bright}`}
+        >
+          Change Date?
+        </Button>
+      ) : (
+        <></>
+      )}
+    </Container>
+  )
+    
+  // <div>
+  // <p>Date of event:{date_of_event}</p>
+  // <p>{owner}</p>
+  // <p>{need_travel}</p>
+  // <p>{money_required}</p>
+  // <p>{title}</p>
+  // // the .. needs to replace with edit and delete capability.
+  // {is_owner && eventPage && "..."}
+  // </div>;
 }
 
 export default DetailedEvent

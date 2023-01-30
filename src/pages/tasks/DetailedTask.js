@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { Alert, Button, Container, Form } from "react-bootstrap";
-import { mockComponent } from "react-dom/test-utils";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -35,7 +34,6 @@ const DetailedTask = (props) => {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/tasks/${id}`);
-        console.log(data);
         const { title, description, due_date, priority, state } = data;
 
         setTaskData({
@@ -47,7 +45,7 @@ const DetailedTask = (props) => {
     };
 
     handleMount();
-  }, [history])
+  }, [history]);
 
   const handleChange = (event) => {
     setTaskData({
