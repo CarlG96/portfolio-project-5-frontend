@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
-import { Alert, Button, Container, Form } from "react-bootstrap";
+import { Accordion, Alert, Button, Card, Container, Form } from "react-bootstrap";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -69,6 +69,18 @@ const DetailedEvent = (props) => {
     setChecked(!checked);
   }
 
+  const handleDelete = () => {
+    try {
+      axiosReq.delete(`/events/${id}`);
+      history.replace(`/currentevents`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -83,7 +95,7 @@ const DetailedEvent = (props) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      history.push(`/events/${id}`);
+      history.replace(`/currentevents`);
     } catch(err) {
       console.log(err);
       if(err.response?.status !== 401) {
@@ -204,6 +216,22 @@ const currentUser = useCurrentUser();
       ) : (
         <></>
       )}
+      <Accordion className="mt-3">
+        <Card className="text-center">
+          <Card.Header>
+            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+              Delete Event?
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="0">
+            <Card.Body>
+              <Button variant="danger" onClick={handleDelete}>
+                Delete Item
+              </Button>
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+      </Accordion>
     </Container>
   )
     
