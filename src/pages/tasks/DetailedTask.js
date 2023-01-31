@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import { Alert, Button, Container, Form } from "react-bootstrap";
+import {
+  Accordion,
+  Alert,
+  Button,
+  Card,
+  Container,
+  Form,
+} from "react-bootstrap";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 
 const DetailedTask = (props) => {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
   const [changeDate, setChangeDate] = useState(false);
   const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
-  const {
-    is_owner,
-    taskPage,
-  } = props;
+  const { is_owner, taskPage } = props;
 
   const { id } = useParams();
- 
+
   const history = useHistory();
 
   const [taskData, setTaskData] = useState({
@@ -29,7 +36,7 @@ const DetailedTask = (props) => {
   });
 
   const { description, due_date, priority, state, title } = taskData;
- 
+
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -37,9 +44,13 @@ const DetailedTask = (props) => {
         const { title, description, due_date, priority, state } = data;
 
         setTaskData({
-          title, description, due_date, priority, state
-        })
-      } catch(err) {
+          title,
+          description,
+          due_date,
+          priority,
+          state,
+        });
+      } catch (err) {
         console.log(err);
       }
     };
@@ -63,6 +74,18 @@ const DetailedTask = (props) => {
     setRemoveChangeDateButton(true);
   };
 
+  const handleDelete = () => {
+    try {
+      axiosReq.delete(`/tasks/${id}`);
+      history.replace(`/currenttasks`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -78,7 +101,7 @@ const DetailedTask = (props) => {
           "Content-Type": "multipart/form-data",
         },
       });
-      history.push(`/tasks/${id}`);
+      history.replace(`/currenttasks`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -136,7 +159,6 @@ const DetailedTask = (props) => {
             disabled={isDisabled}
             onChange={handleChange}
             className="text-center"
-            
           >
             <option value="Must do">Must do</option>
             <option value="Might do">Might do</option>
@@ -223,6 +245,22 @@ const DetailedTask = (props) => {
       ) : (
         <></>
       )}
+      <Accordion className="mt-3">
+        <Card className="text-center">
+          <Card.Header>
+            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+              Delete Task?
+            </Accordion.Toggle>
+          </Card.Header>
+          <Accordion.Collapse eventKey="0">
+            <Card.Body>
+              <Button variant="danger" onClick={handleDelete}>
+                Delete Item
+              </Button>
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+      </Accordion>
     </Container>
   );
   // // the .. needs to replace with edit and delete capability.
