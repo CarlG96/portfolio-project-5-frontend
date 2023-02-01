@@ -39,7 +39,7 @@ const DetailedEvent = (props) => {
 
         setEventData({
           title, date_of_event, need_travel, money_required
-        })
+        });
         setChecked(need_travel);
       } catch(err) {
         console.log(err);

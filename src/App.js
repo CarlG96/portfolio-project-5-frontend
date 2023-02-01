@@ -14,6 +14,7 @@ import EventPage from "./pages/events/EventPage";
 import TasksPage from "./pages/tasks/TasksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import EventsPage from "./pages/events/EventsPage";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 
 
@@ -48,7 +49,7 @@ function App() {
               <Route exact path="/createevent" render={() => <EventCreateForm />} />
               <Route exact path="/events/:id" render = {() => <EventPage />} />
               <Route exact path="/tasks/:id" render = {() => <TaskPage />} />
-              <Route exact path="/profile" render={() => <h1>Sign In</h1>} />
+              <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
               <Route exact path="/currentevents" render={() => <EventsPage />} />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
