@@ -99,13 +99,13 @@ const ProfilePage = () => {
       </Form>
       {isDisabled ? (
         <Button
-        onClick={handleEdit}
+        // onClick={handleEdit}
         className={`${btnStyles.Button} ${btnStyles.Bright}`}>
           Edit Profile?
         </Button>
       ) : !isDisabled && !removeChangeImageButton ? (
         <Button
-          onClick={handleChangeImage}
+          // onClick={handleChangeImage}
           className={`${btnStyles.Button} ${btnStyles.Bright}`}
         >
           Change Image?

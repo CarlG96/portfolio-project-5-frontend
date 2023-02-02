@@ -7,14 +7,16 @@ import { axiosReq } from "../../api/axiosDefaults";
 import ListViewItem from "../../components/ListViewItem";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import NoResults from "../../assets/no-results.png";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Asset from "../../components/Asset";
+import btnStyles from "../../styles/Button.module.css";
 
 const TasksPage = () => {
   const currentUser = useCurrentUser();
   const [tasks, setTasks] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathName } = useLocation();
+  const [viewCurrentTasks, setViewCurrentTasks] = useState(true);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -29,14 +31,26 @@ const TasksPage = () => {
 
     setHasLoaded(false);
     fetchTasks();
-  }, [pathName]);
+  }, [pathName, viewCurrentTasks]);
+
+  const handleSwitch = () => {
+    setViewCurrentTasks(!viewCurrentTasks);
+  }
 
   return (
     <Container fluid className="text-center">
+      <Row className="text-center">
+        <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+        onClick={handleSwitch}>
+          {viewCurrentTasks ? (`View Archived Tasks`) : (`View Current Tasks`)}
+        </Button>
+      </Row>
       <Row className="mt-3">
       {hasLoaded ? (
         tasks.results.length ? (
-          tasks.results.map((task) => <ListViewItem {...task} key={task.id} />)
+          viewCurrentTasks ? (tasks.results.map((task) => task.state === "Current"? (<ListViewItem {...task} key={task.id} />) : (<></>))) : (
+            tasks.results.map((task) => task.state === "Archived"? ((<ListViewItem {...task} key={task.id} />)) : (<></>))
+          )
         ) : (
           <Asset spinner />
         )
