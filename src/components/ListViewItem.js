@@ -34,7 +34,7 @@ const ListViewItem = (props) => {
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
         onClick={handleTaskView}
       >
-        {viewTerms}
+        {viewTerms} (OVERDUE)
       </Button>
       </div>) : (
         <div className={`${styles.ListViewItem}`}>

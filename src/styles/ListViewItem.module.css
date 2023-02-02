@@ -32,6 +32,25 @@
   text-decoration:underline;
 }
 
+@media screen and (max-width: 500px){
+
+
+  .ListViewItem {
+    min-height: 20vh;
+    max-height: 40vh;
+  }
+  .ListViewItem > h3 {
+    min-height: 12vh;
+  }
+  .OverDue {
+    min-height: 20vh;
+    max-height: 40vh;
+  }
+  .OverDue > h3 {
+    min-height: 12vh;
+  }
+}
+
 
 
 
