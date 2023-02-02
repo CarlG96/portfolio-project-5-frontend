@@ -53,18 +53,22 @@ const TasksPage = () => {
             viewCurrentTasks ? (
               tasks.results.map((task) =>
                 task.state === "Current" ? (
-                  <ListViewItem {...task} key={task.id} />
+                  task.is_overdue? (<ListViewItem {...task} overdue={true}
+                    key={task.id} />) : (<ListViewItem {...task}
+                    key={task.id} />)
                 ) : (
-                  <></>
+                  <React.Fragment key={task.id}></React.Fragment>
                 )
               )
             ) : (
               tasks.results.map((task) =>
                 task.state === "Archived" ? (
-                  <ListViewItem {...task}
-                  key={task.id} />
+                  task.is_overdue? (<ListViewItem {...task} overdue={true}
+                    key={task.id} />) : (<ListViewItem {...task}
+                    key={task.id} />)
+                  
                 ) : (
-                  <></>
+                  <React.Fragment key={task.id}></React.Fragment>
                 )
               )
             )
