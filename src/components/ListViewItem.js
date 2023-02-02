@@ -28,7 +28,7 @@ const ListViewItem = (props) => {
   return (
     
     <Col md={6} xl={4}  className={` mt-2 pb-3 mb-3`}>
-      <div className={`${styles.ListViewItem}`}>
+      {props.overdue ? (<div className={`${styles.OverDue}`}>
       <h3 className={`text-center mt-3`}>{props.title}</h3>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
@@ -36,9 +36,17 @@ const ListViewItem = (props) => {
       >
         {viewTerms}
       </Button>
-      </div>
+      </div>) : (
+        <div className={`${styles.ListViewItem}`}>
+      <h3 className={`text-center mt-3`}>{props.title}</h3>
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+        onClick={handleTaskView}
+      >
+        {viewTerms}
+      </Button>
+      </div>)}
     </Col>
-    
   );
 };
 

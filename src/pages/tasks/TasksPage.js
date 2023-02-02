@@ -35,28 +35,45 @@ const TasksPage = () => {
 
   const handleSwitch = () => {
     setViewCurrentTasks(!viewCurrentTasks);
-  }
+  };
 
   return (
     <Container fluid className="text-center">
       <Row className="text-center">
-        <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-        onClick={handleSwitch}>
-          {viewCurrentTasks ? (`View Archived Tasks`) : (`View Current Tasks`)}
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+          onClick={handleSwitch}
+        >
+          {viewCurrentTasks ? `View Archived Tasks` : `View Current Tasks`}
         </Button>
       </Row>
       <Row className="mt-3">
-      {hasLoaded ? (
-        tasks.results.length ? (
-          viewCurrentTasks ? (tasks.results.map((task) => task.state === "Current"? (<ListViewItem {...task} key={task.id} />) : (<></>))) : (
-            tasks.results.map((task) => task.state === "Archived"? ((<ListViewItem {...task} key={task.id} />)) : (<></>))
+        {hasLoaded ? (
+          tasks.results.length ? (
+            viewCurrentTasks ? (
+              tasks.results.map((task) =>
+                task.state === "Current" ? (
+                  <ListViewItem {...task} key={task.id} />
+                ) : (
+                  <></>
+                )
+              )
+            ) : (
+              tasks.results.map((task) =>
+                task.state === "Archived" ? (
+                  <ListViewItem {...task}
+                  key={task.id} />
+                ) : (
+                  <></>
+                )
+              )
+            )
+          ) : (
+            <Asset spinner />
           )
         ) : (
           <Asset spinner />
-        )
-      ) : (
-        <Asset spinner />
-      )}
+        )}
       </Row>
     </Container>
   );

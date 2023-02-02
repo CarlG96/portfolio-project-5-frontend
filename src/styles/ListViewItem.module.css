@@ -8,13 +8,31 @@
   border-color: #175f3f;
   min-height: 20vh;
   padding: 1rem;
-  
+}
+
+.OverDue {
+  box-sizing: border-box;
+  font-family: "Lato", "sans-serif";
+  background-color: #50faab;
+  border-radius: 3rem;
+  border-width: 3rem;
+  border-style: dashed;
+  border-color: #FB7F00;
+  min-height: 20vh;
+  padding: 1rem;
 }
 
 .ListViewItem > h3 {
   min-height: 25vh;
   text-decoration:underline;
 }
+
+.OverDue > h3 {
+  min-height: 25vh;
+  text-decoration:underline;
+}
+
+
 
 
 
