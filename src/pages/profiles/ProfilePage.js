@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Container, Form } from "react-bootstrap";
+import { Alert, Button, Container, Form } from "react-bootstrap";
 import {
   useHistory,
   useParams,
 } from "react-router-dom/cjs/react-router-dom.min";
+import btnStyles from "../../styles/Button.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
 import {
@@ -13,6 +14,9 @@ import {
 
 const ProfilePage = () => {
   const [errors, setErrors] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [changeImage, setChangeImage] = useState(false);
+  const [removeChangeImageButton, setRemoveChangeImageButton] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
@@ -58,7 +62,7 @@ const ProfilePage = () => {
             name="name"
             placeholder="Preferred Name Here"
             defaultValue={name}
-            // disabled={isDisabled}
+            disabled={isDisabled}
             // onChange={handleChange}
             className="text-center"
           ></Form.Control>
@@ -68,8 +72,47 @@ const ProfilePage = () => {
             {message}
           </Alert>
         ))}
-        
+        <Form.Group controlId="image" className="text-center">
+          <Form.Label>Image</Form.Label>
+          <Form.File
+          accept="image/*"
+          className="text-center  "
+          name="image">
+
+          </Form.File>
+        </Form.Group>
+        {errors?.image?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        {isDisabled ? (
+          <></>
+        ) : (
+          <Button
+          type="submit"
+          className={`${btnStyles.Button} ${btnStyles.Bright}`}
+          >
+            Save
+          </Button>
+        )}
       </Form>
+      {isDisabled ? (
+        <Button
+        onClick={handleEdit}
+        className={`${btnStyles.Button} ${btnStyles.Bright}`}>
+          Edit Profile?
+        </Button>
+      ) : !isDisabled && !removeChangeImageButton ? (
+        <Button
+          onClick={handleChangeImage}
+          className={`${btnStyles.Button} ${btnStyles.Bright}`}
+        >
+          Change Image?
+        </Button>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };
