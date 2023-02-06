@@ -11,7 +11,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
@@ -52,18 +52,17 @@ function SignInForm() {
   };
 
   return (
-    <Row className={styles.Row}>
-      <Col className="my-auto">
-        <Container className={`p-4`}>
-          <Form onSubmit={handleSubmit}>
+    
+        <Container className={`${genericStyles.GenericForm} mt-3 mb-3` }>
+          <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
             <Form.Group controlId="username">
-              <Form.Label className="d-none">Username</Form.Label>
+              <Form.Label className={genericStyles.GenericHeader}>Username</Form.Label>
               <Form.Control
-                className={styles.Input}
+                className={`text-center ${genericStyles.GenericField}`}
                 type="text"
                 name="username"
                 value={username}
-                placeholder="Username"
+                placeholder="Type username here"
                 onChange={handleChange}
               />
             </Form.Group>
@@ -74,13 +73,13 @@ function SignInForm() {
             ))}
 
             <Form.Group controlId="password">
-              <Form.Label className="d-none">Password</Form.Label>
+              <Form.Label className={genericStyles.GenericHeader}>Password</Form.Label>
               <Form.Control
-                className={styles.Input}
+                className={`text-center ${genericStyles.GenericField}`}
                 type="password"
                 name="password"
                 value={password}
-                placeholder="Password"
+                placeholder="Type password here"
                 onChange={handleChange}
               />
             </Form.Group>
@@ -101,14 +100,12 @@ function SignInForm() {
               </Alert>
             ))}
           </Form>
-        </Container>
-        <Container className={`mt-3`}>
-          <Link className={styles.Link} to="/signup">
+          <Link className={`${styles.Link} mt-3`}  to="/signup">
             Don't have an account? <span>Sign up now!</span>
           </Link>
         </Container>
-      </Col>
-    </Row>
+        
+        
   );
 }
 

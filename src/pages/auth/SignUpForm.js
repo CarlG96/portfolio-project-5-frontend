@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
@@ -41,17 +42,14 @@ const SignUpForm = () => {
   };
 
   return (
-    <Row className={styles.Row}>
-      <Col className="my-auto">
-        <Container className={`p-4`}>
-
-          <Form onSubmit={handleSubmit}>
+        <Container className={`${genericStyles.GenericForm} mt-3 mb-3` }>
+          <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
             <Form.Group controlId="username">
-              <Form.Label className="d-none">Username</Form.Label>
+              <Form.Label className={genericStyles.GenericHeader}>Username</Form.Label>
               <Form.Control
-                className={styles.Input}
+                className={`text-center ${genericStyles.GenericField}`}
                 type="text"
-                placeholder="Enter username"
+                placeholder="Type username here"
                 name="username"
                 value={username}
                 onChange={handleChange}
@@ -64,11 +62,11 @@ const SignUpForm = () => {
             ))}
 
             <Form.Group controlId="password1">
-              <Form.Label className="d-none">Password</Form.Label>
+              <Form.Label className={genericStyles.GenericHeader}>Password</Form.Label>
               <Form.Control
-                className={styles.Input}
+                className={`text-center ${genericStyles.GenericField}`}
                 type="password"
-                placeholder="Password"
+                placeholder="Type password here"
                 name="password1"
                 value={password1}
                 onChange={handleChange}
@@ -80,11 +78,11 @@ const SignUpForm = () => {
               </Alert>
             ))}
             <Form.Group controlId="password2">
-              <Form.Label class="d-none">Confirm password</Form.Label>
+              <Form.Label className={genericStyles.GenericHeader}>Confirm password</Form.Label>
               <Form.Control
-                className={styles.Input}
+                className={`text-center ${genericStyles.GenericField}`}
                 type="password"
-                placeholder="Confirm password"
+                placeholder="Type password here again"
                 name="password2"
                 value={password2}
                 onChange={handleChange}
@@ -106,15 +104,12 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
-          </Form>
-        </Container>
-        <Container className={`mt-3 `}>
-          <Link className={styles.Link} to="/signin">
+          <Link className={`${styles.Link} mt-3`} to="/signin">
             Already have an account? <span>Sign in</span>
           </Link>
+          </Form>
         </Container>
-      </Col>
-    </Row>
+    
   );
 };
 
