@@ -1,0 +1,20 @@
+.GenericHeader {
+    font-family: 'Montserrat', 'sans-serif';
+    color: #175f3f;
+}
+
+.GenericText {
+    font-family: 'Lato', 'sans-serif';
+    color: #175f3f;
+}
+
+.GenericContainer {
+    min-height: 70vh;
+    background-color: #9bfbce;
+}
+
+.GreenMediaLink {
+    color: #175f3f;
+    font-size: 2rem;
+}
+

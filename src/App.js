@@ -15,47 +15,45 @@ import TasksPage from "./pages/tasks/TasksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import EventsPage from "./pages/events/EventsPage";
 import ProfilePage from "./pages/profiles/ProfilePage";
-
-
+import Footer from "./components/Footer";
 
 function App() {
-
   const currentUser = useCurrentUser();
   return (
-        <div className="App">
-          <NavBar />
-          <Container fluid className={styles.Container}>
-            <Switch>
-              <Route exact path="/" render={() => (
-                <>
+    <div className="App">
+      <NavBar />
+      <Container fluid className={styles.Container}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <>
                 <Row className={styles.Row}>
-                    <Col xl ={6} lg={12} className={styles.Col}>
-                      <HeroImage />
-                    </Col>
-                    <Col xl ={6} lg={12} className={styles.Col}>
-                      <WelcomeText />
-                    </Col>
+                  <Col xl={6} lg={12} className={styles.Col}>
+                    <HeroImage />
+                  </Col>
+                  <Col xl={6} lg={12} className={styles.Col}>
+                    <WelcomeText />
+                  </Col>
                 </Row>
-                </>
-              )} />
-              <Route exact path="/signin" render={() => <SignInForm />} />
-              <Route exact path="/signup" render={() => <SignUpForm />} />
-              <Route
-                exact
-                path="/currenttasks"
-                render={() => <TasksPage />}
-              />
-              <Route exact path="/createtask" render={() => <TaskCreateForm />} />
-              <Route exact path="/createevent" render={() => <EventCreateForm />} />
-              <Route exact path="/events/:id" render = {() => <EventPage />} />
-              <Route exact path="/tasks/:id" render = {() => <TaskPage />} />
-              <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
-              <Route exact path="/currentevents" render={() => <EventsPage />} />
-              <Route render={() => <p>Page not found!</p>} />
-            </Switch>
-          </Container>
-        </div>
-      
+              </>
+            )}
+          />
+          <Route exact path="/signin" render={() => <SignInForm />} />
+          <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/currenttasks" render={() => <TasksPage />} />
+          <Route exact path="/createtask" render={() => <TaskCreateForm />} />
+          <Route exact path="/createevent" render={() => <EventCreateForm />} />
+          <Route exact path="/events/:id" render={() => <EventPage />} />
+          <Route exact path="/tasks/:id" render={() => <TaskPage />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/currentevents" render={() => <EventsPage />} />
+          <Route render={() => <p>Page not found!</p>} />
+        </Switch>
+      </Container>
+      <Footer />
+    </div>
   );
 }
 
