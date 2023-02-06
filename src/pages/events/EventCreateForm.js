@@ -3,6 +3,7 @@ import { Alert, Button, Container, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import btnStyles from "../../styles/Button.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 
 const EventCreateForm = () => {
   const [errors, setErrors] = useState({});
@@ -43,17 +44,17 @@ const EventCreateForm = () => {
   };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit} className="text-center mt-3">
+    <Container className={`${genericStyles.GenericForm} mt-3 mb-3` }>
+      <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
         <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
           <Form.Control
             type="text"
             name="title"
             placeholder="Title here"
             value={title}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           ></Form.Control>
         </Form.Group>
         {errors?.title?.map((message, idx) => (
@@ -62,13 +63,13 @@ const EventCreateForm = () => {
           </Alert>
         ))}
         <Form.Group controlId="date_of_event">
-          <Form.Label>Date of event</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Date of event</Form.Label>
           <Form.Control
             type="datetime-local"
             name="date_of_event"
             value={date_of_event}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           ></Form.Control>
         </Form.Group>
         {errors?.date_of_event?.map((message, idx) => (
@@ -77,13 +78,13 @@ const EventCreateForm = () => {
           </Alert>
         ))}
         <Form.Group controlId="money_required">
-          <Form.Label>Amount of money required</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Amount of money required</Form.Label>
           <Form.Control
             type="number"
             name="money_required"
             value={money_required}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           />
         </Form.Group>
         {errors?.money_required?.map((message, idx) => (
@@ -97,7 +98,7 @@ const EventCreateForm = () => {
             label="Need to travel there?"
             name="need_travel"
             onChange={handleChange}
-            className="text-center"
+            className={`${genericStyles.GenericHeader} text-center` }
           />
         </Form.Group>
         {errors?.need_travel?.map((message, idx) => (

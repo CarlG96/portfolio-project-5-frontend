@@ -45,7 +45,7 @@ const TaskCreateForm = () => {
   };
 
   return (
-    <Container className={`${genericStyles.GenericForm} mt-3 mb-3` } >
+    <Container className={`${genericStyles.GenericForm} mt-3 mb-3` }>
         <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
           <Form.Group controlId="title">
             <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
