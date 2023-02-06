@@ -5,12 +5,15 @@
 
 .GenericText {
     font-family: 'Lato', 'sans-serif';
-    color: #175f3f;
+    color: black;
 }
 
-.GenericContainer {
-    min-height: 70vh;
-    background-color: #9bfbce;
+.GenericForm {
+    min-height: 75vh;
+    border-color: #9bfbce;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 3rem;
 }
 
 .GreenMediaLink {
@@ -18,3 +21,7 @@
     font-size: 2rem;
 }
 
+
+.GenericField {
+    background-color: #9bfbce;
+}

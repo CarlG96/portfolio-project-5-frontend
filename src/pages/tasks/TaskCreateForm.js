@@ -3,6 +3,7 @@ import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import btnStyles from "../../styles/Button.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 
 const TaskCreateForm = () => {
   const [errors, setErrors] = useState({});
@@ -44,17 +45,17 @@ const TaskCreateForm = () => {
   };
 
   return (
-    <Container>
-        <Form onSubmit={handleSubmit} className="text-center mt-3">
+    <Container className={`${genericStyles.GenericForm} mt-3 mb-3` } >
+        <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
           <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
+            <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
             <Form.Control
               type="text"
               name="title"
               placeholder="Title here"
               value={title}
               onChange={handleChange}
-              className="text-center"
+              className={`text-center ${genericStyles.GenericField}`}
             ></Form.Control>
           </Form.Group>
           {errors?.title?.map((message, idx) => (
@@ -63,7 +64,7 @@ const TaskCreateForm = () => {
             </Alert>
           ))}
           <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
+            <Form.Label className={genericStyles.GenericHeader}>Description</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -71,7 +72,7 @@ const TaskCreateForm = () => {
               value={description}
               placeholder="Description here"
               onChange={handleChange}
-              className="text-center"
+              className={`text-center ${genericStyles.GenericField}`}
             />
           </Form.Group>
           {errors?.description?.map((message, idx) => (
@@ -80,12 +81,12 @@ const TaskCreateForm = () => {
             </Alert>
           ))}
           <Form.Group controlId="priority">
-            <Form.Label>Priority</Form.Label>
+            <Form.Label className={genericStyles.GenericHeader}>Priority</Form.Label>
             <Form.Control
               as="select"
               name="priority"
               onChange={handleChange}
-              className="text-center"
+              className={`text-center ${genericStyles.GenericField}`}
             >
               <option value="Must do">Must do</option>
               <option value="Might do">Might do</option>
@@ -98,13 +99,13 @@ const TaskCreateForm = () => {
             </Alert>
           ))}
           <Form.Group controlId="due_date">
-            <Form.Label>Due date</Form.Label>
+            <Form.Label className={genericStyles.GenericHeader}>Due date</Form.Label>
             <Form.Control
               type="datetime-local"
               name="due_date"
               value={due_date}
               onChange={handleChange}
-              className="text-center"
+              className={`text-center ${genericStyles.GenericField}`}
             ></Form.Control>
           </Form.Group>
           {errors?.due_date?.map((message, idx) => (
