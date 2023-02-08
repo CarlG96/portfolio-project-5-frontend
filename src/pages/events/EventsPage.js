@@ -7,6 +7,7 @@ import DetailedEvent from "./DetailedEvent";
 import ListViewItem from "../../components/ListViewItem";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 
 const EventsPage = () => {
   const currentUser = useCurrentUser();
@@ -35,7 +36,7 @@ const EventsPage = () => {
   };
 
   return (
-    <Container fluid className="text-center">
+    <Container fluid className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}>
       <Row className="text-center">
         <Button
           className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}

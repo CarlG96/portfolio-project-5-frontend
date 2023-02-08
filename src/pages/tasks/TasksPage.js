@@ -10,6 +10,7 @@ import NoResults from "../../assets/no-results.png";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import btnStyles from "../../styles/Button.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 
 const TasksPage = () => {
   const currentUser = useCurrentUser();
@@ -38,7 +39,7 @@ const TasksPage = () => {
   };
 
   return (
-    <Container fluid className="text-center">
+    <Container fluid className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}>
       <Row className="text-center">
         <Button
           className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
