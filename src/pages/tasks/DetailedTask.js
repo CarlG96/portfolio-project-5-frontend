@@ -261,7 +261,7 @@ const DetailedTask = (props) => {
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <Button variant="danger" onClick={handleDelete}>
-                Delete Task
+                Confirm Deletion
               </Button>
             </Card.Body>
           </Accordion.Collapse>

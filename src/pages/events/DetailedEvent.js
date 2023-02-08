@@ -3,6 +3,7 @@ import moment from 'moment';
 import { Accordion, Alert, Button, Card, Container, Form } from "react-bootstrap";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -12,6 +13,7 @@ const DetailedEvent = (props) => {
   const [changeDate, setChangeDate] = useState(false);
   const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [deleteAccordionOpen, setDeleteAccordionOpen] = useState(false);
 
   const {
     is_owner,
@@ -69,6 +71,10 @@ const DetailedEvent = (props) => {
     setChecked(!checked);
   }
 
+  const handleAccordion = () => {
+    setDeleteAccordionOpen(!deleteAccordionOpen);
+  }
+
   const handleDelete = () => {
     try {
       axiosReq.delete(`/events/${id}`);
@@ -108,12 +114,12 @@ const DetailedEvent = (props) => {
 const currentUser = useCurrentUser();
 
   return (
-    <Container>
+    <Container className={`${genericStyles.DeleteForm} mt-3 mb-3` }>
       <Form 
       onSubmit={handleSubmit} 
-      className="text-center mt-3">
+      className={`text-center mt-3 ${genericStyles.GenericText}`}>
         <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
           <Form.Control
             type="text"
             name="title"
@@ -121,7 +127,7 @@ const currentUser = useCurrentUser();
             defaultValue={title}
             disabled={isDisabled}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           ></Form.Control>
         </Form.Group>
         {errors?.title?.map((message, idx) => (
@@ -130,7 +136,7 @@ const currentUser = useCurrentUser();
           </Alert>
         ))}
         <Form.Group controlId="date_of_event">
-          <Form.Label>Date of event</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Date of event</Form.Label>
 
           {changeDate ? (
           <Form.Control
@@ -139,7 +145,7 @@ const currentUser = useCurrentUser();
             defaultValue={date_of_event}
             disabled={isDisabled}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           ></Form.Control>
         ) : (
           <Form.Control
@@ -159,14 +165,14 @@ const currentUser = useCurrentUser();
           </Alert>
         ))}
         <Form.Group controlId="money_required">
-          <Form.Label>Amount of money required</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Amount of money required</Form.Label>
           <Form.Control
             type="number"
             name="money_required"
             value={money_required}
             disabled={isDisabled}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           />
         </Form.Group>
         {errors?.money_required?.map((message, idx) => (
@@ -175,13 +181,13 @@ const currentUser = useCurrentUser();
           </Alert>
         ))}
         <Form.Group controlId="need_travel">
-          <Form.Check
+          <Form.Check 
             type="checkbox"
             checked={checked}
             disabled={isDisabled}
             onClick = {handleCheck}
             label="Need to travel there?"
-            className="text-center"
+            className={genericStyles.GenericHeader}
           />
         </Form.Group>
         {errors?.need_travel?.map((message, idx) => (
@@ -217,16 +223,16 @@ const currentUser = useCurrentUser();
         <></>
       )}
       <Accordion className="mt-3">
-        <Card className="text-center">
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-              Delete Event?
+        <Card className={`text-center ${genericStyles.DeleteAccordion}`}>
+          <Card.Header className={`text-center mt-3 ${genericStyles.WarningField}`}>
+            <Accordion.Toggle as={Button} variant="danger" eventKey="0">
+            {deleteAccordionOpen? `Close Delete` : `Delete Event?`}
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <Button variant="danger" onClick={handleDelete}>
-                Delete Item
+                Confirm Deletion
               </Button>
             </Card.Body>
           </Accordion.Collapse>
