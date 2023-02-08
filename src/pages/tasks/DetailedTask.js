@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useHistory,
@@ -21,6 +22,7 @@ const DetailedTask = (props) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [changeDate, setChangeDate] = useState(false);
   const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
+  const [deleteAccordionOpen, setDeleteAccordionOpen] = useState(false);
   const { is_owner, taskPage } = props;
 
   const { id } = useParams();
@@ -74,6 +76,10 @@ const DetailedTask = (props) => {
     setRemoveChangeDateButton(true);
   };
 
+  const handleAccordion = () => {
+    setDeleteAccordionOpen(!deleteAccordionOpen);
+  }
+
   const handleDelete = () => {
     try {
       axiosReq.delete(`/tasks/${id}`);
@@ -113,10 +119,10 @@ const DetailedTask = (props) => {
   const currentUser = useCurrentUser();
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit} className="text-center mt-3">
+    <Container className={`${genericStyles.DeleteForm} mt-3 mb-3` }>
+      <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
         <Form.Group controlId="title">
-          <Form.Label>Title</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
           <Form.Control
             type="text"
             name="title"
@@ -124,7 +130,7 @@ const DetailedTask = (props) => {
             defaultValue={title}
             disabled={isDisabled}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           ></Form.Control>
         </Form.Group>
         {errors?.title?.map((message, idx) => (
@@ -133,7 +139,7 @@ const DetailedTask = (props) => {
           </Alert>
         ))}
         <Form.Group controlId="description">
-          <Form.Label>Description</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Description</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
@@ -142,7 +148,7 @@ const DetailedTask = (props) => {
             placeholder="Description here"
             disabled={isDisabled}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           />
         </Form.Group>
         {errors?.description?.map((message, idx) => (
@@ -151,14 +157,14 @@ const DetailedTask = (props) => {
           </Alert>
         ))}
         <Form.Group controlId="priority">
-          <Form.Label>Priority</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Priority</Form.Label>
           <Form.Control
             as="select"
             name="priority"
             value={priority}
             disabled={isDisabled}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           >
             <option value="Must do">Must do</option>
             <option value="Might do">Might do</option>
@@ -171,7 +177,7 @@ const DetailedTask = (props) => {
           </Alert>
         ))}
         <Form.Group controlId="due_date">
-          <Form.Label>Due date</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Due date</Form.Label>
 
           {changeDate ? (
             <Form.Control
@@ -180,12 +186,12 @@ const DetailedTask = (props) => {
               defaultValue={due_date}
               disabled={isDisabled}
               onChange={handleChange}
-              className="text-center"
+              className={`text-center ${genericStyles.GenericField}`}
             ></Form.Control>
           ) : (
             <Form.Control
               type="text"
-              className="text-center"
+              className={`text-center ${genericStyles.GenericField}`}
               name="due_date"
               onChange={handleChange}
               defaultValue={due_date}
@@ -199,14 +205,14 @@ const DetailedTask = (props) => {
           </Alert>
         ))}
         <Form.Group controlId="state">
-          <Form.Label>State</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>State</Form.Label>
           <Form.Control
             as="select"
             name="state"
             value={state}
             disabled={isDisabled}
             onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           >
             <option value="Current">Current</option>
             <option value="Archived">Archived</option>
@@ -246,16 +252,16 @@ const DetailedTask = (props) => {
         <></>
       )}
       <Accordion className="mt-3">
-        <Card className="text-center">
-          <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-              Delete Task?
+        <Card className={`text-center ${genericStyles.DeleteAccordion}`}>
+          <Card.Header className={`text-center mt-3 ${genericStyles.WarningField}`}>
+            <Accordion.Toggle onClick={handleAccordion} as={Button} variant="danger" eventKey="0">
+              {deleteAccordionOpen? `Close Delete` : `Delete Task?`}
             </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <Button variant="danger" onClick={handleDelete}>
-                Delete Item
+                Delete Task
               </Button>
             </Card.Body>
           </Accordion.Collapse>
