@@ -124,7 +124,7 @@ const currentUser = useCurrentUser();
 
   return (
     <Container className={`${genericStyles.DeleteForm} mt-3 mb-3` }>
-      {unauthorised ? (<NoResults message="Task not available" />) : (hasLoaded ? (<>
+      {unauthorised ? (<NoResults message="Event not available" />) : (hasLoaded ? (<>
       <Form 
       onSubmit={handleSubmit} 
       className={`text-center mt-3 ${genericStyles.GenericText}`}>

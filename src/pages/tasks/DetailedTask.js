@@ -16,13 +16,17 @@ import {
   useHistory,
   useParams,
 } from "react-router-dom/cjs/react-router-dom.min";
+import NoResults from "../../components/NoResults";
+import Asset from "../../components/Asset";
 
 const DetailedTask = (props) => {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
   const [changeDate, setChangeDate] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
   const [deleteAccordionOpen, setDeleteAccordionOpen] = useState(false);
+  const [unauthorised, setUnauthorised] = useState(false);
   const { is_owner, taskPage } = props;
 
   const { id } = useParams();
@@ -52,13 +56,18 @@ const DetailedTask = (props) => {
           priority,
           state,
         });
+        setHasLoaded(true);
       } catch (err) {
         console.log(err);
+        if(err.response.status === 404) {
+          setUnauthorised(true);
+        }
       }
     };
 
+    setHasLoaded(false);
     handleMount();
-  }, [history]);
+  }, [history, unauthorised]);
 
   const handleChange = (event) => {
     setTaskData({
@@ -120,6 +129,7 @@ const DetailedTask = (props) => {
 
   return (
     <Container className={`${genericStyles.DeleteForm} mt-3 mb-3` }>
+      {unauthorised ? (<NoResults message="Task not available" />) : (hasLoaded ? (<>
       <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
         <Form.Group controlId="title">
           <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
@@ -267,6 +277,7 @@ const DetailedTask = (props) => {
           </Accordion.Collapse>
         </Card>
       </Accordion>
+      </>) : (<Asset spinner />))}
     </Container>
   );
   // // the .. needs to replace with edit and delete capability.
