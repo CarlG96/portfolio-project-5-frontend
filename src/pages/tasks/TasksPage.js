@@ -6,7 +6,7 @@ import {
 import { axiosReq } from "../../api/axiosDefaults";
 import ListViewItem from "../../components/ListViewItem";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import NoResults from "../../assets/no-results.png";
+import NoResults from "../../components/NoResults";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import btnStyles from "../../styles/Button.module.css";
@@ -85,7 +85,7 @@ const TasksPage = () => {
               )
             )
           ) : (
-            <h1>No Tasks</h1>
+            <NoResults message="Tasks"/>
           )
         ) : (
           <Asset spinner />

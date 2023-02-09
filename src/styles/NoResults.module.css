@@ -1,0 +1,11 @@
+.NoResults {
+  box-sizing: border-box;
+  font-family: "Montserrat", "sans-serif";
+  background-color: #50faab;
+  border-radius: 3rem;
+  border-width: 3rem;
+  
+  border-color: #175f3f;
+  min-height: 20vh;
+  padding-top: 3rem;
+}

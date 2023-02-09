@@ -8,6 +8,7 @@ import ListViewItem from "../../components/ListViewItem";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
+import NoResults from "../../components/NoResults";
 
 const EventsPage = () => {
   const currentUser = useCurrentUser();
@@ -80,7 +81,7 @@ const EventsPage = () => {
               )
             )
           ) : (
-            <h1>No events!</h1>
+            <NoResults message="Events" />
           )
         ) : (
           <Asset spinner />
