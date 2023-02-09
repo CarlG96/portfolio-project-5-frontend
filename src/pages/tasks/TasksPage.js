@@ -11,6 +11,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 const TasksPage = () => {
   const currentUser = useCurrentUser();
@@ -63,7 +65,8 @@ const TasksPage = () => {
         {hasLoaded ? (
           tasks.results.length ? (
             viewCurrentTasks ? (
-              tasks.results.map((task) =>
+              <InfiniteScroll 
+              children={tasks.results.map((task) =>
                 task.state === "Current" ? (
                   task.is_overdue? (<ListViewItem {...task} overdue={true}
                     key={task.id} />) : (<ListViewItem {...task}
@@ -71,7 +74,12 @@ const TasksPage = () => {
                 ) : (
                   <React.Fragment key={task.id}></React.Fragment>
                 )
-              )
+              )}
+              dataLength={tasks.results.length}
+              loader={<Asset spinner/>}
+              hasMore={!!tasks.next}
+              next={() => {fetchMoreData(tasks, setTasks)}}
+              />
             ) : (
               tasks.results.map((task) =>
                 task.state === "Archived" ? (
