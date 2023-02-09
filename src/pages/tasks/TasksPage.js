@@ -11,6 +11,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
+import listViewStyles from "../../styles/ListViewItem.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
@@ -25,16 +26,14 @@ const TasksPage = () => {
     const fetchTasks = async () => {
       try {
         const { data } = await axiosReq.get(`/tasks/`);
-        if(viewCurrentTasks){
+        if (viewCurrentTasks) {
           data.results = data.results.filter((result) => {
             return result.state === "Current";
-          })
-        
-        }
-        else {
+          });
+        } else {
           data.results = data.results.filter((result) => {
             return result.state === "Archived";
-          })
+          });
         }
         setTasks(data);
         setHasLoaded(true);
@@ -52,54 +51,65 @@ const TasksPage = () => {
   };
 
   return (
-    <Container fluid className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}>
-      <Row className="text-center">
-        <Button
-          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-          onClick={handleSwitch}
-        >
-          {viewCurrentTasks ? `View Archived Tasks` : `View Current Tasks`}
-        </Button>
-      </Row>
-      <Row className="mt-3">
-        {hasLoaded ? (
-          tasks.results.length ? (
-            viewCurrentTasks ? (
-              <InfiniteScroll 
-              children={tasks.results.map((task) =>
-                task.state === "Current" ? (
-                  task.is_overdue? (<ListViewItem {...task} overdue={true}
-                    key={task.id} />) : (<ListViewItem {...task}
-                    key={task.id} />)
-                ) : (
-                  <React.Fragment key={task.id}></React.Fragment>
+    <InfiniteScroll
+      dataLength={tasks.results.length}
+      loader={<Asset spinner />}
+      hasMore={!!tasks.next}
+      next={() => {
+        fetchMoreData(tasks, setTasks);
+      }}
+    >
+      <Container
+        fluid
+        className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}
+      >
+        <Row className="text-center">
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+            onClick={handleSwitch}
+          >
+            {viewCurrentTasks ? `View Archived Tasks` : `View Current Tasks`}
+          </Button>
+        </Row>
+        <Row className="mt-3">
+          {hasLoaded ? (
+            tasks.results.length ? (
+              viewCurrentTasks ? (
+                tasks.results.map((task) =>
+                  task.state === "Current" ? (
+                    task.is_overdue ? (
+                      <ListViewItem {...task} overdue={true} key={task.id} />
+                    ) : (
+                      <ListViewItem {...task} key={task.id} />
+                    )
+                  ) : (
+                    <React.Fragment key={task.id}></React.Fragment>
+                  )
                 )
-              )}
-              dataLength={tasks.results.length}
-              loader={<Asset spinner/>}
-              hasMore={!!tasks.next}
-              next={() => {fetchMoreData(tasks, setTasks)}}
-              />
-            ) : (
-              tasks.results.map((task) =>
-                task.state === "Archived" ? (
-                  task.is_overdue? (<ListViewItem {...task} overdue={true}
-                    key={task.id} />) : (<ListViewItem {...task}
-                    key={task.id} />)
-                  
-                ) : (
-                  <React.Fragment key={task.id}></React.Fragment>
+              ) : (
+                tasks.results.map((task) =>
+                  task.state === "Archived" ? (
+                    task.is_overdue ? (
+                      <ListViewItem {...task} overdue={true} key={task.id} />
+                    ) : (
+                      <ListViewItem {...task} key={task.id} />
+                    )
+                  ) : (
+                    <React.Fragment key={task.id}></React.Fragment>
+                  )
                 )
               )
+            ) : viewCurrentTasks ? (
+              <NoResults message="No Current Tasks found!" />
+            ) : (
+              <NoResults message="No Archived Tasks found!" />
             )
-          ) : viewCurrentTasks ? (
-            <NoResults message="No Current Tasks found!" />
-          ): (<NoResults message="No Archived Tasks found!" />)
-        ) : (
-          <Asset spinner />
-        )}
-      </Row>
-    </Container>
+          ) : (
+            <Asset spinner />
+          )}
+        </Row>
+      </Container>
+    </InfiniteScroll>
   );
 };
 
