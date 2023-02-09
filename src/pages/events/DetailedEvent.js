@@ -11,6 +11,7 @@ const DetailedEvent = (props) => {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
   const [changeDate, setChangeDate] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
   const [checked, setChecked] = useState(false);
   const [deleteAccordionOpen, setDeleteAccordionOpen] = useState(false);

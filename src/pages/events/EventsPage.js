@@ -19,9 +19,21 @@ const EventsPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        setHasLoaded(true);
         const { data } = await axiosReq.get(`/events/`);
+        if(viewUpcomingEvents){
+          data.results = data.results.filter((result) => {
+            return !result.is_overdue;
+          })
+        
+        }
+        else {
+          data.results = data.results.filter((result) => {
+            return result.is_overdue;
+          })
+        }
         setEvents(data);
+        setHasLoaded(true);
+        console.log(events);
       } catch (err) {
         console.log(err);
       }
@@ -36,7 +48,10 @@ const EventsPage = () => {
   };
 
   return (
-    <Container fluid className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}>
+    <Container
+      fluid
+      className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}
+    >
       <Row className="text-center">
         <Button
           className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
@@ -53,7 +68,7 @@ const EventsPage = () => {
                 !event.is_overdue ? (
                   <ListViewItem {...event} key={event.id} />
                 ) : (
-                    <React.Fragment key={event.id}></React.Fragment>
+                  <React.Fragment key={event.id}></React.Fragment>
                 )
               )
             ) : (
@@ -61,12 +76,12 @@ const EventsPage = () => {
                 event.is_overdue ? (
                   <ListViewItem {...event} key={event.id} />
                 ) : (
-                    <React.Fragment key={event.id}></React.Fragment>
+                  <React.Fragment key={event.id}></React.Fragment>
                 )
               )
             )
           ) : (
-            <Asset spinner />
+            <h1>No events!</h1>
           )
         ) : (
           <Asset spinner />
