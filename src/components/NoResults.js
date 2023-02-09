@@ -5,7 +5,7 @@ import styles from "../styles/NoResults.module.css";
 const NoResults = (props) => {
   return (
     <Container className={`text center mt-3 ${styles.NoResults}`}>
-        <h1>No {props.message} of this type found!</h1>
+        <h1>{props.message}</h1>
     </Container>
   )
 }

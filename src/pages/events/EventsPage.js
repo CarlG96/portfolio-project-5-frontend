@@ -80,8 +80,10 @@ const EventsPage = () => {
                 )
               )
             )
+          ) : viewUpcomingEvents ? (
+            <NoResults message="No Upcoming Events found!" />
           ) : (
-            <NoResults message="Events" />
+            <NoResults message="No Past Events found!" />
           )
         ) : (
           <Asset spinner />

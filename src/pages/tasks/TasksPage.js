@@ -84,9 +84,9 @@ const TasksPage = () => {
                 )
               )
             )
-          ) : (
-            <NoResults message="Tasks"/>
-          )
+          ) : viewCurrentTasks ? (
+            <NoResults message="No Current Tasks found!" />
+          ): (<NoResults message="No Archived Tasks found!" />)
         ) : (
           <Asset spinner />
         )}
