@@ -22,9 +22,20 @@ const TasksPage = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        setHasLoaded(true);
         const { data } = await axiosReq.get(`/tasks/`);
+        if(viewCurrentTasks){
+          data.results = data.results.filter((result) => {
+            return result.state === "Current";
+          })
+        
+        }
+        else {
+          data.results = data.results.filter((result) => {
+            return result.state === "Archived";
+          })
+        }
         setTasks(data);
+        setHasLoaded(true);
       } catch (err) {
         console.log(err);
       }
@@ -74,7 +85,7 @@ const TasksPage = () => {
               )
             )
           ) : (
-            <Asset spinner />
+            <h1>No Tasks</h1>
           )
         ) : (
           <Asset spinner />

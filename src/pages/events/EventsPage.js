@@ -33,7 +33,6 @@ const EventsPage = () => {
         }
         setEvents(data);
         setHasLoaded(true);
-        console.log(events);
       } catch (err) {
         console.log(err);
       }
