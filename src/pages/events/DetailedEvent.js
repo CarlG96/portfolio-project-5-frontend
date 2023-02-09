@@ -6,6 +6,8 @@ import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import Asset from '../../components/Asset';
+import NoResults from '../../components/NoResults';
 
 const DetailedEvent = (props) => {
   const [errors, setErrors] = useState({});
@@ -15,6 +17,7 @@ const DetailedEvent = (props) => {
   const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
   const [checked, setChecked] = useState(false);
   const [deleteAccordionOpen, setDeleteAccordionOpen] = useState(false);
+  const [unauthorised, setUnauthorised] = useState(false)
 
   const {
     is_owner,
@@ -44,13 +47,18 @@ const DetailedEvent = (props) => {
           title, date_of_event, need_travel, money_required
         });
         setChecked(need_travel);
+        setHasLoaded(true);
       } catch(err) {
         console.log(err);
+        if(err.response.status === 404) {
+          setUnauthorised(true);
+        }
       }
     };
 
+    setHasLoaded(false);
     handleMount();
-  }, [history]);
+  }, [history, unauthorised]);
 
   const handleChange = (event) => {
     setEventData({
@@ -116,6 +124,7 @@ const currentUser = useCurrentUser();
 
   return (
     <Container className={`${genericStyles.DeleteForm} mt-3 mb-3` }>
+      {unauthorised ? (<NoResults message="No Current Tasks found!" />) : (hasLoaded ? (<>
       <Form 
       onSubmit={handleSubmit} 
       className={`text-center mt-3 ${genericStyles.GenericText}`}>
@@ -239,6 +248,7 @@ const currentUser = useCurrentUser();
           </Accordion.Collapse>
         </Card>
       </Accordion>
+      </>) : (<Asset spinner />))}
     </Container>
   )
     
