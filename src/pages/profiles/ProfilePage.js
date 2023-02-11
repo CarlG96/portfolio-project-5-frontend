@@ -13,6 +13,8 @@ import {
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
 import { useRef } from "react";
+import Asset from "../../components/Asset";
+import NoResults from "../../components/NoResults";
 
 const ProfilePage = () => {
   const [errors, setErrors] = useState({});
@@ -20,6 +22,7 @@ const ProfilePage = () => {
   const [changeImage, setChangeImage] = useState(false);
   const [removeChangeImageButton, setRemoveChangeImageButton] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [unloaded, setUnloaded] = useState(false);
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();
@@ -36,15 +39,20 @@ const ProfilePage = () => {
 
   useEffect(() => {
     const fetchProfileData = async () => {
-      try {
-        const { data } = await axiosReq.get(`/profiles/${id}`);
-        const { name, owner, image } = data;
+      if (currentUser?.profile_id?.toString() === id) {
+        try {
+          const { data } = await axiosReq.get(`/profiles/${id}`);
+          const { name, owner, image } = data;
 
-        setProfileData({ name, owner, image });
-        console.log(data);
-        setHasLoaded(true);
-      } catch (err) {
-        console.log(err);
+          setProfileData({ name, owner, image });
+          console.log(data);
+          setHasLoaded(true);
+        } catch (err) {
+          console.log(err);
+          setUnloaded(true);
+        }
+      } else {
+        history.push("/");
       }
     };
 
@@ -76,7 +84,7 @@ const ProfilePage = () => {
         ...currentUser,
         image: data.image,
       }));
-      history.push('/');
+      history.push("/");
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -85,79 +93,85 @@ const ProfilePage = () => {
 
   return (
     <Container className={`${genericStyles.GenericForm} mt-3 mb-3 text-center`}>
-      <h1 className={` mt-3 ${genericStyles.GenericHeader}`}>
-        {name.length ? `${name}'s Profile` : `${owner}'s Profile`}
-      </h1>
-      <Avatar src={currentUser?.profile_image} height={150} />
-      <Form
-        onSubmit={handleSubmit}
-        className={`text-center mt-3 ${genericStyles.GenericText}`}
-      >
-        <Form.Group controlId="name">
-          <Form.Label className={genericStyles.GenericHeader}>
-            Preferred Name
-          </Form.Label>
-          <Form.Control
-            type="text"
-            name="name"
-            placeholder="Preferred Name Here"
-            defaultValue={name.length? name : owner}
-            disabled={isDisabled}
-            onChange={handleChange}
-            className={`text-center ${genericStyles.GenericField}`}
-          ></Form.Control>
-        </Form.Group>
-        {errors?.name?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <Form.Group controlId="image" className="text-center">
-          <Form.Label className={genericStyles.GenericHeader}>Image</Form.Label>
-          <Form.File
-            accept="image/*"
-            ref={imageFile}
-            className={`text-center ${genericStyles.GenericField}`}
-            name="image"
-            disabled={isDisabled}
-            defaultValue={image.URL}
-            onChange={(e) => {
-              if (e.target.files.length) {
-                setProfileData({
-                  ...profileData,
-                  image: URL.createObjectURL(e.target.files[0]),
-                });
-              }
-            }}
+      { unloaded? (<NoResults message="Failed to load profile" />) : hasLoaded ? (
+        <>
+          <h1 className={` mt-3 ${genericStyles.GenericHeader}`}>
+            {name.length ? `${name}'s Profile` : `${owner}'s Profile`}
+          </h1>
+          <Avatar src={currentUser?.profile_image} height={150} />
+          <Form
+            onSubmit={handleSubmit}
+            className={`text-center mt-3 ${genericStyles.GenericText}`}
           >
-            
-          </Form.File>
-        </Form.Group>
-        {errors?.image?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        {isDisabled ? (
-          <></>
-        ) : (
-          <Button
-            type="submit"
-            className={`${btnStyles.Button} ${btnStyles.Bright}`}
-          >
-            Save
-          </Button>
-        )}
-      </Form>
-      {isDisabled ? (
-        <Button
-          onClick={handleEdit}
-          className={`${btnStyles.Button} ${btnStyles.Bright}`}
-        >
-          Edit Profile?
-        </Button>
+            <Form.Group controlId="name">
+              <Form.Label className={genericStyles.GenericHeader}>
+                Preferred Name
+              </Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                placeholder="Preferred Name Here"
+                defaultValue={name.length ? name : owner}
+                disabled={isDisabled}
+                onChange={handleChange}
+                className={`text-center ${genericStyles.GenericField}`}
+              ></Form.Control>
+            </Form.Group>
+            {errors?.name?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+            <Form.Group controlId="image" className="text-center">
+              <Form.Label className={genericStyles.GenericHeader}>
+                Image
+              </Form.Label>
+              <Form.File
+                accept="image/*"
+                ref={imageFile}
+                className={`text-center ${genericStyles.GenericField}`}
+                name="image"
+                disabled={isDisabled}
+                defaultValue={image.URL}
+                onChange={(e) => {
+                  if (e.target.files.length) {
+                    setProfileData({
+                      ...profileData,
+                      image: URL.createObjectURL(e.target.files[0]),
+                    });
+                  }
+                }}
+              ></Form.File>
+            </Form.Group>
+            {errors?.image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+            {isDisabled ? (
+              <></>
+            ) : (
+              <Button
+                type="submit"
+                className={`${btnStyles.Button} ${btnStyles.Bright}`}
+              >
+                Save
+              </Button>
+            )}
+          </Form>
+          {isDisabled ? (
+            <Button
+              onClick={handleEdit}
+              className={`${btnStyles.Button} ${btnStyles.Bright}`}
+            >
+              Edit Profile?
+            </Button>
+          ) : (
+            <></>
+          )}
+        </>
       ) : (
-        <></>
+        <Asset spinner />
       )}
     </Container>
   );
