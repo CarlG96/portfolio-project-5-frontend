@@ -1,5 +1,7 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import styles from "../styles/Footer.module.css";
 import genericStyles from "../styles/GenericStyles.module.css";
 
@@ -13,27 +15,30 @@ const Footer = () => {
             <a
               href="https://twitter.com/?lang=en-gb"
               target="_blank"
+              rel="noreferrer"
               aria-label="Link to Twitter Page"
             >
-              <i class={`fa-brands fa-twitter ${genericStyles.GreenMediaLink}`}></i>
+              <i className={`fa-brands fa-twitter ${genericStyles.GreenMediaLink}`}></i>
             </a>
           </Col>
           <Col xs={4}>
             <a
               href="https://en-gb.facebook.com/"
               target="_blank"
+              rel="noreferrer"
               aria-label="Link to Facebook Page"
             >
-              <i class={`fa-brands fa-facebook-f ${genericStyles.GreenMediaLink}`}></i>
+              <i className={`fa-brands fa-facebook-f ${genericStyles.GreenMediaLink}`}></i>
             </a>
           </Col>
           <Col xs={4}>
             <a
               href="https://www.instagram.com/"
               target="_blank"
+              rel="noreferrer"
               aria-label="Link to Instagram Page"
             >
-              <i class={`fa-brands fa-instagram ${genericStyles.GreenMediaLink}`}></i>
+              <i className={`fa-brands fa-instagram ${genericStyles.GreenMediaLink}`}></i>
             </a>
           </Col>
         </Row>

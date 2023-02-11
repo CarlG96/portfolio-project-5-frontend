@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 import logo from "../assets/taskosaurus-logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -31,7 +33,7 @@ const NavBar = () => {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   const loggedOutIcons = (
@@ -64,14 +66,6 @@ const NavBar = () => {
         <i className="fa-sharp fa-solid fa-list-check" />
         Current Tasks
       </NavLink>
-      {/* <NavLink
-        to="/archivedtasks"
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-      >
-        <i className="fa-sharp fa-solid fa-vault" />
-        Archived Tasks
-      </NavLink> */}
       <NavLink
         to="/createtask"
         className={styles.NavLink}

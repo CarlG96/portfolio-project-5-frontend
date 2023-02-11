@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Button, Container, Form } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import {
   useHistory,
   useParams,
@@ -19,8 +22,6 @@ import NoResults from "../../components/NoResults";
 const ProfilePage = () => {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
-  const [changeImage, setChangeImage] = useState(false);
-  const [removeChangeImageButton, setRemoveChangeImageButton] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
   const [unloaded, setUnloaded] = useState(false);
   const currentUser = useCurrentUser();
@@ -45,10 +46,9 @@ const ProfilePage = () => {
           const { name, owner, image } = data;
 
           setProfileData({ name, owner, image });
-          console.log(data);
           setHasLoaded(true);
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           setUnloaded(true);
         }
       } else {
@@ -86,7 +86,7 @@ const ProfilePage = () => {
       }));
       history.push("/");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };

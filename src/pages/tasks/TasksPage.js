@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
 import {
-  useHistory,
   useLocation,
 } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import ListViewItem from "../../components/ListViewItem";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import NoResults from "../../components/NoResults";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Asset from "../../components/Asset";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
-import listViewStyles from "../../styles/ListViewItem.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
 const TasksPage = () => {
-  const currentUser = useCurrentUser();
   const [tasks, setTasks] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathName } = useLocation();
@@ -38,7 +36,7 @@ const TasksPage = () => {
         setTasks(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

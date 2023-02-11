@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import btnStyles from "../styles/Button.module.css";
 import styles from "../styles/ListViewItem.module.css";
@@ -23,7 +24,7 @@ const ListViewItem = (props) => {
     else {
       setViewTerms("View Event");
     }
-  }, []);
+  }, [props.due_date]);
 
   return (
     

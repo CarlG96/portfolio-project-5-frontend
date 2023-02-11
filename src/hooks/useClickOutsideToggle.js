@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState }from 'react'
+import { useEffect, useRef, useState }from 'react'
 
 /*
 * Hook used in the NavBar component in order to control

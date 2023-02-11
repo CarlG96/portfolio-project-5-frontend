@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 import styles from '../styles/WelcomeText.module.css';
 import { Link } from 'react-router-dom';
 import btnStyles from '../styles/Button.module.css';

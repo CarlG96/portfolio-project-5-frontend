@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Spinner } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
+import Container from "react-bootstrap/Container";
 
 const Asset = ({ spinner, src, message }) => {
   return (

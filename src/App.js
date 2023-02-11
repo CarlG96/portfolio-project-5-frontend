@@ -12,7 +12,6 @@ import TaskPage from "./pages/tasks/TaskPage";
 import EventCreateForm from "./pages/events/EventCreateForm";
 import EventPage from "./pages/events/EventPage";
 import TasksPage from "./pages/tasks/TasksPage";
-import { useCurrentUser } from "./contexts/CurrentUserContext";
 import EventsPage from "./pages/events/EventsPage";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import Footer from "./components/Footer";
@@ -20,7 +19,6 @@ import NoResults from "./components/NoResults";
 import genericStyles from "../src/styles/GenericStyles.module.css";
 
 function App() {
-  const currentUser = useCurrentUser();
   return (
     <div className="App">
       <NavBar />

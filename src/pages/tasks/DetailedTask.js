@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import {
-  Accordion,
-  Alert,
-  Button,
-  Card,
-  Container,
-  Form,
-} from "react-bootstrap";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Accordion from "react-bootstrap/Accordion";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -27,7 +24,6 @@ const DetailedTask = (props) => {
   const [removeChangeDateButton, setRemoveChangeDateButton] = useState(false);
   const [deleteAccordionOpen, setDeleteAccordionOpen] = useState(false);
   const [unauthorised, setUnauthorised] = useState(false);
-  const { is_owner, taskPage } = props;
 
   const { id } = useParams();
 
@@ -48,7 +44,6 @@ const DetailedTask = (props) => {
       try {
         const { data } = await axiosReq.get(`/tasks/${id}`);
         const { title, description, due_date, priority, state } = data;
-
         setTaskData({
           title,
           description,
@@ -58,7 +53,7 @@ const DetailedTask = (props) => {
         });
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         if(err.response.status === 404) {
           setUnauthorised(true);
         }
@@ -67,7 +62,7 @@ const DetailedTask = (props) => {
 
     setHasLoaded(false);
     handleMount();
-  }, [history, unauthorised]);
+  }, [history, unauthorised, id]);
 
   const handleChange = (event) => {
     setTaskData({
@@ -94,7 +89,7 @@ const DetailedTask = (props) => {
       axiosReq.delete(`/tasks/${id}`);
       history.replace(`/currenttasks`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -118,14 +113,12 @@ const DetailedTask = (props) => {
       });
       history.replace(`/currenttasks`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
     }
   };
-
-  const currentUser = useCurrentUser();
 
   return (
     <Container className={`${genericStyles.DeleteForm} mt-3 mb-3` }>
@@ -280,9 +273,6 @@ const DetailedTask = (props) => {
       </>) : (<Asset spinner />))}
     </Container>
   );
-  // // the .. needs to replace with edit and delete capability.
-  // {is_owner && taskPage && "..."}
-  // </div>;
 };
 
 export default DetailedTask;

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import moment from 'moment';
-import { Accordion, Alert, Button, Card, Container, Form } from "react-bootstrap";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Accordion from "react-bootstrap/Accordion";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -19,11 +23,6 @@ const DetailedEvent = (props) => {
   const [deleteAccordionOpen, setDeleteAccordionOpen] = useState(false);
   const [unauthorised, setUnauthorised] = useState(false)
 
-  const {
-    is_owner,
-    eventPage,
-  } = props;
-
   const { id } = useParams();
 
   const history = useHistory();
@@ -35,7 +34,7 @@ const DetailedEvent = (props) => {
     money_required: 0,
   })
 
-  const { title, date_of_event, need_travel, money_required } = eventData;
+  const { title, date_of_event, money_required } = eventData;
 
   useEffect(() => {
     const handleMount = async () => {
@@ -58,7 +57,7 @@ const DetailedEvent = (props) => {
 
     setHasLoaded(false);
     handleMount();
-  }, [history, unauthorised]);
+  }, [history, unauthorised, id]);
 
   const handleChange = (event) => {
     setEventData({
@@ -118,9 +117,6 @@ const DetailedEvent = (props) => {
       }
     }  
   };
-
-
-const currentUser = useCurrentUser();
 
   return (
     <Container className={`${genericStyles.DeleteForm} mt-3 mb-3` }>
@@ -235,7 +231,7 @@ const currentUser = useCurrentUser();
       <Accordion className="mt-3">
         <Card className={`text-center ${genericStyles.DeleteAccordion}`}>
           <Card.Header className={`text-center mt-3 ${genericStyles.WarningField}`}>
-            <Accordion.Toggle as={Button} variant="danger" eventKey="0">
+            <Accordion.Toggle onClick={handleAccordion} as={Button} variant="danger" eventKey="0">
             {deleteAccordionOpen? `Close Delete` : `Delete Event?`}
             </Accordion.Toggle>
           </Card.Header>
