@@ -16,6 +16,8 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import EventsPage from "./pages/events/EventsPage";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import Footer from "./components/Footer";
+import NoResults from "./components/NoResults";
+import genericStyles from "../src/styles/GenericStyles.module.css";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -49,7 +51,7 @@ function App() {
           <Route exact path="/tasks/:id" render={() => <TaskPage />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route exact path="/currentevents" render={() => <EventsPage />} />
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <Container className={`${genericStyles.GenericForm} mt-3 mb-3`}><NoResults  message="Sorry, the page you are looking for couldn't be found!"/></Container>} />
         </Switch>
       </Container>
       <Footer />
