@@ -9,6 +9,8 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 import NoResults from "../../components/NoResults";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 const EventsPage = () => {
   const currentUser = useCurrentUser();
@@ -48,6 +50,14 @@ const EventsPage = () => {
   };
 
   return (
+    <InfiniteScroll
+      dataLength={events.results.length}
+      loader={<Asset spinner />}
+      hasMore={!!events.next}
+      next={() => {
+        fetchMoreData(events, setEvents);
+      }}
+    >
     <Container
       fluid
       className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}
@@ -90,6 +100,7 @@ const EventsPage = () => {
         )}
       </Row>
     </Container>
+    </InfiniteScroll>
   );
 };
 
