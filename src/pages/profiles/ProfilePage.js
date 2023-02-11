@@ -5,6 +5,7 @@ import {
   useParams,
 } from "react-router-dom/cjs/react-router-dom.min";
 import btnStyles from "../../styles/Button.module.css";
+import genericStyles from "../../styles/GenericStyles.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
 import {
@@ -51,12 +52,12 @@ const ProfilePage = () => {
   const handleSubmit = async (event) => {};
 
   return (
-    <Container className="text-center">
+    <Container className={`${genericStyles.GenericForm} mt-3 mb-3 text-center` }>
       <h1 className="mt-3">{owner}'s Profile</h1>
-      <Avatar src={currentUser?.profile_image} height={150} />
-      <Form onSubmit={handleSubmit} className="text-center mt-3">
+      <Avatar src={currentUser?.profile_image} height={150}/>
+      <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
         <Form.Group controlId="name">
-          <Form.Label>Preferred Name</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Preferred Name</Form.Label>
           <Form.Control
             type="text"
             name="name"
@@ -64,7 +65,7 @@ const ProfilePage = () => {
             defaultValue={name}
             disabled={isDisabled}
             // onChange={handleChange}
-            className="text-center"
+            className={`text-center ${genericStyles.GenericField}`}
           ></Form.Control>
         </Form.Group>
         {errors?.name?.map((message, idx) => (
@@ -73,12 +74,12 @@ const ProfilePage = () => {
           </Alert>
         ))}
         <Form.Group controlId="image" className="text-center">
-          <Form.Label>Image</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>Image</Form.Label>
           <Form.File
           accept="image/*"
-          className="text-center  "
-          name="image">
-
+          className={`text-center ${genericStyles.GenericField}`}
+          name="image"
+          disabled={isDisabled}>
           </Form.File>
         </Form.Group>
         {errors?.image?.map((message, idx) => (
