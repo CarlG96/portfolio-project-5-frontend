@@ -5,6 +5,12 @@ import Row from "react-bootstrap/Row";
 import styles from "../styles/Footer.module.css";
 import genericStyles from "../styles/GenericStyles.module.css";
 
+/*
+ * Component which displays the footer with links to the social media
+ * sites of Facebook, Twitter and Instagram.
+ * No params.
+ */
+
 const Footer = () => {
   return (
     <footer>
@@ -18,7 +24,9 @@ const Footer = () => {
               rel="noreferrer"
               aria-label="Link to Twitter Page"
             >
-              <i className={`fa-brands fa-twitter ${genericStyles.GreenMediaLink}`}></i>
+              <i
+                className={`fa-brands fa-twitter ${genericStyles.GreenMediaLink}`}
+              ></i>
             </a>
           </Col>
           <Col xs={4}>
@@ -28,7 +36,9 @@ const Footer = () => {
               rel="noreferrer"
               aria-label="Link to Facebook Page"
             >
-              <i className={`fa-brands fa-facebook-f ${genericStyles.GreenMediaLink}`}></i>
+              <i
+                className={`fa-brands fa-facebook-f ${genericStyles.GreenMediaLink}`}
+              ></i>
             </a>
           </Col>
           <Col xs={4}>
@@ -38,7 +48,9 @@ const Footer = () => {
               rel="noreferrer"
               aria-label="Link to Instagram Page"
             >
-              <i className={`fa-brands fa-instagram ${genericStyles.GreenMediaLink}`}></i>
+              <i
+                className={`fa-brands fa-instagram ${genericStyles.GreenMediaLink}`}
+              ></i>
             </a>
           </Col>
         </Row>
