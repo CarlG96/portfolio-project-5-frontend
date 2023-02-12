@@ -1,42 +1,41 @@
+/* Stylesheet for many different generic properties applied throughout Taskosaurus */
+
 .GenericHeader {
-    font-family: 'Montserrat', 'sans-serif';
-    color: #175f3f;
+  font-family: "Montserrat", "sans-serif";
+  color: #175f3f;
 }
 
 .GenericText {
-    font-family: 'Lato', 'sans-serif';
-    color: black;
+  font-family: "Lato", "sans-serif";
+  color: black;
 }
 
 .GenericForm {
-    min-height: 75vh;
-    border-color: #9bfbce;
-    border-width: 10px;
-    border-style: solid;
-    border-radius: 3rem;
+  min-height: 75vh;
+  border-color: #9bfbce;
+  border-width: 10px;
+  border-style: solid;
+  border-radius: 3rem;
 }
 
 .DeleteForm {
-    min-height: 80vh;
-    border-color: #9bfbce;
-    border-width: 10px;
-    padding-bottom: 20px;
-    border-style: solid;
-    border-radius: 3rem;
+  min-height: 80vh;
+  border-color: #9bfbce;
+  border-width: 10px;
+  padding-bottom: 20px;
+  border-style: solid;
+  border-radius: 3rem;
 }
 
 .DeleteAccordion {
-    border-radius: 3rem;
-    
+  border-radius: 3rem;
 }
 
 .GreenMediaLink {
-    color: #175f3f;
-    font-size: 2rem;
+  color: #175f3f;
+  font-size: 2rem;
 }
-
 
 .GenericField {
-    background-color: #9bfbce;
+  background-color: #9bfbce;
 }
-

@@ -1,28 +1,30 @@
-.Row {
-    height: calc(100vh - 50vh);
-  }
-  .Input {
-    font-family: 'Lato', 'sans-serif';
-    background: #ffffff;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    color: #9BFBCE;
-    text-align: center;
-  }
-  
-  .Link {
-    text-decoration: none;
-    text-align: center;
-    display: block;
-    margin: auto;
-    color: #175f3f;
-  }
+/* Stylesheet used for signin/ signup forms */
 
-  .Link:hover {
-    color: #175f3f;
-  }
-  
-  .Link span {
-    color: #FB7F00;
-  }
-  
+.Row {
+  height: calc(100vh - 50vh);
+}
+
+.Input {
+  font-family: "Lato", "sans-serif";
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  color: #9bfbce;
+  text-align: center;
+}
+
+.Link {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  margin: auto;
+  color: #175f3f;
+}
+
+.Link:hover {
+  color: #175f3f;
+}
+
+.Link span {
+  color: #fb7f00;
+}

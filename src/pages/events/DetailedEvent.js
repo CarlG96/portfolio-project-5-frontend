@@ -37,7 +37,7 @@ const DetailedEvent = () => {
   })
   const { title, date_of_event, money_required } = eventData;
 
-  //Handles lifecycle of component.
+  // Handles lifecycle of component.
   useEffect(() => {
     const handleMount = async () => {
       try {

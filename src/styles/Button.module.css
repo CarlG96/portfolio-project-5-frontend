@@ -1,3 +1,5 @@
+/* Stylesheet for Button components used throughout Taskosaurus */
+
 .Button {
   font-size: 1rem;
   border-radius: 100px;
@@ -8,7 +10,7 @@
   margin: 0 auto;
   margin-top: 1rem;
   color: #000000;
-  font-family: 'Lato', 'sans-serif';
+  font-family: "Lato", "sans-serif";
   text-decoration: none;
   border-width: 2px;
   border-color: #9bfbce;
@@ -51,7 +53,7 @@
   color: #000000;
 }
 
-.Button Link{
+.Button Link {
   color: #000000;
 }
 

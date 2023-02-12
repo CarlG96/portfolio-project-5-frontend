@@ -1,30 +1,31 @@
+/* Stylesheet used for the navbar */
+
 .NavBar {
-    background-color: #9BFBCE;
-    font-family: 'Lato', sans-serif;
+  background-color: #9bfbce;
+  font-family: "Lato", sans-serif;
 }
 
 .NavLink {
-    color: #000000;
-    padding: 5px;
+  color: #000000;
+  padding: 5px;
 }
 
 .NavLink:hover {
-    color: #000000;
+  color: #000000;
 }
 
 .Active {
-    background-color: #50FAAB;
+  background-color: #50faab;
 }
 
 @media (max-width: 800px) {
-    .NavLink {
-        font-size: smaller;
-    }
+  .NavLink {
+    font-size: smaller;
+  }
 }
 
 @media (max-width: 760px) {
-    .NavLink {
-        font-size: unset;
-    }
+  .NavLink {
+    font-size: unset;
+  }
 }
-

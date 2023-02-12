@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  useLocation,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import ListViewItem from "../../components/ListViewItem";
 import NoResults from "../../components/NoResults";
@@ -12,7 +10,11 @@ import Asset from "../../components/Asset";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
+import { fetchMoreData } from "../../utils/fetchMoreData";
+
+/*
+ * Component which deals with displaying the list view for the Tasks.
+ */
 
 const TasksPage = () => {
   const [tasks, setTasks] = useState({ results: [] });
@@ -20,6 +22,7 @@ const TasksPage = () => {
   const { pathName } = useLocation();
   const [viewCurrentTasks, setViewCurrentTasks] = useState(true);
 
+  // Handles lifecycle of the component. Pulls from backend list view.
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -39,11 +42,11 @@ const TasksPage = () => {
         // console.log(err);
       }
     };
-
     setHasLoaded(false);
     fetchTasks();
   }, [pathName, viewCurrentTasks]);
 
+  // Function which allows switching between Current and Archived tasks.
   const handleSwitch = () => {
     setViewCurrentTasks(!viewCurrentTasks);
   };

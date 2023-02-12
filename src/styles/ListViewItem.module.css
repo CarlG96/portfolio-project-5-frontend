@@ -1,3 +1,5 @@
+/* Stylesheet used for list view items like tasks and events */
+
 .ListViewItem {
   box-sizing: border-box;
   font-family: "Lato", "sans-serif";
@@ -17,24 +19,22 @@
   border-radius: 3rem;
   border-width: 3rem;
   border-style: dashed;
-  border-color: #FB7F00;
+  border-color: #fb7f00;
   min-height: 20vh;
   padding: 1rem;
 }
 
 .ListViewItem > h3 {
   min-height: 25vh;
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
 .OverDue > h3 {
   min-height: 25vh;
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
-@media screen and (max-width: 500px){
-
-
+@media screen and (max-width: 500px) {
   .ListViewItem {
     min-height: 20vh;
     max-height: 40vh;
@@ -50,8 +50,3 @@
     min-height: 12vh;
   }
 }
-
-
-
-
-

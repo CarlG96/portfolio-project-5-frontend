@@ -49,7 +49,13 @@ function App() {
           <Route exact path="/tasks/:id" render={() => <TaskPage />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route exact path="/currentevents" render={() => <EventsPage />} />
-          <Route render={() => <Container className={`${genericStyles.GenericForm} mt-3 mb-3`}><NoResults  message="Sorry, the page you are looking for couldn't be found!"/></Container>} />
+          <Route
+            render={() => (
+              <Container className={`${genericStyles.GenericForm} mt-3 mb-3`}>
+                <NoResults message="Sorry, the page you are looking for couldn't be found!" />
+              </Container>
+            )}
+          />
         </Switch>
       </Container>
       <Footer />

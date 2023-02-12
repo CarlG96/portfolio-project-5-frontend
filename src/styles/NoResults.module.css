@@ -1,11 +1,12 @@
+/* Stylesheet used for the 'NoResults' component used throughout Taskosaurus */
+
 .NoResults {
   box-sizing: border-box;
   font-family: "Montserrat", "sans-serif";
-  background-color: #FB7F00;
+  background-color: #fb7f00;
   border-radius: 3rem;
   border-width: 3rem;
-  border-color: #FB7F00;
+  border-color: #fb7f00;
   min-height: 20vh;
   padding-top: 3rem;
-  
 }

@@ -8,6 +8,11 @@ import { axiosReq } from "../../api/axiosDefaults";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 
+/*
+ * Component which is used to display form which
+ * allows creation of a task in the backend.
+ */
+
 const TaskCreateForm = () => {
   const [errors, setErrors] = useState({});
   const [taskData, setTaskData] = useState({
@@ -16,10 +21,10 @@ const TaskCreateForm = () => {
     priority: "Must do",
     description: "",
   });
-
   const { title, due_date, priority, description } = taskData;
   const history = useHistory();
 
+  // Handles the changes on the form.
   const handleChange = (event) => {
     setTaskData({
       ...taskData,
@@ -27,6 +32,7 @@ const TaskCreateForm = () => {
     });
   };
 
+  // Handles the submission of the form, allowing a post request to the backend.
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -48,81 +54,90 @@ const TaskCreateForm = () => {
   };
 
   return (
-    <Container className={`${genericStyles.GenericForm} mt-3 mb-3` }>
-        <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
-          <Form.Group controlId="title">
-            <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
-            <Form.Control
-              type="text"
-              name="title"
-              placeholder="Title here"
-              value={title}
-              onChange={handleChange}
-              className={`text-center ${genericStyles.GenericField}`}
-            ></Form.Control>
-          </Form.Group>
-          {errors?.title?.map((message, idx) => (
-            <Alert variant="warning" key={idx}>
-              {message}
-            </Alert>
-          ))}
-          <Form.Group controlId="description">
-            <Form.Label className={genericStyles.GenericHeader}>Description</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              name="description"
-              value={description}
-              placeholder="Description here"
-              onChange={handleChange}
-              className={`text-center ${genericStyles.GenericField}`}
-            />
-          </Form.Group>
-          {errors?.description?.map((message, idx) => (
-            <Alert variant="warning" key={idx}>
-              {message}
-            </Alert>
-          ))}
-          <Form.Group controlId="priority">
-            <Form.Label className={genericStyles.GenericHeader}>Priority</Form.Label>
-            <Form.Control
-              as="select"
-              name="priority"
-              onChange={handleChange}
-              className={`text-center ${genericStyles.GenericField}`}
-            >
-              <option value="Must do">Must do</option>
-              <option value="Might do">Might do</option>
-              <option value="Can do">Can do</option>
-            </Form.Control>
-          </Form.Group>
-          {errors?.priority?.map((message, idx) => (
-            <Alert variant="warning" key={idx}>
-              {message}
-            </Alert>
-          ))}
-          <Form.Group controlId="due_date">
-            <Form.Label className={genericStyles.GenericHeader}>Due date</Form.Label>
-            <Form.Control
-              type="datetime-local"
-              name="due_date"
-              value={due_date}
-              onChange={handleChange}
-              className={`text-center ${genericStyles.GenericField}`}
-            ></Form.Control>
-          </Form.Group>
-          {errors?.due_date?.map((message, idx) => (
-            <Alert variant="warning" key={idx}>
-              {message}
-            </Alert>
-          ))}
-          <Button
-            type="submit"
-            className={`${btnStyles.Button} ${btnStyles.Bright}`}
+    <Container className={`${genericStyles.GenericForm} mt-3 mb-3`}>
+      <Form
+        onSubmit={handleSubmit}
+        className={`text-center mt-3 ${genericStyles.GenericText}`}
+      >
+        <Form.Group controlId="title">
+          <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
+          <Form.Control
+            type="text"
+            name="title"
+            placeholder="Title here"
+            value={title}
+            onChange={handleChange}
+            className={`text-center ${genericStyles.GenericField}`}
+          ></Form.Control>
+        </Form.Group>
+        {errors?.title?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Form.Group controlId="description">
+          <Form.Label className={genericStyles.GenericHeader}>
+            Description
+          </Form.Label>
+          <Form.Control
+            as="textarea"
+            rows={3}
+            name="description"
+            value={description}
+            placeholder="Description here"
+            onChange={handleChange}
+            className={`text-center ${genericStyles.GenericField}`}
+          />
+        </Form.Group>
+        {errors?.description?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Form.Group controlId="priority">
+          <Form.Label className={genericStyles.GenericHeader}>
+            Priority
+          </Form.Label>
+          <Form.Control
+            as="select"
+            name="priority"
+            onChange={handleChange}
+            className={`text-center ${genericStyles.GenericField}`}
           >
-            Create Task
-          </Button>
-        </Form>
+            <option value="Must do">Must do</option>
+            <option value="Might do">Might do</option>
+            <option value="Can do">Can do</option>
+          </Form.Control>
+        </Form.Group>
+        {errors?.priority?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Form.Group controlId="due_date">
+          <Form.Label className={genericStyles.GenericHeader}>
+            Due date
+          </Form.Label>
+          <Form.Control
+            type="datetime-local"
+            name="due_date"
+            value={due_date}
+            onChange={handleChange}
+            className={`text-center ${genericStyles.GenericField}`}
+          ></Form.Control>
+        </Form.Group>
+        {errors?.due_date?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
+        <Button
+          type="submit"
+          className={`${btnStyles.Button} ${btnStyles.Bright}`}
+        >
+          Create Task
+        </Button>
+      </Form>
     </Container>
   );
 };
