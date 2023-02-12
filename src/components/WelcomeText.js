@@ -25,8 +25,6 @@ const WelcomeText = () => {
         <Link className={btnStyles.Link} to="/signin">Click here to sign up!</Link>
       </Button>
     </div>
-        
-    
   )
 }
 

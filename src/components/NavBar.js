@@ -5,7 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import logo from "../assets/taskosaurus-logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
-
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -25,9 +24,9 @@ import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
+  // Function to log out user.
   const handleSignOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
@@ -36,6 +35,8 @@ const NavBar = () => {
       // console.log(err);
     }
   };
+
+  // Icons which are displayed when logged out.
   const loggedOutIcons = (
     <>
       <NavLink
@@ -56,6 +57,8 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
+  // Icons which are displayed when user is logged in.
   const loggedInIcons = (
     <>
       <NavLink

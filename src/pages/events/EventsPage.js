@@ -12,26 +12,29 @@ import NoResults from "../../components/NoResults";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 
+/*
+ * Component which deals with displaying the list view for the Events.
+ */
+
 const EventsPage = () => {
   const [events, setEvents] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathName } = useLocation();
   const [viewUpcomingEvents, setViewUpcomingEvents] = useState(true);
 
+  // Handles lifecycle of component. Pulls from backend list view.
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const { data } = await axiosReq.get(`/events/`);
-        if(viewUpcomingEvents){
+        if (viewUpcomingEvents) {
           data.results = data.results.filter((result) => {
             return !result.is_overdue;
-          })
-        
-        }
-        else {
+          });
+        } else {
           data.results = data.results.filter((result) => {
             return result.is_overdue;
-          })
+          });
         }
         setEvents(data);
         setHasLoaded(true);
@@ -39,11 +42,11 @@ const EventsPage = () => {
         // console.log(err);
       }
     };
-
     setHasLoaded(false);
     fetchEvents();
   }, [pathName, viewUpcomingEvents]);
 
+  // Function which allows switching between past and upcoming events.
   const handleSwitch = () => {
     setViewUpcomingEvents(!viewUpcomingEvents);
   };
@@ -57,48 +60,48 @@ const EventsPage = () => {
         fetchMoreData(events, setEvents);
       }}
     >
-    <Container
-      fluid
-      className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}
-    >
-      <Row className="text-center">
-        <Button
-          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-          onClick={handleSwitch}
-        >
-          {viewUpcomingEvents ? `View Past Events` : `View Upcoming Events`}
-        </Button>
-      </Row>
-      <Row className="mt-3">
-        {hasLoaded ? (
-          events.results.length ? (
-            viewUpcomingEvents ? (
-              events.results.map((event) =>
-                !event.is_overdue ? (
-                  <ListViewItem {...event} key={event.id} />
-                ) : (
-                  <React.Fragment key={event.id}></React.Fragment>
+      <Container
+        fluid
+        className={`text-center mt-3 mb-3 ${genericStyles.GenericForm}`}
+      >
+        <Row className="text-center">
+          <Button
+            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+            onClick={handleSwitch}
+          >
+            {viewUpcomingEvents ? `View Past Events` : `View Upcoming Events`}
+          </Button>
+        </Row>
+        <Row className="mt-3">
+          {hasLoaded ? (
+            events.results.length ? (
+              viewUpcomingEvents ? (
+                events.results.map((event) =>
+                  !event.is_overdue ? (
+                    <ListViewItem {...event} key={event.id} />
+                  ) : (
+                    <React.Fragment key={event.id}></React.Fragment>
+                  )
+                )
+              ) : (
+                events.results.map((event) =>
+                  event.is_overdue ? (
+                    <ListViewItem {...event} key={event.id} />
+                  ) : (
+                    <React.Fragment key={event.id}></React.Fragment>
+                  )
                 )
               )
+            ) : viewUpcomingEvents ? (
+              <NoResults message="No Upcoming Events found!" />
             ) : (
-              events.results.map((event) =>
-                event.is_overdue ? (
-                  <ListViewItem {...event} key={event.id} />
-                ) : (
-                  <React.Fragment key={event.id}></React.Fragment>
-                )
-              )
+              <NoResults message="No Past Events found!" />
             )
-          ) : viewUpcomingEvents ? (
-            <NoResults message="No Upcoming Events found!" />
           ) : (
-            <NoResults message="No Past Events found!" />
-          )
-        ) : (
-          <Asset spinner />
-        )}
-      </Row>
-    </Container>
+            <Asset spinner />
+          )}
+        </Row>
+      </Container>
     </InfiniteScroll>
   );
 };

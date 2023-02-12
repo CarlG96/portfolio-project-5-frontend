@@ -15,13 +15,13 @@ export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
  * @params (object) children: Used to define what will have context.
  * As such this is wrapped around the App component in index.js to
  * affect the whole site.
-*/
+ */
 
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-
   const history = useHistory();
 
+  // Functions to handle the user being logged in.
   const handleMount = async () => {
     try {
       const { data } = await axiosRes.get("dj-rest-auth/user/");
@@ -36,24 +36,25 @@ export const CurrentUserProvider = ({ children }) => {
   }, []);
 
   useMemo(() => {
-    axiosReq.interceptors.request.use(async (config) => {
-      try {
-        await axios.post('dj-rest-auth/token/refresh/');
-
-      } catch (err) {
-        setCurrentUser((prevCurrentUser) => {
-            if(prevCurrentUser) {
-                history.push('signin');
+    axiosReq.interceptors.request.use(
+      async (config) => {
+        try {
+          await axios.post("dj-rest-auth/token/refresh/");
+        } catch (err) {
+          setCurrentUser((prevCurrentUser) => {
+            if (prevCurrentUser) {
+              history.push("signin");
             }
             return null;
-        })
+          });
+          return config;
+        }
         return config;
-      }
-      return config;
-    },
-    (err) => {
+      },
+      (err) => {
         return Promise.reject(err);
-    });
+      }
+    );
 
     axiosRes.interceptors.response.use(
       (response) => response,

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState }from 'react'
+import { useEffect, useRef, useState }from 'react';
 
 /*
 * Hook used in the NavBar component in order to control
@@ -15,7 +15,6 @@ const useClickOutsideToggle = () => {
         setExpanded(false);
       }
     }
-
     document.addEventListener('mouseup', handleClickOutside);
     return () => {
       document.removeEventListener('mouseup', handleClickOutside);

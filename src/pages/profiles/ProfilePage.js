@@ -19,6 +19,11 @@ import { useRef } from "react";
 import Asset from "../../components/Asset";
 import NoResults from "../../components/NoResults";
 
+/*
+ * Component which displays the Profile page which allows displaying and
+ * editing of profile.
+ */
+
 const ProfilePage = () => {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
@@ -29,22 +34,20 @@ const ProfilePage = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
-
   const [profileData, setProfileData] = useState({
     name: "",
     image: "",
     owner: "",
   });
-
   const { name, image, owner } = profileData;
 
+  // Handles lifecycle of component.
   useEffect(() => {
     const fetchProfileData = async () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}`);
           const { name, owner, image } = data;
-
           setProfileData({ name, owner, image });
           setHasLoaded(true);
         } catch (err) {
@@ -55,14 +58,15 @@ const ProfilePage = () => {
         history.push("/");
       }
     };
-
     fetchProfileData();
   }, [currentUser, history, id]);
 
+  // Allows editing of the form.
   const handleEdit = () => {
     setIsDisabled(false);
   };
 
+  // Allows changes to be made on the form.
   const handleChange = (event) => {
     setProfileData({
       ...profileData,
@@ -70,6 +74,7 @@ const ProfilePage = () => {
     });
   };
 
+  // Handles submission of the form, allowing a put request to the backend.
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -77,7 +82,6 @@ const ProfilePage = () => {
     if (imageFile?.current?.files[0]) {
       formData.append("image", imageFile?.current?.files[0]);
     }
-
     try {
       const { data } = await axiosReq.put(`/profiles/${id}`, formData);
       setCurrentUser((currentUser) => ({
@@ -93,7 +97,9 @@ const ProfilePage = () => {
 
   return (
     <Container className={`${genericStyles.GenericForm} mt-3 mb-3 text-center`}>
-      { unloaded? (<NoResults message="Failed to load profile" />) : hasLoaded ? (
+      {unloaded ? (
+        <NoResults message="Failed to load profile" />
+      ) : hasLoaded ? (
         <>
           <h1 className={` mt-3 ${genericStyles.GenericHeader}`}>
             {name.length ? `${name}'s Profile` : `${owner}'s Profile`}

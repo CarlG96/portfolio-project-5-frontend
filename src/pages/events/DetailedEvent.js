@@ -13,7 +13,12 @@ import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min
 import Asset from '../../components/Asset';
 import NoResults from '../../components/NoResults';
 
-const DetailedEvent = (props) => {
+/*
+* Component used to display event detail views. 
+* No parameters.
+*/
+
+const DetailedEvent = () => {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true);
   const [changeDate, setChangeDate] = useState(false);
@@ -22,20 +27,17 @@ const DetailedEvent = (props) => {
   const [checked, setChecked] = useState(false);
   const [deleteAccordionOpen, setDeleteAccordionOpen] = useState(false);
   const [unauthorised, setUnauthorised] = useState(false)
-
   const { id } = useParams();
-
   const history = useHistory();
-
   const [eventData, setEventData]  = useState({
     title: "",
     date_of_event: "",
     need_travel: false,
     money_required: 0,
   })
-
   const { title, date_of_event, money_required } = eventData;
 
+  //Handles lifecycle of component.
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -54,11 +56,11 @@ const DetailedEvent = (props) => {
         }
       }
     };
-
     setHasLoaded(false);
     handleMount();
   }, [history, unauthorised, id]);
 
+  // Handles changes on the form.
   const handleChange = (event) => {
     setEventData({
       ...eventData,
@@ -66,35 +68,41 @@ const DetailedEvent = (props) => {
     });
   };
 
+  // Allows enabling of the form from its disabled state.
   const handleEdit = () => {
     setIsDisabled(false);
   };
 
+  // Allows changing of the date, this is separate due to value/defaultValue weirdness.
   const handleChangeDate = () => {
     setChangeDate(true);
     setRemoveChangeDateButton(true);
   };
 
+  // Handles the checking of the need_travel part of form.
   const handleCheck = () => {
     setChecked(!checked);
   }
 
+  // Handles changing of text on opening and closing form.
   const handleAccordion = () => {
     setDeleteAccordionOpen(!deleteAccordionOpen);
   }
 
+  // Handles deletion of the event.
   const handleDelete = () => {
     try {
       axiosReq.delete(`/events/${id}`);
       history.replace(`/currentevents`);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
     }
   };
 
+  // Handles submission of the form, allowing a put request to the backend.
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -102,7 +110,6 @@ const DetailedEvent = (props) => {
     formData.append("date_of_event", moment(date_of_event).format("YYYY-MM-DDThh:mm"));
     formData.append("need_travel", checked);
     formData.append("money_required", money_required);
-
     try {
       await axiosReq.put(`/events/${id}`, formData, {
         headers: {
@@ -111,7 +118,7 @@ const DetailedEvent = (props) => {
       });
       history.replace(`/currentevents`);
     } catch(err) {
-      console.log(err);
+      // console.log(err);
       if(err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -143,7 +150,6 @@ const DetailedEvent = (props) => {
         ))}
         <Form.Group controlId="date_of_event">
           <Form.Label className={genericStyles.GenericHeader}>Date of event</Form.Label>
-
           {changeDate ? (
           <Form.Control
             type="datetime-local"
@@ -161,7 +167,6 @@ const DetailedEvent = (props) => {
           onChange={handleChange}
           defaultValue={date_of_event}
           disabled>
-
           </Form.Control>
         )}
         </Form.Group>
@@ -246,17 +251,7 @@ const DetailedEvent = (props) => {
       </Accordion>
       </>) : (<Asset spinner />))}
     </Container>
-  )
-    
-  // <div>
-  // <p>Date of event:{date_of_event}</p>
-  // <p>{owner}</p>
-  // <p>{need_travel}</p>
-  // <p>{money_required}</p>
-  // <p>{title}</p>
-  // // the .. needs to replace with edit and delete capability.
-  // {is_owner && eventPage && "..."}
-  // </div>;
-}
+  );
+};
 
-export default DetailedEvent
+export default DetailedEvent;

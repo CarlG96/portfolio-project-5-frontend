@@ -3,13 +3,10 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-
 import { Link, useHistory } from "react-router-dom";
-
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
-
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
@@ -19,9 +16,8 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
  * Also handles errors and general layout of the form.
  */
 
-function SignInForm() {
+const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
-
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -30,6 +26,7 @@ function SignInForm() {
   const { username, password } = signInData;
   const history = useHistory();
 
+  // Handles changes on the form.
   const handleChange = (event) => {
     setSignInData({
       ...signInData,
@@ -37,6 +34,7 @@ function SignInForm() {
     });
   };
 
+  // Handles submission of the form.
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -49,61 +47,65 @@ function SignInForm() {
   };
 
   return (
-    
-        <Container className={`${genericStyles.GenericForm} mt-3 mb-3` }>
-          <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
-            <Form.Group controlId="username">
-              <Form.Label className={genericStyles.GenericHeader}>Username</Form.Label>
-              <Form.Control
-                className={`text-center ${genericStyles.GenericField}`}
-                type="text"
-                name="username"
-                value={username}
-                placeholder="Type username here"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {errors.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
+    <Container className={`${genericStyles.GenericForm} mt-3 mb-3`}>
+      <Form
+        onSubmit={handleSubmit}
+        className={`text-center mt-3 ${genericStyles.GenericText}`}
+      >
+        <Form.Group controlId="username">
+          <Form.Label className={genericStyles.GenericHeader}>
+            Username
+          </Form.Label>
+          <Form.Control
+            className={`text-center ${genericStyles.GenericField}`}
+            type="text"
+            name="username"
+            value={username}
+            placeholder="Type username here"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        {errors.username?.map((message, idx) => (
+          <Alert key={idx} variant="warning">
+            {message}
+          </Alert>
+        ))}
 
-            <Form.Group controlId="password">
-              <Form.Label className={genericStyles.GenericHeader}>Password</Form.Label>
-              <Form.Control
-                className={`text-center ${genericStyles.GenericField}`}
-                type="password"
-                name="password"
-                value={password}
-                placeholder="Type password here"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {errors.password?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-              type="submit"
-            >
-              Sign In
-            </Button>
-            {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
-                {message}
-              </Alert>
-            ))}
-          </Form>
-          <Link className={`${styles.Link} mt-3`}  to="/signup">
-            Don't have an account? <span>Sign up now!</span>
-          </Link>
-        </Container>
-        
-        
+        <Form.Group controlId="password">
+          <Form.Label className={genericStyles.GenericHeader}>
+            Password
+          </Form.Label>
+          <Form.Control
+            className={`text-center ${genericStyles.GenericField}`}
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Type password here"
+            onChange={handleChange}
+          />
+        </Form.Group>
+        {errors.password?.map((message, idx) => (
+          <Alert key={idx} variant="warning">
+            {message}
+          </Alert>
+        ))}
+        <Button
+          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+          type="submit"
+        >
+          Sign In
+        </Button>
+        {errors.non_field_errors?.map((message, idx) => (
+          <Alert key={idx} variant="warning" className="mt-3">
+            {message}
+          </Alert>
+        ))}
+      </Form>
+      <Link className={`${styles.Link} mt-3`} to="/signup">
+        Don't have an account? <span>Sign up now!</span>
+      </Link>
+    </Container>
   );
-}
+};
 
 export default SignInForm;

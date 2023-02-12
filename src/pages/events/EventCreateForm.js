@@ -8,6 +8,11 @@ import { axiosReq } from "../../api/axiosDefaults";
 import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 
+/*
+ * Component which is used to display form which
+ * allows creation of an event in the backend.
+ */
+
 const EventCreateForm = () => {
   const [errors, setErrors] = useState({});
   const [eventData, setEventData] = useState({
@@ -16,9 +21,10 @@ const EventCreateForm = () => {
     need_travel: false,
     money_required: 0,
   });
-
   const { title, date_of_event, need_travel, money_required } = eventData;
   const history = useHistory();
+
+  // Handles the changes on the form.
   const handleChange = (event) => {
     setEventData({
       ...eventData,
@@ -26,15 +32,14 @@ const EventCreateForm = () => {
     });
   };
 
+  // Handles submission of the form, allowing a post request to the backend.
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-
     formData.append("title", title);
     formData.append("date_of_event", date_of_event);
     formData.append("need_travel", need_travel);
     formData.append("money_required", money_required);
-
     try {
       const { data } = await axiosReq.post("/events/", formData);
       history.push(`/events/${data.id}`);
@@ -47,8 +52,11 @@ const EventCreateForm = () => {
   };
 
   return (
-    <Container className={`${genericStyles.GenericForm} mt-3 mb-3` }>
-      <Form onSubmit={handleSubmit} className={`text-center mt-3 ${genericStyles.GenericText}`}>
+    <Container className={`${genericStyles.GenericForm} mt-3 mb-3`}>
+      <Form
+        onSubmit={handleSubmit}
+        className={`text-center mt-3 ${genericStyles.GenericText}`}
+      >
         <Form.Group controlId="title">
           <Form.Label className={genericStyles.GenericHeader}>Title</Form.Label>
           <Form.Control
@@ -66,7 +74,9 @@ const EventCreateForm = () => {
           </Alert>
         ))}
         <Form.Group controlId="date_of_event">
-          <Form.Label className={genericStyles.GenericHeader}>Date of event</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>
+            Date of event
+          </Form.Label>
           <Form.Control
             type="datetime-local"
             name="date_of_event"
@@ -81,7 +91,9 @@ const EventCreateForm = () => {
           </Alert>
         ))}
         <Form.Group controlId="money_required">
-          <Form.Label className={genericStyles.GenericHeader}>Amount of money required</Form.Label>
+          <Form.Label className={genericStyles.GenericHeader}>
+            Amount of money required
+          </Form.Label>
           <Form.Control
             type="number"
             name="money_required"
@@ -101,7 +113,7 @@ const EventCreateForm = () => {
             label="Need to travel there?"
             name="need_travel"
             onChange={handleChange}
-            className={`${genericStyles.GenericHeader} text-center` }
+            className={`${genericStyles.GenericHeader} text-center`}
           />
         </Form.Group>
         {errors?.need_travel?.map((message, idx) => (
