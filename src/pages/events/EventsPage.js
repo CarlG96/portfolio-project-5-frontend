@@ -10,7 +10,7 @@ import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 import NoResults from "../../components/NoResults";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/fetchMoreData";
+import { fetchMoreData } from "../../utils/utils";
 
 /*
  * Component which deals with displaying the list view for the Events.

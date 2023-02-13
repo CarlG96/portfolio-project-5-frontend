@@ -9,6 +9,7 @@ import btnStyles from "../../styles/Button.module.css";
 import genericStyles from "../../styles/GenericStyles.module.css";
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
 
 /*
  * Sign in form component for use on the sign in page. Takes no props
@@ -40,6 +41,7 @@ const SignInForm = () => {
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
+      setTokenTimestamp(data);
       history.push("/");
     } catch (err) {
       setErrors(err.response?.data);

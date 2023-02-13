@@ -1,8 +1,11 @@
+import jwtDecode from "jwt-decode";
 import { axiosReq } from "../api/axiosDefaults";
 
 /*
- * File holding utility function for infinite scroll.
+ * File holding utility functions
  */
+
+// Function for infinite scroll
 export const fetchMoreData = async (resource, setResource) => {
   try {
     const { data } = await axiosReq.get(resource.next);
@@ -19,3 +22,16 @@ export const fetchMoreData = async (resource, setResource) => {
     // console.log(err);
   }
 };
+
+export const setTokenTimestamp = (data) => {
+  const refreshTokenTimestamp = jwtDecode(data?.refresh_token).exp;
+  localStorage.setItem("refreshTokenTimeStamp", refreshTokenTimestamp);
+};
+
+export const shouldRefreshToken = () => {
+  return !!localStorage.getItem("refreshTokenTimestamp");
+};
+
+export const removeTokenTimestamp = () => {
+  localStorage.removeItem("refreshTokenTimestamp");
+}
