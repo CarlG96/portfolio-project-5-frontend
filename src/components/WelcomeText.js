@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import styles from '../styles/WelcomeText.module.css';
 import { Link } from 'react-router-dom';
 import btnStyles from '../styles/Button.module.css';
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 /*
 * Component used in conjunction with the HeroImage component to create the
@@ -12,18 +13,28 @@ import btnStyles from '../styles/Button.module.css';
 */
 
 const WelcomeText = () => {
+  const currentUser = useCurrentUser();
+
   return (
     <div className={styles.WelcomeText}>
       <h1 className={styles.Header}>Welcome to Taskosaurus!</h1>
       <p className={styles.Paragraph}>
-        Taskosaurus is an app that allows you to keep track of any sort of task that you want.
-        You can start by signing up and creating a task that needs doing. Your tasks will be listed in the <em>Current Tasks</em> section.
-        You can view a task from here by clicking on one. Once in the <em>Task View</em> you'll be able to update, delete or mark your tasks as complete.
-        Completing a task sends it to the <em>Archived Tasks</em> section, so you never forget what you've done!
+        Taskosaurus is an app that allows you to keep track of Tasks and Events.
+        You can start by signing up and clicking on the <em>Create Task</em> or <em>Create Event</em> links. Your Tasks will be listed in the <em>Tasks</em> or <em>Events</em> sections.
+        You can view a Task or Event from there by clicking on one. From there, you can update or delete your Tasks and Events.
+        You can view archived Tasks or past Events by clicking the respective buttons in the <em>Tasks</em> and <em>Events</em> sections.
       </p>
-      <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}>
-        <Link className={btnStyles.Link} to="/signin">Click here to sign up!</Link>
+      {currentUser?.profile_id ? (<>
+        <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}>
+        <Link className={btnStyles.Link} to="/createtask">Click here to create a Task!</Link>
       </Button>
+      <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}>
+        <Link className={btnStyles.Link} to="/createevent">Click here to create an Event!</Link>
+      </Button></>) : (
+      <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}>
+        <Link className={btnStyles.Link} to="/signup">Click here to sign up!</Link>
+      </Button>)
+      }
     </div>
   )
 }
