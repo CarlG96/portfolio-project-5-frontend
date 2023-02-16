@@ -77,3 +77,8 @@ The date for the forms in the DetailedTask and DetailedEvent detail views were n
 
 ### value/defaultValue on form bug
 The handleChange() function would not update the forms in the DetailedTask and DetailedEvent components due to the fact they were being given value properties instead of defaultValue properties. This was a holdover from taking code from the CreateForm components and was easily fixed by changing value props to defaultValue props.
+
+## bug on loading events
+Due to the way pagination is handled, the past events/ current events split won't pull directly from the back end and you must scroll down with the infinite scroll component if you have too many items and are switching between them as it will appear that nothing is showing up however it is just the order of the meta class in django which defines whether they get pulled. Because the list view displays based on overdue status this can cause problems.
+
+To solve this I set pagination from 10 to 15 and changed the ordering of events to date updated as this is less likely to not show the event lists which is based on due date at the higher number of items.

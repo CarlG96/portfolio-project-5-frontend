@@ -27,16 +27,8 @@ const EventsPage = () => {
     const fetchEvents = async () => {
       try {
         const { data } = await axiosReq.get(`/events/`);
-        if (viewUpcomingEvents) {
-          data.results = data.results.filter((result) => {
-            return !result.is_overdue;
-          });
-        } else {
-          data.results = data.results.filter((result) => {
-            return result.is_overdue;
-          });
-        }
         setEvents(data);
+        console.log(data);
         setHasLoaded(true);
       } catch (err) {
         // console.log(err);
@@ -44,11 +36,12 @@ const EventsPage = () => {
     };
     setHasLoaded(false);
     fetchEvents();
+    // eslint-disable-next-line
   }, [pathName, viewUpcomingEvents]);
 
   // Function which allows switching between past and upcoming events.
   const handleSwitch = () => {
-    setViewUpcomingEvents(!viewUpcomingEvents);
+    setViewUpcomingEvents((prevViewUpcomingEvents) => !prevViewUpcomingEvents);
   };
 
   return (
@@ -80,14 +73,15 @@ const EventsPage = () => {
                   !event.is_overdue ? (
                     <ListViewItem {...event} key={event.id} />
                   ) : (
-                    <React.Fragment key={event.id}></React.Fragment>
+                    <React.Fragment key={event.id}>
+                    </React.Fragment>
                   )
                 )
               ) : (
                 events.results.map((event) =>
                   event.is_overdue ? (
                     <ListViewItem {...event} key={event.id} />
-                  ) : (
+                  ) : (       
                     <React.Fragment key={event.id}></React.Fragment>
                   )
                 )

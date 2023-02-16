@@ -48,7 +48,7 @@ const TasksPage = () => {
 
   // Function which allows switching between Current and Archived tasks.
   const handleSwitch = () => {
-    setViewCurrentTasks(!viewCurrentTasks);
+    setViewCurrentTasks(prevViewCurrentTasks => !prevViewCurrentTasks);
   };
 
   return (
