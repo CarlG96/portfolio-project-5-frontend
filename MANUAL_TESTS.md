@@ -26,7 +26,25 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: The 'Click here to create an Event!' button should direct the user to the Create Event Page.
     * Result: The user is directed there.
 
+    * Test: When loadi the page as a logged-out user, the loading spinner for the buttons should appear.
+    * Result: The loading spinner appears.
+
+    * Test: When loading the page as a logged-in user, the loading spinner for the buttons should appear.
+    * Result: The loading spinner appears.
+
+    * Lighthouse check:
+
+    * Responsiveness check:
+
 ## Sign In Page
+
+* The page for signing in for already signed up users
+
+    * Test: A non-logged in user can access this page.
+    * Result: A non-logged in user can access this page.
+
+    * Test: a logged-user should be blocked from accessing the Sign In Page.
+    * Result: 
 
 ## Sign Up Page
 

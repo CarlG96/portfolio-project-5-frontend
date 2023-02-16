@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import btnStyles from "../styles/Button.module.css";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import Asset from "./Asset";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 /*
  * Component used in conjunction with the HeroImage component to create the
@@ -18,13 +17,13 @@ const WelcomeText = () => {
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
 
-useEffect(() => {
-  const timeOut = setTimeout(() => {
-    setHasLoaded(true);
-  }, 500)
-  setHasLoaded(false);
-  return () => clearTimeout(timeOut);
-}, [currentUser]);
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setHasLoaded(true);
+    }, 500);
+    setHasLoaded(false);
+    return () => clearTimeout(timeOut);
+  }, [currentUser]);
 
   return (
     <div className={styles.WelcomeText}>
@@ -39,32 +38,36 @@ useEffect(() => {
         the respective buttons in the <em>Tasks</em> and <em>Events</em>{" "}
         sections.
       </p>
-      {hasLoaded ? (currentUser?.profile_id ? (
-        <>
+      {hasLoaded ? (
+        currentUser?.profile_id ? (
+          <>
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}
+            >
+              <Link className={btnStyles.Link} to="/createtask">
+                Click here to create a Task!
+              </Link>
+            </Button>
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}
+            >
+              <Link className={btnStyles.Link} to="/createevent">
+                Click here to create an Event!
+              </Link>
+            </Button>
+          </>
+        ) : (
           <Button
             className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}
           >
-            <Link className={btnStyles.Link} to="/createtask">
-              Click here to create a Task!
+            <Link className={btnStyles.Link} to="/signup">
+              Click here to sign up!
             </Link>
           </Button>
-          <Button
-            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}
-          >
-            <Link className={btnStyles.Link} to="/createevent">
-              Click here to create an Event!
-            </Link>
-          </Button>
-        </>
+        )
       ) : (
-        <Button
-          className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright} mb-3`}
-        >
-          <Link className={btnStyles.Link} to="/signup">
-            Click here to sign up!
-          </Link>
-        </Button>
-      )) : (<Asset spinner />)}
+        <Asset spinner />
+      )}
     </div>
   );
 };
