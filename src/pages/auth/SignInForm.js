@@ -33,6 +33,7 @@ const SignInForm = () => {
   const { username, password } = signInData;
   const history = useHistory();
 
+  // Handles lifecycle of component.
   useEffect(() => {
     const timeOut = setTimeout(() => {
       if (currentUser) {

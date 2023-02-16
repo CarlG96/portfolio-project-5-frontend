@@ -46,18 +46,62 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: a logged-user should be blocked from accessing the Sign In Page.
     * Result: 
 
+    * Lighthouse check:
+
+    * Responsiveness check:
+
 ## Sign Up Page
+
+    
+    * Lighthouse check:
+
+    * Responsiveness check:
 
 ## Navbar
 
+    
+    * Lighthouse check:
+
+    * Responsiveness check:
+
 ## Tasks Page
+
+    
+    * Lighthouse check:
+
+    * Responsiveness check:
 
 ## Task Detail Page
 
+    
+    * Lighthouse check:
+
+    * Responsiveness check:
+
 ## Create Task Page
+
+    
+    * Lighthouse check:
+
+    * Responsiveness check:
 
 ## Events Page
 
+    
+    * Lighthouse check:
+
+    * Responsiveness check:
+
 ## Create Event Page
 
+    
+    * Lighthouse check:
+
+    * Responsiveness check:
+
 ## Profile Page
+
+    
+    * Lighthouse check:
+
+    * Responsiveness check:

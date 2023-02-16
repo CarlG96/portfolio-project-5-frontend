@@ -40,7 +40,7 @@ const DetailedTask = () => {
   });
   const { description, due_date, priority, state, title } = taskData;
 
-  // Handles lifecycle of component.
+  
   useEffect(() => {
     const handleMount = async () => {
       try {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -8,6 +8,8 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import axios from "axios";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Asset from "../../components/Asset";
 
 /*
  * Signup form component for use on the signup page. Takes no props
@@ -16,6 +18,8 @@ import axios from "axios";
  */
 
 const SignUpForm = () => {
+  const currentUser = useCurrentUser();
+  const [hasLoaded, setHasLoaded] = useState(false);
   const [signUpData, setSignUpData] = useState({
     username: "",
     password1: "",
@@ -24,6 +28,19 @@ const SignUpForm = () => {
   const { username, password1, password2 } = signUpData;
   const [errors, setErrors] = useState({});
   const history = useHistory();
+
+  // Handles lifecycle of component.
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      if (currentUser) {
+        history.push("/");
+      } else {
+        setHasLoaded(true);
+      }
+    }, 500);
+    setHasLoaded(false);
+    return () => clearTimeout(timeOut);
+  }, [currentUser, history]);
 
   // Handles changes on the form.
   const handleChange = (event) => {
@@ -46,6 +63,7 @@ const SignUpForm = () => {
 
   return (
     <Container className={`${genericStyles.GenericForm} mt-3 mb-3`}>
+      {hasLoaded ? (
       <Form
         onSubmit={handleSubmit}
         className={`text-center mt-3 ${genericStyles.GenericText}`}
@@ -118,7 +136,7 @@ const SignUpForm = () => {
         <Link className={`${styles.Link} mt-3`} to="/signin">
           Already have an account? <span>Sign in</span>
         </Link>
-      </Form>
+      </Form>) : (<Asset spinner />)}
     </Container>
   );
 };

@@ -17,6 +17,7 @@ const WelcomeText = () => {
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
 
+  // Handles lifecycle of component.
   useEffect(() => {
     const timeOut = setTimeout(() => {
       setHasLoaded(true);
