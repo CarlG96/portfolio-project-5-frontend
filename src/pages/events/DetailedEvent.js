@@ -90,9 +90,9 @@ const DetailedEvent = () => {
   }
 
   // Handles deletion of the event.
-  const handleDelete = () => {
+  const handleDelete = async() => {
     try {
-      axiosReq.delete(`/events/${id}`);
+      await axiosReq.delete(`/events/${id}`);
       history.replace(`/currentevents`);
     } catch (err) {
       // console.log(err);
