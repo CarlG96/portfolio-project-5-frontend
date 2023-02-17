@@ -236,9 +236,9 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
 * The page for creating Tasks.
     
-    * Test: 
+    * Test: A non-logged
     * Result:
-    
+
     * Lighthouse check:
 
     * Responsiveness check:
@@ -266,6 +266,16 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
 ## Footer
 
+* Footer at the bottom of all pages.
+
+    * Test: Twitter link opens up Twitter homepage in new tab.
+    * Result: User is directed to Twitter homepage in new tab.
+
+    * Test: Facebook link opens up Facebook homepage in new tab.
+    * Result: User is directed to Facebook homepage in new tab.
+
+    * Test: Instagram link opens up Instagram homepage in new tab.
+    * Result: User is directed to Instagram homepage in new tab.
 
     * Lighthouse check:
 
