@@ -46,7 +46,6 @@ const genericStyles = lazy(() => import("../src/styles/GenericStyles.module.css"
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={<Asset spinner />}>
       <Container fluid className={styles.Container}>
       <NavBar />
         <Switch>
@@ -66,6 +65,7 @@ function App() {
               </>
             )}
           />
+          <Suspense fallback={<Asset spinner />}>
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/currenttasks" render={() => <TasksPage />} />
@@ -82,10 +82,10 @@ function App() {
               </Container>
             )}
           />
+          </Suspense>
         </Switch>
       </Container>
       <Footer />
-      </Suspense>
     </div>
   );
 }
