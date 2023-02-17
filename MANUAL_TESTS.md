@@ -1,4 +1,4 @@
-# Testing
+<!-- # Testing
 
 ## Manual Testing
 
@@ -175,6 +175,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Lighthouse check:
 
     * Responsiveness check: Responsive across a wide range of devices.
+    ###### NEEEDS CHECKING
 
 ## Task Detail Page
 
@@ -288,7 +289,8 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices.
+    * Responsiveness check: Responsive across a wide range of devices. 
+    ######## NEEDS CHECKING
 
 ## Event Detail Page
 
@@ -369,6 +371,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
 ## Profile Page
 
+##### Profile stuff is still not finished
 * Page for editing a user's profile.
 
     * Test: A non-logged in user or other user cannot access the page.
@@ -407,4 +410,4 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices.
+    * Responsiveness check: Responsive across a wide range of devices. -->
