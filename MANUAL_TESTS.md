@@ -44,7 +44,19 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Result: A non-logged in user can access this page.
 
     * Test: a logged-user should be blocked from accessing the Sign In Page.
-    * Result: 
+    * Result: A loading spinner is set to timeout, from there the user is pushed back to the homepage if they attempt to access the page.
+
+    * Test: A non-logged in user should be able to type in a valid username and password and should be logged in and returned to the homepage.
+    * Result: A non-logged in user is signed in and returned to the homepage.
+
+    * Test: False credentials should throw up a warning and not log in the user.
+    * Result: False credentials throw up a warning and do not log in the user.
+
+    * Test: The 'Don't have an account? Sign up now!' link should go to the Sign Up Page.
+    * Result: This link works.
+
+    * Test: The 'This field may not be blank.' error is shown if any fields are left blank in the sign in form.
+    * Result: The error is shown.
 
     * Lighthouse check:
 
@@ -52,13 +64,45 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
 ## Sign Up Page
 
-    
+* The page for signing up for an account on Taskosaurus.
+
+    * Test: A non-logged in user can access this page.
+    * Result: A non-logged in user can access this page.
+
+    * Test: a logged-user should be blocked from accessing the Sign Up Page.
+    * Result: A loading spinner is set to timeout, from there the user is pushed back to the homepage if they attempt to access the page.
+
+    * Test: An attempt to use a password that is too short will result in an error being shown.
+    * Result: The 'This password is too short. It must contain at least 8 characters.' error is shown.
+
+    * Test: An attempt to use a password that is too common will result in an error being shown.
+    * Result: The 'This password is too common.' error is shown.
+
+    * Test: If the passwords do not match on signing up, an error will be shown.
+    * Result: The 'The two password fields didn't match.' error is shown.
+
+    * Test: The 'This field may not be blank.' error is shown if any fields are left blank in the sign up form.
+    * Result: The error is shown.
+
+    * Test: If legitimate credentials are provided, then the user is added to the list of users in the backend and redirected to the Sign In Page, where they can sign in.
+    * Result: Users are redirected, and can sign in.
+
+    * Test: The 'Already have an account? Sign In' link redirects the user to the Sign In Page.
+    * Result: User is redirected to the Sign In Page.
+
     * Lighthouse check:
 
     * Responsiveness check:
 
 ## Navbar
 
+* The navigation bar for the entire site. Changes to a burger menu based on device size.
+
+    * Test: A logged out user can see the logo, the Home, Sign In and Sign Up links.
+    * Result: A logged out user can see this.
+
+    * Test: A logged in user can see the logo, the Home, Tasks, Create Task, Events, Create Event, Logout and Profile links.
+    * Result: A logged in user can see this.
     
     * Lighthouse check:
 

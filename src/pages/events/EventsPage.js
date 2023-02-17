@@ -28,7 +28,6 @@ const EventsPage = () => {
       try {
         const { data } = await axiosReq.get(`/events/`);
         setEvents(data);
-        console.log(data);
         setHasLoaded(true);
       } catch (err) {
         // console.log(err);
