@@ -91,7 +91,7 @@ const TasksPage = () => {
                 tasks.results.map((task) =>
                   task.state === "Archived" ? (
                     task.is_overdue ? (
-                      <ListViewItem {...task} overdue={true} key={task.id} />
+                      <ListViewItem {...task} key={task.id} />
                     ) : (
                       <ListViewItem {...task} key={task.id} />
                     )

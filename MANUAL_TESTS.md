@@ -104,12 +104,73 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: A logged in user can see the logo, the Home, Tasks, Create Task, Events, Create Event, Logout and Profile links.
     * Result: A logged in user can see this.
     
-    * Lighthouse check:
+    * Test: Clicking on the logo returns the user to the Welcome Page.
+    * Result: The user is returned to the Welcome Page.
+
+    * Test: Clicking on the Home link returns the user to the Welcome Page.
+    * Result: The user is returned to the Welcome Page.
+
+    * Test: Clicking on the Tasks link takes the user to the Tasks Page.
+    * Result: The user is taken to the Tasks Page.
+
+    * Test: Clicking on the Create Task link takes the user to the Create Task Page.
+    * Result: The user is taken to the Create Task Page.
+
+    * Test: Clicking on the Events link takes the user to the Events Page.
+    * Result: The user is taken to the Events Page.
+
+    * Test: Clicking on the Create Event link takes the user to the Create Event Page.
+    * Result: The user is taken to the Create Event Page.
+
+    * Test: Clicking on the Profile link takes the user to the Profile Page.
+    * Result: The user is taken to the Profile Page.
+
+    * Test: Clicking on the Logout link logs the signed in user out and they are returned to the Welcome Page.
+    * Result: The user is logged out and returned to the Welcome Page.
+
+    * Test: On smaller screen sizes, the burger menu can be clicked to open up.
+    * Result: This happens.
+
+    * Test: Clicking on another part of the screen once the burger menu is open closes the burger menu.
+    * Result: Clicking on another part of the screen closes the burger menu.
+
+    * Lighthouse check
 
     * Responsiveness check:
 
 ## Tasks Page
 
+* The page for displaying Tasks that the user has created.
+    
+    * Test: A non-logged in user should not have any Tasks showing if they attempt to access this page due to backend authentication.
+    * Result: A 'Sorry, the page you are looking for couldn't be found!' error is displayed to the user who tries to force this url.
+
+    * Test: A logged in user can access the Tasks Page.
+    * Result: A logged in user can access the Tasks Page.
+
+    * Test: A user can switch the button between 'View Archived Tasks' and 'View Current Tasks' states. A loading spinner will be present when this is done, pulling data from the backend.
+    * Result: This happens.
+
+    * Test: A user without any Current Tasks will see the 'No Current Tasks' message when opening up the Tasks Page.
+    * Result: A user without any Current Tasks will see this.
+
+    * Test: A user without any Archived Tasks will see the 'No Archived Tasks' message when switching to the Archived section with the button.
+    * Result: This happens.
+
+    * Test: A user will only see Current Tasks when in the Current Tasks section.
+    * Result: Only Current Tasks are shown in the Current Tasks section.
+
+    * Test: Current Tasks that are overdue will be highlighted orange and have an overdue warning on them.
+    * Result: Overdue tasks have this.
+
+    * Test: A user will only see Archived Tasks in the Archived Tasks section after switching with the button.
+    * Result: This is true.
+
+    * Test: Scrolling down will make the Infinite Scroll pull more data from the backend.
+    * Result: This is true.
+
+    * Test: Clicking on the button links on each Task will take you to the respective Task Detail Page.
+    * Result: The user is taken to the respective Task Detail Page.
     
     * Lighthouse check:
 
@@ -117,6 +178,55 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
 ## Task Detail Page
 
+* The page for displaying the details of Tasks and also to Edit and Delete them.
+
+    * Test: A non-logged in user should not be able to access the specific Tasks of another user by forcing the url.
+    * Result: A response of 'Task not available' appears on the Task Detail page due to backend authentication.
+
+    * Test: A logged in user should not be able to access the specific Tasks of another user by forcing the url.
+    * Result: A response of 'Task not available' appears on the Task Detail page due to backend authentication.
+
+    * Test: A logged in user should be able to access their specific Tasks by forcing the url.
+    * Result: A logged in user can view their Tasks via forcing the url.
+
+    * Test: The fields of the Task Detail form are initially disabled upon viewing the Task Detail Page.
+    * Result: The fields are initially disabled.
+
+    * Test: Clicking the 'Edit?' button enables all fields but the due date field.
+    * Result: All fields except date are enabled.
+
+    * Test: All fields except the due date are interactable once the 'Edit?' button has been clicked.
+    * Result: All these fields are interactable.
+
+    * Test: Clicking the 'Change Date' button allows you to edit the date.
+    * Result: This is true.
+
+    * Test: A user cannot Save the Task edits if the Title is removed. It should show an error.
+    * Result: A 'This field may not be blank.' error is shown.
+
+    * Test: If the user changes the Title field and clicks Save then the title of the Task will change and the user is returned to the Tasks Page.
+    * Result: The title is changed.
+
+    * Test: If the user changes the Description field and clicks Save then the description will change in the backend for the Task and the user will be returned to the Tasks Page.
+    * Result: The description is changed.
+
+    * Test: If the user changes the Priority field and clicks Save then the priority will change in the backend for the Task and the user will be returned to the Tasks Page.
+    * Result: The priority is changed.
+
+    * Test: If the user changes the State and clicks Save then the state will change in the backend for the Task and the user will be returned to the Tasks Page.
+    * Result: The state is changed.
+
+    * Test: If the user enables the Due date field with the 'Change Date?' button and then Saves without changing the date the date will remain the same in the backend and will return the user to the Tasks Page.
+    * Result: This is true.
+
+    * Test: If the user changes the Due date field in a valid way and then Saves the date will be changed in the backend and the user is returned to the Tasks Page.
+    * Result: This is true.
+
+    * Test: The user cannot save an item if the Due date is less than one day away from the current time. This is to prevent the user from making a due date in the past.
+    * Result: A 'Ensure this value is greater than or equal to {Current Time + 1 days}' error is shown.
+
+    * Test: The user can delete the Task by dropping down the accordion and clicking on 'Confirm Deletion'.
+    * Result: This deletes the Task.
     
     * Lighthouse check:
 
@@ -124,6 +234,10 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
 ## Create Task Page
 
+* The page for creating Tasks.
+    
+    * Test: 
+    * Result:
     
     * Lighthouse check:
 
@@ -146,6 +260,13 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 ## Profile Page
 
     
+    * Lighthouse check:
+
+    * Responsiveness check:
+
+## Footer
+
+
     * Lighthouse check:
 
     * Responsiveness check:
