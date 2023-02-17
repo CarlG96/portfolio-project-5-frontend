@@ -26,7 +26,7 @@ const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
-
+  
   // Function to log out user.
   const handleSignOut = async () => {
     try {

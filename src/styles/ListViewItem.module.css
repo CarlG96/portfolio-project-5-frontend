@@ -37,14 +37,14 @@
 @media screen and (max-width: 500px) {
   .ListViewItem {
     min-height: 20vh;
-    max-height: 40vh;
+    max-height: 45vh;
   }
   .ListViewItem > h3 {
     min-height: 12vh;
   }
   .OverDue {
     min-height: 20vh;
-    max-height: 40vh;
+    max-height: 45vh;
   }
   .OverDue > h3 {
     min-height: 12vh;

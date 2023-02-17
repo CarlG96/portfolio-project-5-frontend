@@ -55,7 +55,7 @@ const ProfilePage = () => {
           setUnloaded(true);
         }
       } else {
-        history.push("/");
+        history.replace("/");
       }
     };
     fetchProfileData();
@@ -104,7 +104,7 @@ const ProfilePage = () => {
           <h1 className={` mt-3 ${genericStyles.GenericHeader}`}>
             {name.length ? `${name}'s Profile` : `${owner}'s Profile`}
           </h1>
-          <Avatar src={currentUser?.profile_image} height={150} />
+          <Avatar src={image} height={150} />
           <Form
             onSubmit={handleSubmit}
             className={`text-center mt-3 ${genericStyles.GenericText}`}

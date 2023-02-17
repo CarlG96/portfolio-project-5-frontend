@@ -34,7 +34,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Sign In Page
 
@@ -60,7 +60,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Sign Up Page
 
@@ -92,7 +92,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Navbar
 
@@ -136,7 +136,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Tasks Page
 
@@ -174,7 +174,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Task Detail Page
 
@@ -230,7 +230,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Create Task Page
 
@@ -253,7 +253,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Events Page
 
@@ -288,7 +288,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Event Detail Page
 
@@ -341,7 +341,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 
 ## Create Event Page
@@ -365,14 +365,32 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Profile Page
 
+* Page for editing a user's profile.
+
+    * Test: A non-logged in user or other user cannot access the page.
+    * Result: User is sent back to homepage through ID validation.
+
+    * Test: User can access own profile page.
+    * Result: User can access own profile page.
+
+    * Test: Fields are disabled upon entering page.
+    * Result: Fields are disabled.
+
+    * Test: Clicking 'Edit Profile' button enables fields
+    * Result: Fields become enabled.
+
+    * Test: Profile Preferred name field defaults to username but can be changed, this updates it in the form and when saved keeps this data.
+    * Result: This can be changed.
+
+    * 
     
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
 ## Footer
 
@@ -389,4 +407,4 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check:
+    * Responsiveness check: Responsive across a wide range of devices.

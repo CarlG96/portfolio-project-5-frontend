@@ -21,8 +21,9 @@ import genericStyles from "../src/styles/GenericStyles.module.css";
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      
       <Container fluid className={styles.Container}>
+      <NavBar />
         <Switch>
           <Route
             exact
