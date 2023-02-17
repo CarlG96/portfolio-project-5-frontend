@@ -60,7 +60,7 @@ const NavBar = () => {
     </>
   );
 
-  // Icons which are displayed when user is logged in.
+  // Icons which are displayed when user is logged in. 
   const loggedInIcons = (
     <>
       <NavLink
