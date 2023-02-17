@@ -223,7 +223,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Result: This is true.
 
     * Test: The user cannot save an item if the Due date is less than one day away from the current time. This is to prevent the user from making a due date in the past.
-    * Result: A 'Ensure this value is greater than or equal to {Current Time + 1 days}' error is shown.
+    * Result: An 'Ensure this value is greater than or equal to {Current Time + 1 days}' error is shown.
 
     * Test: The user can delete the Task by dropping down the accordion and clicking on 'Confirm Deletion'.
     * Result: This deletes the Task.
@@ -236,8 +236,20 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
 * The page for creating Tasks.
     
-    * Test: A non-logged
-    * Result:
+    * Test: A non-logged in user cannot access the page.
+    * Result: A loading spinner is set to timeout, from there the user is pushed back to the homepage if they attempt to access the page.
+
+    * Test: A logged in user can access the page.
+    * Result: A logged in user can access the page.
+
+    * Test: Leaving the Title field blank shows an error.
+    * Result: A 'This field may not be blank.' is shown.
+
+    * Test: The user cannot save an item if the Due date is less than one day away from the current time. This is to prevent the user from making a due date in the past.
+    * Result: A 'Ensure this value is greater than or equal to {Current Time + 1 days}' error is shown.
+
+    * Test: A submission with a valid response creates a new Task and directs the user to the specific Task Detail Page.
+    * Result: The correct information is created and the user is redirected.
 
     * Lighthouse check:
 
@@ -245,13 +257,111 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
 ## Events Page
 
-    
+* The page for displaying Events that the user has created.
+
+    * Test: A non-logged in user should not have any Eventss showing if they attempt to access this page due to backend authentication.
+    * Result: A 'Sorry, the page you are looking for couldn't be found!' error is displayed to the user who tries to force this url.
+
+    * Test: A logged in user can access the Events Page.
+    * Result: A logged in user can access the Events Page.
+
+    * Test: A user can switch the button between 'View Past Events' and 'View Upcoming Events' states. A loading spinner will be present when this is done, pulling data from the backend.
+    * Result: This happens.
+
+    * Test: A user without any Upcoming Events will see the 'No Upcoming Events' message when opening up the Events Page.
+    * Result: A user without any Upcoming Events will see this.
+
+    * Test: A user without any Past Events will see the 'No Past Events' message when switching to the Past Events section with the button.
+    * Result: This happens.
+
+    * Test: A user will only see Upcoming Events when in the Upcoming Events section.
+    * Result: Only Upcoming Events are shown in the Upcoming Events section.
+
+    * Test: A user will only see Past Events in the Past Events section after switching with the button.
+    * Result: This is true.
+
+    * Test: Scrolling down will make the Infinite Scroll pull more data from the backend.
+    * Result: This is true.
+
+    * Test: Clicking on the button links on each Event will take you to the respective Event Detail Page.
+    * Result: The user is taken to the respective Event Detail Page.
+
     * Lighthouse check:
 
     * Responsiveness check:
 
+## Event Detail Page
+
+* The page for displaying the details of Events and also to Edit and Delete them.
+
+    * Test: A non-logged in user should not be able to access the specific Events of another user by forcing the url.
+    * Result: A response of 'Event not available' appears on the Event Detail page due to backend authentication.
+
+    * Test: A logged in user should not be able to access the specific Events of another user by forcing the url.
+    * Result: A response of 'Event not available' appears on the Event Detail page due to backend authentication.
+
+    * Test: A logged in user should be able to access their specific Events by forcing the url.
+    * Result: A logged in user can view their Events via forcing the url.
+
+    * Test: The fields of the Event Detail form are initially disabled upon viewing the Event Detail Page.
+    * Result: The fields are initially disabled.
+
+    * Test: Clicking the 'Edit?' button enables all fields but the Date of event field.
+    * Result: All fields except Date of event are enabled.
+
+    * Test: All fields except the Date of event are interactable once the 'Edit?' button has been clicked.
+    * Result: All these fields are interactable.
+
+    * Test: Clicking the 'Change Date' button allows you to edit the date.
+    * Result: This is true.
+
+    * Test: A user cannot Save the Event edits if the Title is removed. It should show an error.
+    * Result: A 'This field may not be blank.' error is shown.
+
+    * Test: If the user changes the Title field and clicks Save then the title of the Event will change and the user is returned to the Events Page.
+    * Result: The title is changed.
+
+    * Test: If the user changes the number in the Amount of money required field and then clicks Save then the amount of money of the Event will change and the user is returned to the Events Page.
+    * Result: The Amount of money is changed.
+
+    * Test: If the user changes the checkbox value for the Need to travel there? field and then clicks Save then the value will be stored in the backend and the user is returned to the Events Page.
+    * Result: The Need to travel there? value changes.
+
+     * Test: If the user enables the Date of event field with the 'Change Date?' button and then Saves without changing the date the date will remain the same in the backend and will return the user to the Events Page.
+    * Result: This is true.
+
+    * Test: If the user changes the Date of event field in a valid way and then Saves the date will be changed in the backend and the user is returned to the Events Page.
+    * Result: This is true.
+
+    * Test: The user cannot save an item if the Date of event is less than one day away from the current time. This is to prevent the user from making an Event for the past.
+    * Result: An 'Ensure this value is greater than or equal to {Current Time + 1 days}' error is shown.
+
+    * Test: The user can delete the Event by dropping down the accordion and clicking on 'Confirm Deletion'.
+    * Result: This deletes the Event.
+
+    * Lighthouse check:
+
+    * Responsiveness check:
+
+
 ## Create Event Page
 
+* The page for creating Events.
+
+    * Test: A non-logged in user cannot access the page.
+    * Result: A loading spinner is set to timeout, from there the user is pushed back to the homepage if they attempt to access the page.
+
+    * Test: A logged in user can access the page.
+    * Result: A logged in user can access the page.
+
+    * Test: Leaving the Title field blank shows an error.
+    * Result: A 'This field may not be blank.' is shown.
+
+    * Test: The user cannot save an item if the Date of event is less than one day away from the current time. This is to prevent the user from making an Event for the past.
+    * Result: A 'Ensure this value is greater than or equal to {Current Time + 1 days}' error is shown.
+
+    * Test: A submission with a valid response creates a new Event and directs the user to the specific Event Detail Page.
+    * Result: The correct information is created and the user is redirected.
     
     * Lighthouse check:
 
