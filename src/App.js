@@ -19,7 +19,7 @@ import "./api/axiosDefaults";
 // import ProfilePage from "./pages/profiles/ProfilePage";
 // import Footer from "./components/Footer";
 // import NoResults from "./components/NoResults";
-// import genericStyles from "../src/styles/GenericStyles.module.css";
+import genericStyles from "../src/styles/GenericStyles.module.css";
 import React, {lazy, Suspense } from "react";
 
 const styles = lazy(() => import("./App.module.css"));
@@ -39,7 +39,7 @@ const EventsPage = lazy(() => import("./pages/events/EventsPage"));
 const ProfilePage = lazy(() => import("./pages/profiles/ProfilePage"));
 const Footer = lazy(() => import("./components/Footer"));
 const NoResults = lazy(() => import("./components/NoResults"));
-const genericStyles = lazy(() => import("../src/styles/GenericStyles.module.css"));
+
 
 
 function App() {
@@ -64,7 +64,7 @@ function App() {
               </>
             )}
           />
-          <Suspense fallback={<></>}>
+          <Suspense fallback={<div className={genericStyles.GenericForm}></div>}>
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/currenttasks" render={() => <TasksPage />} />
