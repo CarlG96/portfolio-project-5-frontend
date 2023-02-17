@@ -20,7 +20,8 @@ import "./api/axiosDefaults";
 // import Footer from "./components/Footer";
 // import NoResults from "./components/NoResults";
 // import genericStyles from "../src/styles/GenericStyles.module.css";
-import React, {lazy} from "react";
+import React, {lazy, Suspense } from "react";
+import Asset from "./components/Asset";
 
 const styles = lazy(() => import("./App.module.css"));
 const NavBar = lazy(() => import("./components/NavBar"));
@@ -45,7 +46,7 @@ const genericStyles = lazy(() => import("../src/styles/GenericStyles.module.css"
 function App() {
   return (
     <div className="App">
-      
+      <Suspense fallback={<Asset spinner />}>
       <Container fluid className={styles.Container}>
       <NavBar />
         <Switch>
@@ -84,6 +85,7 @@ function App() {
         </Switch>
       </Container>
       <Footer />
+      </Suspense>
     </div>
   );
 }
