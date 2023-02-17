@@ -268,10 +268,10 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: A user can switch the button between 'View Past Events' and 'View Upcoming Events' states. A loading spinner will be present when this is done, pulling data from the backend.
     * Result: This happens.
 
-    * Test: A user without any Upcoming Events will see the 'No Upcoming Events' message when opening up the Events Page.
+    * Test: A user without any Events will see the 'No Events' message when opening up the Events Page.
     * Result: A user without any Upcoming Events will see this.
 
-    * Test: A user without any Past Events will see the 'No Past Events' message when switching to the Past Events section with the button.
+    * Test: A user without any Events will see the 'No Events' message when switching to the Past Events section with the button, otherwise they will see a blank section.
     * Result: This happens.
 
     * Test: A user will only see Upcoming Events when in the Upcoming Events section.
