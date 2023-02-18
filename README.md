@@ -116,11 +116,39 @@ Here are a list of pages and their features for the Taskosaurus Frontend
 
 ### Sign Up Page
 
+- The Sign Up Page allows users to sign up to Taskosaurus so they will be stored in the backend as a User and can log in to use Taskosaurus. The Sign Up Page requires the user to type a valid username and then a valid password twice in order to sign up. After confirming their sign up credentials they will be redirected to the Sign In Page. The Sign Up Page also has a link to the Sign In Page.
+
+<img src="README-pictures/taskosaurus-sign-up-page.png" />
+
 ### Sign Up Page Wireframes
+
+#### Desktop
+
+<img src="README-pictures/taskosaurus-sign-up-page-wireframe-desktop.png" />
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-sign-up-page-wireframe-mobile.png" />
 
 ### Tasks Page
 
+- The Tasks Page allows you to view Tasks that you have previously created. You can click on the 'view task' button to view the Task Detail Page of that specific Task. If a Task is overdue, it will appear with an orange border around it and the button will say '(overdue)'. Clicking on the 'View Archived Tasks' button will allow you to switch from seeing Tasks that are considered 'Current' to Tasks that have been designated 'Archived'. This button will then show 'View Current Tasks' and the user can switch between the two states.
+
+<img src="README-pictures/taskosaurus-tasks-page.png" />
+
 ### Tasks Page Wireframes
+
+#### Desktop
+
+<img src="README-pictures/taskosaurus-tasks-page-wireframe-desktop.png" />
+
+#### Midsize devices
+
+<img src="README-pictures/taskosaurus-tasks-page-wireframe-midsize.png" />
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-tasks-page-wireframe-mobile.png" />
 
 ### Task Detail Page
 
