@@ -70,15 +70,49 @@ Here are links to epics and user stories involving the Taskosaurus fronted:
 
 ## Features
 
+Here are a list of pages and their features for the Taskosaurus Frontend
+
 ### Welcome Page
+
+- The Welcome Page is the landing page for the Taskosaurus website. The page has a hero image and text welcoming the user. If the user is not signed in, the user can see a button advising them to sign up. If the user is signed up, this button is replaced by two buttons which direct the user to create an event or task.
+
+<img src="README-pictures/taskosaurus-welcome-page.png" />
 
 ### Welcome Page Wireframes
 
+#### Desktop not logged in
+
+<img src="README-pictures/taskosaurus-welcome-page-wireframe-desktop.png" />
+
+#### Desktop logged in
+
+<img src="README-pictures/taskosaurus-welcome-page-wireframe-desktop-logged-in.png" />
+
+#### Mobile 
+
+<img src="README-pictures/taskosaurus-welcome-page-wireframe-mobile.png" />
+
 ### Navbar
+
+- The Navbar allows the user to access the other pages of the site. It changes from a full list of links across the top of the page on larger device sizes to a burger menu on smaller device sizes.
+
+<!--The picture of the navbar should be put here-->
 
 ### Sign In Page
 
+- The Sign In Page allows users to sign in using credentials. It requires the user to use a valid username and password and has a link to the Sign Up Page if the user does not currently have an account in the backend.
+
+<img src="README-pictures/taskosaurus-sign-in-page.png" />
+
 ### Sign In Page Wireframes
+
+#### Desktop
+
+<img src="README-pictures/taskosaurus-sign-in-page-wireframe-desktop.png" />
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-sign-in-page-wireframe-mobile.png" />
 
 ### Sign Up Page
 
