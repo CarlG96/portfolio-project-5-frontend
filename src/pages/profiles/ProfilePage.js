@@ -86,7 +86,7 @@ const ProfilePage = () => {
       const { data } = await axiosReq.put(`/profiles/${id}`, formData);
       setCurrentUser((currentUser) => ({
         ...currentUser,
-        image: data.image,
+        profile_image: data.image,
       }));
       history.push("/");
     } catch (err) {
