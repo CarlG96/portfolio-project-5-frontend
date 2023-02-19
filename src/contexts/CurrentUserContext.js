@@ -25,7 +25,7 @@ export const CurrentUserProvider = ({ children }) => {
   // Functions to handle the user being logged in.
   const handleMount = async () => {
     try {
-      const { data } = await axiosRes.get("/dj-rest-auth/user/:id");
+      const { data } = await axiosRes.get("/dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
       // console.log(err);
