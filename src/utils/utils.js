@@ -31,10 +31,10 @@ export const setTokenTimestamp = (data) => {
 
 // Function to return bool of whether or not it should refresh token
 export const shouldRefreshToken = () => {
-  return !!localStorage.getItem("refreshTokenTimestamp");
+  return localStorage.getItem("refreshTokenTimeStamp") === null ? true : false;
 };
 
 // Function to remove token timestamp
 export const removeTokenTimestamp = () => {
-  localStorage.removeItem("refreshTokenTimestamp");
+  localStorage.removeItem("refreshTokenTimeStamp");
 }
