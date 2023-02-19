@@ -185,7 +185,7 @@ Here are a list of pages and their features for the Taskosaurus Frontend
 
 ### Events Page
 
-- The Eventss Page allows you to view Eventss that you have previously created. You can click on the 'view event' button to view the Event Detail Page of that specific Event.  Clicking on the 'View Past Events' button will allow you to switch from seeing Events that are considered 'Upcoming' to Eventss that have been designated 'Past'. This button will then show 'View Upcoming Events' and the user can switch between the two states.
+- The Events Page allows you to view Eventss that you have previously created. You can click on the 'view event' button to view the Event Detail Page of that specific Event.  Clicking on the 'View Past Events' button will allow you to switch from seeing Events that are considered 'Upcoming' to Eventss that have been designated 'Past'. This button will then show 'View Upcoming Events' and the user can switch between the two states.
 
 <img src="README-pictures/taskosaurus-events.png" />
 
@@ -205,21 +205,63 @@ Here are a list of pages and their features for the Taskosaurus Frontend
 
 ### Event Detail Page
 
+- The Event Detail Page is where the the details of each Event are shown. It shows the Title, Date of event, Amount of money required and Need to travel? fields. The fields are initially disabled but the details can be changed by clicking on the Edit Event? button and consequently the Change Date? button. The Save button will save the Event details and the Delete Event? accordion opens up when clicked on to allow you to delete the Event.
 
+<img src="README-pictures/taskosaurus-event-detail.png" />
 
 ### Event Detail Page Wireframes
 
+#### Desktop
+
+<img src="README-pictures/taskosaurus-event-detail-wireframe-desktop.png" />
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-event-detail-wireframe-mobile.png" />
+
 ### Create Event Page
+
+- The Create Event Page is the page in which you can create Events. The Title and Date of event date fields must be correctly set.
+
+<img src="README-pictures/taskosaurus-create-event.png" />
 
 ### Create Event Page Wireframes
 
+#### Desktop
+
+<img src="README-pictures/taskosaurus-create-event-wireframe-desktop.png" />
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-create-event-wireframe-mobile.png" />
+
 ### Profile Page
+
+- The Profile Page allows a user to change their profile picture and set a preferred name. The fields are initially disabled until the Edit Profile? button is pressed.
+
+<img src="README-pictures/taskosaurus-profile.png" />
 
 ### Profile Page Wireframes
 
+#### Desktop
+
+<img src="README-pictures/taskosaurus-profile-wireframe-desktop.png" />
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-profile-wireframe-mobile.png" />
+
 ### Footer
 
+- The Footer is present on all pages and contains social media links to Facebook, Twitter and Instagram.
+
+<img src="README-pictures/taskosaurus-footer.png" />
+
 ## Future Features
+
+* Searchbar - Search through the Tasks or Events pages to find the exact item you want.
+
+* Notes - Feature that was originally planned but could not be implemented in time, would involve the ability to attach multiple notes to each Task or Event item.
 
 ## Testing
 
