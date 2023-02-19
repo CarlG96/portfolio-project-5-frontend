@@ -130,7 +130,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Responsiveness check: Responsive across a wide range of devices. 
 
-<!-- ## Tasks Page
+## Tasks Page
 
 * The page for displaying Tasks that the user has created.
     
@@ -217,10 +217,8 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Test: The user can delete the Task by dropping down the accordion and clicking on 'Confirm Deletion'.
     * Result: This deletes the Task.
-    
-    * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices. -->
+    * Responsiveness check: Responsive across a wide range of devices. 
 
 <!-- ## Create Task Page
 
