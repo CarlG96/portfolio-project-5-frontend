@@ -293,22 +293,70 @@ Lato - Chose to contrast with Montserrat for the smaller paragraph-style texts. 
 
 ### Languages
 
+* JavaScript (specifically the JSX of React)
+* CSS
+* HTML
+
 ### Libraries/ Dependencies
+
+React JS - The library upon which this project was built.
+axios - For interceptors and to make requests and respond to the backend API.
+React Bootstrap - Frontend library used to style Taskosaurus.
+jwt-decode - Used to handle JSON Web Tokens.
+moment - Package to handle the discrepencies between the datetimes of the frontend and the backend.
+react-infinite-scroll-component - Used to create an infinite scroll component for the Tasks and Events Pages.
+react-router-dom - Used for navigation of the Taskosaurus site.
+
+### Programs used for development
+
+- [drawSQL](https://drawsql.app/) - For the ERD (Entity Relationship Diagram).
+- Gitpod - Used for the development of the project as a cloud based IDE.
+- Git - Used for version control
+- GitHub - Used for the remote repo of the project but also used for the Kanban Board.
+
+### Gitpod extensions
+
+- ES7 + React/Redux/React-Native Snippets for making boilerplate code easier to write.
+- Prettier for code formatting.
+- ESLint for linting and JSX validation.
 
 ## Deployment 
 
 ### Forking/ Cloning
 
+You can fork the repository with the following steps:
+
+1. Login to your GitHub account
+1. Locate the repository you wish to fork
+1. Click the 'Fork' button and you'll have a copy of the repo on your own account.
+
+You can clone the repo with the following steps:
+
+1. Under the 'Code' button in the repository, copy the HTTPS link.
+1. With Git on your local machine, find the directory you want to clone into and set up a Git Bash terminal there.
+1. Type git clone followed by the link to set up the clone on your own system.
+Note: Your own environment will be different from the original so you will need to set up environment variables and install the requirements for it to run.
+
 ### Deployment to Heroku
+
+Most of the complicated handling on environment variables happened in the backend API, so setting up the Taskosaurus frontend was relatively simple, with most of the calls dealing with separate resources being performed in the code.
+
+1. I logged in and created the app.
+1. Set the Deployment of the project by clicking on the 'Deploy' tab and choosing the method of deployment (I connected to my GitHub and had automatic deploys).
+1. The application deployed after an initial manual deploy.
 
 ## Credits
 
-* FreeLogoDesign for the logo
-* https://favicon.io/
-* pexels
-* moment package
-* [Am I Responsive?](https://ui.dev/amiresponsive)
-
+* Code Institute and the Slack community, especially the tutors Sean and Oisin.
+* The Moments walkthrough project from Code Institute, upon which this project was based.
+* [CSS Jigsaw validator](https://jigsaw.w3.org/css-validator/) for validation of the CSS.
+* [Google Fonts](https://fonts.google.com/) for the fonts used.
+* [FreeLogoDesign](https://www.freelogodesign.org/) for the logo.
+* [Favicon.io](https://favicon.io/) for the favicons used on the site.
+* [pexels](https://www.pexels.com/) for the landing page picture.
+* [Font Awesome](https://fontawesome.com/) for the icons used in the navbar and footers.
+* [Am I Responsive?](https://ui.dev/amiresponsive) for the image used at the top of this README.
+* [Heroku](https://id.heroku.com/login) for deployment of the final project.
 
 ## Bugs
 
