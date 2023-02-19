@@ -21,14 +21,16 @@ import Footer from "./components/Footer";
 import NoResults from "./components/NoResults";
 import genericStyles from "../src/styles/GenericStyles.module.css";
 import React from "react";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 
 
 
 function App() {
+  const currentUser = useCurrentUser();
+  
   return (
     <div className="App">
-      
       <Container fluid className={styles.Container}>
       <NavBar />
         <Switch>
