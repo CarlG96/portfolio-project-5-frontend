@@ -96,7 +96,8 @@ Here are a list of pages and their features for the Taskosaurus Frontend
 
 - The Navbar allows the user to access the other pages of the site. It changes from a full list of links across the top of the page on larger device sizes to a burger menu on smaller device sizes.
 
-<!--The picture of the navbar should be put here-->
+<img src="README-pictures/taskosaurus-navbar-large.png" />
+<img src="README-pictures/taskosaurus-navbar-small.png" />
 
 ### Sign In Page
 
@@ -152,17 +153,59 @@ Here are a list of pages and their features for the Taskosaurus Frontend
 
 ### Task Detail Page
 
+- The Task Detail Page is where the the details of each Task are shown. It shows the Title, Description, Priority, Due date and State fields. The fields are initially disabled but the details can be changed by clicking on the Edit Task? button and consequently the Change Date? button. The Save button will save the Task details and the Delete Task? accordion opens up when clicked on to allow you to delete the Task.
+
+<img src="README-pictures/taskosaurus-task-detail.png" />
+
 ### Task Detail Page Wireframes
+
+#### Desktop
+
+<img src="README-pictures/taskosaurus-task-detail-wireframe-desktop.png" />
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-task-detail-wireframe-mobile.png" />
 
 ### Create Task Page
 
+- The Create Task Page is the page in which you can create Tasks. The Title and Due date fields must be correctly set and all Tasks initially have a State of Current when created by default.
+
+<img src="README-pictures/taskosaurus-create-task.png" />
+
 ### Create Task Page Wireframes
+
+#### Desktop
+
+<img src="README-pictures/taskosaurus-create-task-wireframe-desktop.png" /> 
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-create-task-wireframe-mobile.png" />
 
 ### Events Page
 
+- The Eventss Page allows you to view Eventss that you have previously created. You can click on the 'view event' button to view the Event Detail Page of that specific Event.  Clicking on the 'View Past Events' button will allow you to switch from seeing Events that are considered 'Upcoming' to Eventss that have been designated 'Past'. This button will then show 'View Upcoming Events' and the user can switch between the two states.
+
+<img src="README-pictures/taskosaurus-events.png" />
+
 ### Events Page Wireframes
 
+#### Desktop
+
+<img src="README-pictures/taskosaurus-events-wireframe-desktop.png" />
+
+#### Midsize
+
+<img src="README-pictures/taskosaurus-events-wireframe-midsize.png" />
+
+#### Mobile
+
+<img src="README-pictures/taskosaurus-events-wireframe-mobile.png" />
+
 ### Event Detail Page
+
+
 
 ### Event Detail Page Wireframes
 
@@ -203,6 +246,18 @@ Montserrat and Lato were imported from Google Fonts to be used in this project.
 
 Montserrat - Chosen for generic headers and larger text and for its legibility.
 Lato - Chose to contrast with Montserrat for the smaller paragraph-style texts. Also has good legibility.
+
+## Technology
+
+### Languages
+
+### Libraries/ Dependencies
+
+## Deployment 
+
+### Forking/ Cloning
+
+### Deployment to Heroku
 
 ## Credits
 
