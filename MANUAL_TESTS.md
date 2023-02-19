@@ -220,7 +220,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Responsiveness check: Responsive across a wide range of devices. 
 
-<!-- ## Create Task Page
+## Create Task Page
 
 * The page for creating Tasks.
     
@@ -239,16 +239,14 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: A submission with a valid response creates a new Task and directs the user to the specific Task Detail Page.
     * Result: The correct information is created and the user is redirected.
 
-    * Lighthouse check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
-    * Responsiveness check: Responsive across a wide range of devices. -->
-
-<!-- ## Events Page
+## Events Page
 
 * The page for displaying Events that the user has created.
 
     * Test: A non-logged in user should not have any Eventss showing if they attempt to access this page due to backend authentication.
-    * Result: A 'Sorry, the page you are looking for couldn't be found!' error is displayed to the user who tries to force this url.
+    * Result: A 'No Events found!' error is displayed to the user who tries to force this url.
 
     * Test: A logged in user can access the Events Page.
     * Result: A logged in user can access the Events Page.
@@ -256,7 +254,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: A user can switch the button between 'View Past Events' and 'View Upcoming Events' states. A loading spinner will be present when this is done, pulling data from the backend.
     * Result: This happens.
 
-    * Test: A user without any Events will see the 'No Events' message when opening up the Events Page.
+    * Test: A user without any Events will see the 'No Events' message when opening up the Events Page, otherwise they will see a blank section if they only have Past Events.
     * Result: A user without any Upcoming Events will see this.
 
     * Test: A user without any Events will see the 'No Events' message when switching to the Past Events section with the button, otherwise they will see a blank section.
@@ -274,19 +272,13 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: Clicking on the button links on each Event will take you to the respective Event Detail Page.
     * Result: The user is taken to the respective Event Detail Page.
 
-    * Lighthouse check:
-
     * Responsiveness check: Responsive across a wide range of devices. 
-    ######## NEEDS CHECKING -->
 
-<!-- ## Event Detail Page
+## Event Detail Page
 
 * The page for displaying the details of Events and also to Edit and Delete them.
 
     * Test: A non-logged in user should not be able to access the specific Events of another user by forcing the url.
-    * Result: A response of 'Event not available' appears on the Event Detail page due to backend authentication.
-
-    * Test: A logged in user should not be able to access the specific Events of another user by forcing the url.
     * Result: A response of 'Event not available' appears on the Event Detail page due to backend authentication.
 
     * Test: A logged in user should be able to access their specific Events by forcing the url.
@@ -328,12 +320,9 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: The user can delete the Event by dropping down the accordion and clicking on 'Confirm Deletion'.
     * Result: This deletes the Event.
 
-    * Lighthouse check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
-    * Responsiveness check: Responsive across a wide range of devices. -->
-
-
-<!-- ## Create Event Page
+## Create Event Page
 
 * The page for creating Events.
 
@@ -351,12 +340,10 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Test: A submission with a valid response creates a new Event and directs the user to the specific Event Detail Page.
     * Result: The correct information is created and the user is redirected.
-    
-    * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices. -->
+    * Responsiveness check: Responsive across a wide range of devices.
 
-<!-- ## Profile Page
+## Profile Page
 
 ##### Profile stuff is still not finished
 * Page for editing a user's profile.
@@ -376,13 +363,15 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: Profile Preferred name field defaults to username but can be changed, this updates it in the form and when saved keeps this data.
     * Result: This can be changed.
 
-    * 
+    * Test: Preferred name must be chosen when changing details of the form.
+    * Result: This needs to be true.
+
+    * Changing the image file changes the image on the Profile Page. When saved it also changes the image in the Navbar.
+    * Result: This changes the two images.
     
-    * Lighthouse check:
+    * Responsiveness check: Responsive across a wide range of devices.
 
-    * Responsiveness check: Responsive across a wide range of devices. -->
-
-<!-- ## Footer
+## Footer
 
 * Footer at the bottom of all pages.
 
@@ -395,12 +384,24 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: Instagram link opens up Instagram homepage in new tab.
     * Result: User is directed to Instagram homepage in new tab.
 
-    * Lighthouse check:
-
-    * Responsiveness check: Responsive across a wide range of devices.  -->
+    * Responsiveness check: Responsive across a wide range of devices. 
 
 ## ESLint Validation
 
+ESLint was used to check the validity of the JSX code used for Taskosaurus. At submission time there were no known errors flagged by ESLint.
+
 ## CSS Validation
 
+W3C CSS Jigsaw Validator was used to validate the CSS, no problems were found with the CSS fies.
+
 ## Lighthouse Checks
+
+Lighthouse checks were carried out for the Taskosaurus application. The desktop version had good loading times but unfortunately the mobile version was slightly weaker (see below). I attempted to use lazy loading at one point but this only increased my applications load times so was removed.
+
+### Desktop check
+
+<img src="README-pictures/taskosaurus-lighthouse-desktop.png" />
+
+### Mobile check
+
+<img src="README-pictures/taskosaurus-lighthouse-mobile.png" />
