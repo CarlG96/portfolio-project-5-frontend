@@ -1,6 +1,6 @@
 # Taskosaurus 
 
-Taskosaurus is a website where the user can sign up and log in with their own profile. From here they are able to create two key items: Tasks and Events. Tasks are things that the user needs to do by a certain date in a work context and Events are things that happen on a certain date and are usually either leisurely or act as milestones in someone's life like a birthday party).
+Taskosaurus is a website where the user can sign up and log in with their own profile. From here they are able to create two key items: Tasks and Events. Tasks are things that the user needs to do by a certain date in a work context and Events are things that happen on a certain date and are usually either leisurely or act as milestones in someone's life like a birthday party.
 
 Users can then view their Tasks or Events in the respective list views and can filter based on the Current/ Archived split for the Tasks and whether it is upcoming or in the past for the Events. The Tasks list view will also highlight if the task is overdue and not complete by changing the background color of it in the list view to alert the user.
 
@@ -68,6 +68,8 @@ Here are links to epics and user stories involving the Taskosaurus fronted:
 
 * [Bugs](https://github.com/users/CarlG96/projects/6/views/1?filterQuery=bug)
 
+* [Documentation](https://github.com/users/CarlG96/projects/6/views/1?filterQuery=documentation)
+
 ## Features
 
 Here are a list of pages and their features for the Taskosaurus Frontend
@@ -97,6 +99,7 @@ Here are a list of pages and their features for the Taskosaurus Frontend
 - The Navbar allows the user to access the other pages of the site. It changes from a full list of links across the top of the page on larger device sizes to a burger menu on smaller device sizes.
 
 <img src="README-pictures/taskosaurus-navbar-large.png" />
+
 <img src="README-pictures/taskosaurus-navbar-small.png" />
 
 ### Sign In Page
@@ -301,7 +304,7 @@ Lato - Chose to contrast with Montserrat for the smaller paragraph-style texts. 
 
 React JS - The library upon which this project was built.
 axios - For interceptors and to make requests and respond to the backend API.
-React Bootstrap - Frontend library used to style Taskosaurus.
+React Bootstrap - Frontend library used to style Taskosaurus. The reason for this was the ease of designing for multiple different device sizes.
 jwt-decode - Used to handle JSON Web Tokens.
 moment - Package to handle the discrepencies between the datetimes of the frontend and the backend.
 react-infinite-scroll-component - Used to create an infinite scroll component for the Tasks and Events Pages.
@@ -313,6 +316,7 @@ react-router-dom - Used for navigation of the Taskosaurus site.
 - Gitpod - Used for the development of the project as a cloud based IDE.
 - Git - Used for version control
 - GitHub - Used for the remote repo of the project but also used for the Kanban Board.
+- Balsamiq - Used to create wireframes for the project.
 
 ### Gitpod extensions
 
@@ -337,6 +341,13 @@ You can clone the repo with the following steps:
 1. Type git clone followed by the link to set up the clone on your own system.
 Note: Your own environment will be different from the original so you will need to set up environment variables and install the requirements for it to run.
 
+### Deployment for Gitpod
+
+1. In Heroku, have a CLIENT_ORIGIN_DEV setting for the backend config vars.
+1. In backend settings, change CORS_ALLOWED_ORIGINS_REGEXES to allow for gitpod environment a proper backend database.
+1. In gitpod for the frontend, run npm start in the console and open the port to test the site using a database.
+1. You could alternatively set the database in the backend to run in gitpod by setting a conditional to set it to the inbuilt sqlite database.
+
 ### Deployment to Heroku
 
 Most of the complicated handling on environment variables happened in the backend API, so setting up the Taskosaurus frontend was relatively simple, with most of the calls dealing with separate resources being performed in the code.
@@ -347,7 +358,7 @@ Most of the complicated handling on environment variables happened in the backen
 
 ## Credits
 
-* Code Institute and the Slack community, especially the tutors Sean and Oisin.
+* [Code Institute](https://codeinstitute.net/) and the Slack community, especially the tutors Sean and Oisin.
 * The Moments walkthrough project from Code Institute, upon which this project was based.
 * [CSS Jigsaw validator](https://jigsaw.w3.org/css-validator/) for validation of the CSS.
 * [Google Fonts](https://fonts.google.com/) for the fonts used.
@@ -366,7 +377,18 @@ The date for the forms in the DetailedTask and DetailedEvent detail views were n
 ### value/defaultValue on form bug
 The handleChange() function would not update the forms in the DetailedTask and DetailedEvent components due to the fact they were being given value properties instead of defaultValue properties. This was a holdover from taking code from the CreateForm components and was easily fixed by changing value props to defaultValue props.
 
-## bug on loading events
+### Bug on loading events
 Due to the way pagination is handled, the past events/ current events split won't pull directly from the back end and you must scroll down with the infinite scroll component if you have too many items and are switching between them as it will appear that nothing is showing up however it is just the order of the meta class in django which defines whether they get pulled. Because the list view displays based on overdue status this can cause problems.
 
 To solve this I set pagination from 10 to 15 and changed the ordering of events to date updated as this is less likely to not show the event lists which is based on due date at the higher number of items.
+
+### Authentication Bug
+The cookies were not being set properly although so although an authentication token is issued after signing in, it does not appear in the browser's cookies. This meant that it required a hard refresh of the page after five minutes to refresh the token. I have checked my code against the walkthrough project and have spent three hours with tutors and have been unsuccessful in resolving the issue. I have created a workaround, however, that involves setting these values in the backend:
+
+```Python
+'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60*24),
+'REFRESH_TOKEN_LIFETIME': timedelta(minutes=60*24),
+'ROTATE_REFRESH_TOKENS': True,
+```
+
+which makes authentication similar to a 24-hour session instead of refreshing the token. 
