@@ -1,4 +1,4 @@
-<!-- # Testing
+# Testing
 
 ## Manual Testing
 
@@ -26,13 +26,11 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: The 'Click here to create an Event!' button should direct the user to the Create Event Page.
     * Result: The user is directed there.
 
-    * Test: When loadi the page as a logged-out user, the loading spinner for the buttons should appear.
+    * Test: When loading the page as a logged-out user, the loading spinner for the buttons should appear.
     * Result: The loading spinner appears.
 
     * Test: When loading the page as a logged-in user, the loading spinner for the buttons should appear.
     * Result: The loading spinner appears.
-
-    * Lighthouse check:
 
     * Responsiveness check: Responsive across a wide range of devices.
 
@@ -57,8 +55,6 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Test: The 'This field may not be blank.' error is shown if any fields are left blank in the sign in form.
     * Result: The error is shown.
-
-    * Lighthouse check:
 
     * Responsiveness check: Responsive across a wide range of devices.
 
@@ -90,9 +86,7 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: The 'Already have an account? Sign In' link redirects the user to the Sign In Page.
     * Result: User is redirected to the Sign In Page.
 
-    * Lighthouse check:
-
-    * Responsiveness check: Responsive across a wide range of devices.
+    * Responsiveness check: Responsive across a wide range of devices. 
 
 ## Navbar
 
@@ -134,16 +128,14 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Test: Clicking on another part of the screen once the burger menu is open closes the burger menu.
     * Result: Clicking on another part of the screen closes the burger menu.
 
-    * Lighthouse check
+    * Responsiveness check: Responsive across a wide range of devices. 
 
-    * Responsiveness check: Responsive across a wide range of devices.
-
-## Tasks Page
+<!-- ## Tasks Page
 
 * The page for displaying Tasks that the user has created.
     
     * Test: A non-logged in user should not have any Tasks showing if they attempt to access this page due to backend authentication.
-    * Result: A 'Sorry, the page you are looking for couldn't be found!' error is displayed to the user who tries to force this url.
+    * Result: A 'No Current Tasks found' error is displayed to the user who tries to force this url.
 
     * Test: A logged in user can access the Tasks Page.
     * Result: A logged in user can access the Tasks Page.
@@ -171,11 +163,8 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Test: Clicking on the button links on each Task will take you to the respective Task Detail Page.
     * Result: The user is taken to the respective Task Detail Page.
-    
-    * Lighthouse check:
 
     * Responsiveness check: Responsive across a wide range of devices.
-    ###### NEEEDS CHECKING
 
 ## Task Detail Page
 
@@ -231,9 +220,9 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     
     * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices.
+    * Responsiveness check: Responsive across a wide range of devices. -->
 
-## Create Task Page
+<!-- ## Create Task Page
 
 * The page for creating Tasks.
     
@@ -254,9 +243,9 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices.
+    * Responsiveness check: Responsive across a wide range of devices. -->
 
-## Events Page
+<!-- ## Events Page
 
 * The page for displaying Events that the user has created.
 
@@ -290,9 +279,9 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     * Lighthouse check:
 
     * Responsiveness check: Responsive across a wide range of devices. 
-    ######## NEEDS CHECKING
+    ######## NEEDS CHECKING -->
 
-## Event Detail Page
+<!-- ## Event Detail Page
 
 * The page for displaying the details of Events and also to Edit and Delete them.
 
@@ -343,10 +332,10 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices.
+    * Responsiveness check: Responsive across a wide range of devices. -->
 
 
-## Create Event Page
+<!-- ## Create Event Page
 
 * The page for creating Events.
 
@@ -367,9 +356,9 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     
     * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices.
+    * Responsiveness check: Responsive across a wide range of devices. -->
 
-## Profile Page
+<!-- ## Profile Page
 
 ##### Profile stuff is still not finished
 * Page for editing a user's profile.
@@ -393,9 +382,9 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
     
     * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices.
+    * Responsiveness check: Responsive across a wide range of devices. -->
 
-## Footer
+<!-- ## Footer
 
 * Footer at the bottom of all pages.
 
@@ -410,4 +399,10 @@ Here are a list of manual tests carried out to ensure that the Taskosaurus front
 
     * Lighthouse check:
 
-    * Responsiveness check: Responsive across a wide range of devices. -->
+    * Responsiveness check: Responsive across a wide range of devices.  -->
+
+## ESLint Validation
+
+## CSS Validation
+
+## Lighthouse Checks
